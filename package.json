@@ -27,11 +27,16 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "nodemon": "^2.0.6",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.3.0"
   },
-
   "dependencies": {
     "angular": "^1.8.2",
     "axios": "^0.21.1",
@@ -46,7 +51,3 @@
     "underscore": "^1.12.0"
   }
 }
-
-
-
-
