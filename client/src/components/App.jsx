@@ -13,13 +13,14 @@ class App extends React.Component {
   }
 
   render() {
+    const { productID } = this.state.productID;
     return (
       <div>
         <div>Hello From App</div>
-        <ProductDetail />
-        <RelatedProducts />
-        <QuestionsAndAnswers />
-        <RatingsAndReviews />
+        <ProductDetail productID={productID} />
+        <RelatedProducts productID={productID} />
+        <QuestionsAndAnswers productID={productID} />
+        <RatingsAndReviews productID={productID} />
       </div>
     );
   }
