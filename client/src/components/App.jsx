@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productID: 23145
+      productID: 23145,
     };
   }
 
@@ -17,10 +17,7 @@ class App extends React.Component {
     return (
       <div>
         <div>Hello From App</div>
-        <ProductDetail productID={productID} />
-        <RelatedProducts productID={productID} />
         <QuestionsAndAnswers productID={productID} />
-        <RatingsAndReviews productID={productID} />
       </div>
     );
   }

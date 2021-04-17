@@ -1,1 +1,1 @@
-export default RelatedProducts;
+// export default RelatedProducts;
