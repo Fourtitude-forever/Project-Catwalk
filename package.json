@@ -47,6 +47,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.11.9",
     "mysql": "^2.18.1",
+    "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "underscore": "^1.12.0"
