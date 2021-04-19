@@ -3,6 +3,7 @@ import React from 'react';
 // import RelatedProducts from './RelatedProducts.jsx';
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
+import QuestionList from './questions/QuestionList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { productID } = this.state.productID;
+    // const { productID } = this.state.productID;
     return (
       <div>
         <div>Hello From App</div>
@@ -21,6 +22,7 @@ class App extends React.Component {
         <RelatedProducts productID={productID} />
         <QuestionsAndAnswers productID={productID} /> */}
         <RatingsAndReviews productID={productID} />
+        <QuestionList productID={this.state.productID} />
       </div>
     );
   }
