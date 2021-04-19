@@ -11,12 +11,21 @@ const Question = ({ question, answers }) => {
   const answersInfo = Object.values(answers);
   const answersBody = answersInfo.map((answer) => answer.body);
 
+  useEffect(() => {
+    setAnswersShown(answersBody.slice(0, currentList * answersPerPress));
+  }, [currentList]);
+
+  const onAddMoreClick = () => {
+    setList(currentList + 1);
+  };
+
   return (
     <div>
       <div>{`Q: ${question}`}</div>
-      {answersBody.map((answer) => (
+      {answersShown.map((answer) => (
         <Answer answer={answer} />
       ))}
+      <button type="button" onClick={onAddMoreClick}>See More Answers...</button>
     </div>
   );
 };

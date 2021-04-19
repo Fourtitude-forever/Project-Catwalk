@@ -58,7 +58,7 @@ const QuestionList = ({ productID }) => {
           answers={question.answers}
         />
       ))}
-      <button type="button" onClick={onAddMoreClick}>See More...</button>
+      <button type="button" onClick={onAddMoreClick}>See More Questions...</button>
     </div>
   );
 };
