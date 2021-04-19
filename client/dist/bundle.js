@@ -106,7 +106,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bab
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _StarRating_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StarRating.jsx */ \"./client/src/components/RatingsAndReviews/StarRating.jsx\");\n\n\n\nfunction RatingsAndReviews() {\n  // Declare a new state variable, which we'll call \"count\"\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StarRating_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null));\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (RatingsAndReviews);\n\n//# sourceURL=webpack:///./client/src/components/RatingsAndReviews/RatingsAndReviews.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _StarRating_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StarRating.jsx */ \"./client/src/components/RatingsAndReviews/StarRating.jsx\");\n/* harmony import */ var _ReviewsList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewsList.jsx */ \"./client/src/components/RatingsAndReviews/ReviewsList.jsx\");\n\n\n\n\nfunction RatingsAndReviews() {\n  // Declare a new state variable, which we'll call \"count\"\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"rating\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StarRating_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ReviewsList_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (RatingsAndReviews);\n\n//# sourceURL=webpack:///./client/src/components/RatingsAndReviews/RatingsAndReviews.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RatingsAndReviews/ReviewsList.jsx":
+/*!*****************************************************************!*\
+  !*** ./client/src/components/RatingsAndReviews/ReviewsList.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nfunction ReviewsList() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"Reviews\"));\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ReviewsList);\n\n//# sourceURL=webpack:///./client/src/components/RatingsAndReviews/ReviewsList.jsx?");
 
 /***/ }),
 
