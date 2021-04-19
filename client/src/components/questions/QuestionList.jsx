@@ -8,7 +8,6 @@ import Question from './Question.jsx';
 const QuestionList = ({ productID }) => {
   const [questions, setQuestions] = useState([]);
   const [questionsShown, setQuestionsShown] = useState([]);
-  // const [answers, setAnswers] = useState([]);
   const [isloading, setLoading] = useState(false);
   const [currentList, setList] = useState(1);
   const [questionsPerPress] = useState(4);
