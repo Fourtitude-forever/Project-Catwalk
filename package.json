@@ -52,6 +52,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-icons": "^4.2.0",
+    "styled-components": "^5.2.3",
     "underscore": "^1.12.0"
   }
 }
