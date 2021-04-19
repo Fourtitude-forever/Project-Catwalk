@@ -1,14 +1,14 @@
 import React from 'react';
-import ProductDetail from './ProductDetail.jsx';
-import RelatedProducts from './RelatedProducts.jsx';
-import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
-import RatingsAndReviews from './RatingsAndReviews.jsx';
+// import ProductDetail from './ProductDetail.jsx';
+// import RelatedProducts from './RelatedProducts.jsx';
+// import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productID: 23145
+      productID: 23145,
     };
   }
 
@@ -17,9 +17,9 @@ class App extends React.Component {
     return (
       <div>
         <div>Hello From App</div>
-        <ProductDetail productID={productID} />
+        {/* <ProductDetail productID={productID} />
         <RelatedProducts productID={productID} />
-        <QuestionsAndAnswers productID={productID} />
+        <QuestionsAndAnswers productID={productID} /> */}
         <RatingsAndReviews productID={productID} />
       </div>
     );
