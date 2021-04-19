@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
+// import './StarRating.css';
+
 function StarRating() {
   // Declare a new state variable, which we'll call "count"
   const [rating, setRating] = useState(null);
