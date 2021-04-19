@@ -18,7 +18,10 @@ function StarRating() {
               value={ratingValue}
               onClick={() => (setRating(ratingValue))}
             />
-            <FaStar className="star" color={ratingValue <= rating ? '#000000' : '#e4e5e9'} />
+            <FaStar
+              className="star"
+              color={ratingValue <= rating ? '#000000' : '#e4e5e9'}
+            />
           </span>
         );
       })}
