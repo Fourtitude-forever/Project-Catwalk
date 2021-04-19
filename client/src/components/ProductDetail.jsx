@@ -1,1 +1,1 @@
-export default ProductDetail;
+// export default ProductDetail;
