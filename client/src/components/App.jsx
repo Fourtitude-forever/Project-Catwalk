@@ -1,5 +1,5 @@
 import React from 'react';
-import QuestionsAndAnswers from './questions/QuestionsAndAnswers.jsx';
+import QuestionList from './questions/QuestionList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,11 +10,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { productID } = this.state.productID;
+    // const { productID } = this.state.productID;
     return (
       <div>
         <div>Hello From App</div>
-        <QuestionsAndAnswers productID={productID} />
+        <QuestionList productID={this.state.productID} />
       </div>
     );
   }
