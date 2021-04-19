@@ -1,1 +1,1 @@
-export default RatingsAndReviews;
+// export default RatingsAndReviews;
