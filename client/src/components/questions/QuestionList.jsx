@@ -37,7 +37,6 @@ const QuestionList = ({ productID }) => {
         setQuestions(list.data.results);
         setQuestionsShown(list.data.results.slice(0, questionsPerPress));
         setLoading(false);
-        // setAnswers(list.data.results.map((result) => result.answers));
       })
       .catch((err) => {
         throw err;
@@ -47,14 +46,17 @@ const QuestionList = ({ productID }) => {
   // Update number of questions shown when currentList changes
   useEffect(() => {
     setQuestionsShown(questions.slice(0, questionsPerPress * currentList));
-    console.log('questionsPerPress * currentList ', questionsPerPress * currentList);
-    console.log('questions length ', questions.length);
-    console.log('questionsShown length ', questionsShown.length);
-
     if (questions.length > 0 && questions.length === questionsShown.length) {
       setHasReachedEnd(true);
     }
   }, [currentList]);
+
+  // Add more questions button disappears when end of list reached
+  useEffect(() => {
+    if (questions.length > 0 && questions.length === questionsShown.length) {
+      setHasReachedEnd(true);
+    }
+  }, [questionsShown]);
 
   // 'Add more' button click handler increments currentList
   const onAddMoreClick = () => {
