@@ -7,7 +7,7 @@ function RatingsAndReviews() {
 
   return (
     <div>
-      <StarRating stars={3.4} />
+      <StarRating stars={3.6} />
       <ReviewsList />
     </div>
   );
