@@ -4,13 +4,14 @@ const Reviews = ({ reviews, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
-
+  console.log(reviews);
   return (
     <div>
       <ol className="reviews">
-        {reviews.map((post) => (
-          <li key={post.id}>
-            {post.title}
+        {reviews.map((review) => (
+          <li key={review.id}>
+            {review.title}
+            {review.body}
           </li>
         ))}
       </ol>

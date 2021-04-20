@@ -27,8 +27,10 @@ const ReviewsList = () => {
 
   return (
     <div className="container">
-      <h1>My Reviews</h1>
+      <h1>Ratings and Reviews</h1>
       <Reviews reviews={currentReviews} loading={loading} />
+      <button type="button">More Reviews</button>
+      <button type="button">Add A Review +</button>
     </div>
   );
 };

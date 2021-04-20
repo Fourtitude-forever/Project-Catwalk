@@ -22,7 +22,7 @@ class App extends React.Component {
         <RelatedProducts productID={productID} />
         <QuestionsAndAnswers productID={productID} /> */}
         <RatingsAndReviews productID={this.state.productID} />
-        <QuestionList productID={this.state.productID} />
+        {/* <QuestionList productID={this.state.productID} /> */}
       </div>
     );
   }
