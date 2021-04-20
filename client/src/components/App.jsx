@@ -23,6 +23,7 @@ class App extends React.Component {
         <QuestionsAndAnswers productID={productID} /> */}
         <RatingsAndReviews productID={this.state.productID} />
         <QuestionList productID={this.state.productID} />
+
       </div>
     );
   }
