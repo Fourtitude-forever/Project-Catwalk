@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -36,3 +37,17 @@ const ReviewsList = () => {
 };
 
 export default ReviewsList;
+=======
+import React from 'react';
+
+function ReviewsList() {
+
+  return (
+    <div className='container'>
+      <h1>Reviews</h1>
+    </div>
+
+  );
+}
+export default ReviewsList;
+>>>>>>> 892d627013edf7a2cc944f4e349c5a40d4bb27af
