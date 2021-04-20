@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 import React from 'react';
 import styled from 'styled-components';
 import IconStar from './IconStar.jsx';
-=======
-import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
-import styled from 'styled-components';
-
-// import './StarRating.css';
->>>>>>> 892d627013edf7a2cc944f4e349c5a40d4bb27af
 
 const S = {};
 

@@ -25,12 +25,8 @@ class App extends React.Component {
         <RelatedProducts productID={productID} />
         <QuestionsAndAnswers productID={productID} /> */}
         <RatingsAndReviews productID={this.state.productID} />
-<<<<<<< HEAD
         {/* <QuestionList productID={this.state.productID} /> */}
         {/* <QuestionList productID={this.state.productID} /> */}
-=======
-        <QuestionList productID={this.state.productID} />
->>>>>>> 892d627013edf7a2cc944f4e349c5a40d4bb27af
       </div>
     );
   }
