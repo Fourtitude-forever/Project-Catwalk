@@ -28,5 +28,4 @@ const Reviews = ({ reviews, loading }) => {
     </div>
   );
 };
-
 export default Reviews;
