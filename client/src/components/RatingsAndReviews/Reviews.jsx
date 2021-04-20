@@ -1,22 +1,32 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Reviews = ({ reviews, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <div>
-      <ol className="reviews">
+      <div className="reviews">
         {reviews.map((review) => (
-          <li key={review.id}>
-            {review.title}
-            {review.body}
-          </li>
+          <div key={review.id}>
+            <span><StyledH>{review.title}</StyledH></span>
+            <span><StyledP>{review.body}</StyledP></span>
+          </div>
         ))}
-      </ol>
+      </div>
     </div>
   );
 };
+
+const StyledP = styled.p`
+border-bottom: 2px solid black;
+font-family: 'trebuchet ms'
+`;
+
+const StyledH = styled.h3`
+font-family: 'trebuchet ms'
+`;
 
 export default Reviews;
