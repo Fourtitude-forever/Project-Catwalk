@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-function StarRating() {
+const StarRating = () => {
   // Declare a new state variable, which we'll call "count"
   const [rating, setRating] = useState(null);
 
@@ -27,6 +27,6 @@ function StarRating() {
       })}
     </div>
   );
-}
+};
 
 export default StarRating;

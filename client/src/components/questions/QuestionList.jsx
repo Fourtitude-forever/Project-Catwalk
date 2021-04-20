@@ -3,7 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import config from '../../../../config.js';
+// import config from '../../../../config.js';
 import Question from './Question.jsx';
 
 const Button = styled.button`
