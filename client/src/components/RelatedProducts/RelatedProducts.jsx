@@ -4,21 +4,52 @@ import axios from 'axios';
 
 const RelatedProducts = ({ productID }) => {
 
-  const [products, setRelatedProducts] = useState([]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [productData, setProductData] = useState([]);
+
+
+
 
   useEffect(() => {
     axios.defaults.headers.common['Authorization'] = config.Autherization;
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/', {headers: config})
-      .then((relatedProducts) => {
-        console.log('reaching this');
-        console.log(relatedProducts);
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}/related`, {headers: config})
+      .then((products) => {
+        // console.log('reaching this');
+        // console.log(products)
+        // console.log(products.data);
+        setRelatedProducts(products.data);
+        //console.log(relatedProducts, 'after state set')
       })
+      // .then(()=>{
+      //   console.log(relatedProducts);
+      // })
       .catch((err) => {
-        console.log(err.response, 'error in the get req')
+        console.log(err.response, 'err in req1')
       })
+    }, [])
 
-    }, [products])
+    const getHelper = (relatedProduct) => {
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${relatedProduct}`, {headers: config})
+        .then((product) => {
+          //console.log(product.data);
+          // const data = [product.data];
+          // console.log(productData, 'this is the state')
+          // const previousData = productData;
+          // setProductData({...previousData, data})
+          productData.push(product.data)
+          //console.log(productData);
+        })
+        .catch(() =>{
+          console.log(response.err, 'err at req2')
+        })
+    }
 
+    useEffect(() => {
+      console.log(relatedProducts)
+      relatedProducts.map((product) => {
+        getHelper(product)
+      })
+    }, [relatedProducts])
 
   return (
 
