@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import Answer from './Answer.jsx';
 
-const Question = ({ question, answers }) => {
+const Helpfulness = styled.span`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const Question = ({ id, question, answers, helpfulness }) => {
   const [answersShown, setAnswersShown] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [answerButtonText, setAnswerButtonText] = useState('');
@@ -12,6 +20,10 @@ const Question = ({ question, answers }) => {
 
   const onAddMoreClick = () => {
     setIsCollapsed(!isCollapsed);
+  };
+
+  const onHelpfulnessClick = (helpfulID) => {
+    console.log('key id is', helpfulID);
   };
 
   useEffect(() => {
@@ -29,6 +41,10 @@ const Question = ({ question, answers }) => {
   return (
     <div>
       <div>{`Q: ${question}`}</div>
+      <p>
+        Helpful?
+        <Helpfulness onClick={() => onHelpfulnessClick(id)}>{` Yes (${helpfulness})`}</Helpfulness>
+      </p>
       {answersShown.map((answer) => (
         <Answer answer={answer} />
       ))}
@@ -40,6 +56,9 @@ const Question = ({ question, answers }) => {
 Question.propTypes = {
   question: PropTypes.string.isRequired,
   answers: PropTypes.object.isRequired,
+  helpfulness: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+
 };
 
 export default Question;

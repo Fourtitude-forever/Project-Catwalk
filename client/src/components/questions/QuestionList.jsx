@@ -75,8 +75,10 @@ const QuestionList = ({ productID }) => {
       {questionsShown.map((question) => (
         <Question
           key={question.question_id}
+          id={question.question_id}
           question={question.question_body}
           answers={question.answers}
+          helpfulness={question.question_helpfulness}
         />
       ))}
       <Button type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</Button>
