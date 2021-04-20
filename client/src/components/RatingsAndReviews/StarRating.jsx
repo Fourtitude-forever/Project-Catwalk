@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import styled from 'styled-components';
 
 // import './StarRating.css';
 
