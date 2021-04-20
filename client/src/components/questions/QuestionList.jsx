@@ -1,17 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import config from '../../../../config.js';
 import Question from './Question.jsx';
 
+const Button = styled.button`
+  ${(props) => {
+    if (props.reachedEnd) {
+      return `
+        visibility: hidden;
+      `;
+    }
+    return `
+      visibility: normal;
+    `;
+  }}
+`;
+
 const QuestionList = ({ productID }) => {
   const [questions, setQuestions] = useState([]);
   const [questionsShown, setQuestionsShown] = useState([]);
-  // const [answers, setAnswers] = useState([]);
   const [isloading, setLoading] = useState(false);
   const [currentList, setList] = useState(1);
   const [questionsPerPress] = useState(4);
+  const [hasReachedEnd, setHasReachedEnd] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -23,7 +37,6 @@ const QuestionList = ({ productID }) => {
         setQuestions(list.data.results);
         setQuestionsShown(list.data.results.slice(0, questionsPerPress));
         setLoading(false);
-        // setAnswers(list.data.results.map((result) => result.answers));
       })
       .catch((err) => {
         throw err;
@@ -33,13 +46,21 @@ const QuestionList = ({ productID }) => {
   // Update number of questions shown when currentList changes
   useEffect(() => {
     setQuestionsShown(questions.slice(0, questionsPerPress * currentList));
+    if (questions.length > 0 && questions.length === questionsShown.length) {
+      setHasReachedEnd(true);
+    }
   }, [currentList]);
+
+  // Add more questions button disappears when end of list reached
+  useEffect(() => {
+    if (questions.length > 0 && questions.length === questionsShown.length) {
+      setHasReachedEnd(true);
+    }
+  }, [questionsShown]);
 
   // 'Add more' button click handler increments currentList
   const onAddMoreClick = () => {
-    if (questions.length > currentList * questionsPerPress) {
-      setList(currentList + 1);
-    }
+    setList(currentList + 1);
   };
 
   let loadingIcon;
@@ -58,7 +79,7 @@ const QuestionList = ({ productID }) => {
           answers={question.answers}
         />
       ))}
-      <button type="button" onClick={onAddMoreClick}>See More Questions...</button>
+      <Button type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</Button>
     </div>
   );
 };
