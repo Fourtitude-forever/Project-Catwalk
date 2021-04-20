@@ -68,10 +68,16 @@ const QuestionList = ({ productID }) => {
     loadingIcon = <p>Please wait...loading</p>;
   }
 
+  let searchBar;
+  if (questions.length > 0) {
+    searchBar = <input type="text" placeholder="Search questions"></input>;
+  }
+
   return (
     <div>
       <h1>Questions and Answers</h1>
       {loadingIcon}
+      {searchBar}
       {questionsShown.map((question) => (
         <Question
           key={question.question_id}
