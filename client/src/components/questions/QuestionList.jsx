@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import config from '../../../../config.js';
 import Question from './Question.jsx';
+import request from '../../lib/getInfo.js';
 
 const Button = styled.button`
   ${(props) => {
@@ -29,10 +28,7 @@ const QuestionList = ({ productID }) => {
 
   useEffect(() => {
     setLoading(true);
-    axios('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/', {
-      headers: config,
-      params: { product_id: productID },
-    })
+    request.getProductInfo(productID)
       .then((list) => {
         setQuestions(list.data.results);
         setQuestionsShown(list.data.results.slice(0, questionsPerPress));
