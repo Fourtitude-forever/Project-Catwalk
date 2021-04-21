@@ -93,16 +93,20 @@ const QuestionList = ({ productID }) => {
     loadingIcon = <p>Please wait...loading</p>;
   }
 
-  // let searchBar;
-  // if (questions.length > 0) {
-  // //   searchBar = <input type="text" onChange={onSearchChange} placeholder="Search questions"></input>;
-  // }
+  let anyQuestions = false;
+  if (questions.length > 0) {
+    anyQuestions = true;
+  }
 
   return (
     <div>
       <h1>Questions and Answers</h1>
       {loadingIcon}
-      <Search onSearchChange={onSearchChange} onSearchSubmit={onSearchSubmit} />
+      <Search
+        anyQuestions={anyQuestions}
+        onSearchChange={onSearchChange}
+        onSearchSubmit={onSearchSubmit}
+      />
       {questionsShown.map((question) => (
         <Question
           key={question.question_id}
