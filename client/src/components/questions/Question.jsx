@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import axios from 'axios';
-import $ from 'jquery';
 
-import config from '../../../../config.js';
 import Answer from './Answer.jsx';
+import request from '../../lib/getInfo.js';
 
 const Helpfulness = styled.span`
   ${(props) => {
@@ -44,9 +42,7 @@ const Question = ({
 
   const onHelpfulnessClick = (questionID) => {
     if (!isHelpfulClicked) {
-      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${questionID}/helpful/`, {
-        headers: config,
-      })
+      request.putRequest(questionID, 'helpful')
         .then((response) => console.log(response))
         .catch((err) => console.log(err))
         .then(() => {
@@ -68,9 +64,7 @@ const Question = ({
 
   const onReportClick = (questionID) => {
     if (!isReportClicked) {
-      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${questionID}/report/`, {
-        headers: config,
-      })
+      request.putRequest(questionID, 'report')
         .then((response) => console.log(response))
         .catch((err) => console.log(err))
         .then(() => setIsReportClicked(true));

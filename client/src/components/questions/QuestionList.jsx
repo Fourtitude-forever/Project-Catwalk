@@ -28,7 +28,7 @@ const QuestionList = ({ productID }) => {
 
   useEffect(() => {
     setLoading(true);
-    request.getProductInfo(productID)
+    request.getProductRequest(productID)
       .then((list) => {
         setQuestions(list.data.results);
         setQuestionsShown(list.data.results.slice(0, questionsPerPress));
