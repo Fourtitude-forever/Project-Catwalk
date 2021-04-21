@@ -70,7 +70,7 @@ const QuestionList = ({ productID }) => {
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
-
+    console.log(questions.map((question) => question.question_body));
   };
 
   let loadingIcon;
