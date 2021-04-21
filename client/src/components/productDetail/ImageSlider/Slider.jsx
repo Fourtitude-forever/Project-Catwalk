@@ -1,32 +1,25 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import SliderContent from './SliderContent.jsx';
-
+import Thumbnails from './Thumbnails.jsx';
+import _ from 'underscore';
 
 const SliderDiv = styled.div`
   border: 1px solid red;
   position: relative;
-  width:70%;
-  height:40vh;
+  width:60%;
+  height:50vh;
   box-sizing: border-box;
   display: flex;
   align-items:center;
   overflow: hidden;
 `;
 
-const SlideDiv = styled.div`
-  border: 1px solid blue;
-  min-width:100%;
-  height:100%;
-  transition: 0.9s;
-  overflow: hidden;
-`;
-
 const LeftButton = styled.button`
   position:absolute;
+  border: none;
   top:10%;
-  left: 0;
-  transfor: translateY(-50%);
+  left: 10%;
   width: 10%;
   height: 80%;
   background: none;
@@ -35,24 +28,18 @@ const LeftButton = styled.button`
 
 const RightButton = styled.button`
   position:absolute;
+  border: none;
   top:10%;
-  right: 0;
-  transfor: translateY(-50%);
+  right: 2%;
   width: 10%;
   height: 80%;
   background: none;
 `;
 
 
-function Slider() {
+function Slider({ images }) {
   // dummy array
-  const sliderArr = [
-    SliderContent().props.children[0],
-    SliderContent().props.children[1],
-    SliderContent().props.children[2],
-    SliderContent().props.children[3],
-    SliderContent().props.children[4],
-  ];
+  const sliderArr = images;
 
   const [x, setX] = useState(0);
 
@@ -74,17 +61,26 @@ function Slider() {
 
   return (
     <SliderDiv>
+
       {
-        sliderArr.map((item, index) => (
-          <SlideDiv key={index} style={{ transform: `translateX(${x}%)` }}>
-            {item}
-          </SlideDiv>
-        ))
+        images.map((item, index) => {
+          const imgKey = `img${index + 1}`;
+          return (<SliderContent slide={item} imgKey={imgKey} key={index} currentIndex={x} />);
+        })
       }
+
       <LeftButton onClick={goLeft}>Left</LeftButton>
       <RightButton onClick={goRight}>Right</RightButton>
+      <Thumbnails images={images} currentIndex={x} />
     </SliderDiv>
+
   );
 }
 
 export default Slider;
+
+
+// _.map(images, (item, index) => {
+//   const imgKey = `img${index + 1}`;
+//   return <SliderContent slide={item} imgKey={imgKey} key={index} style={{ transform: `translateX(${x}%)` }} />;
+// })
