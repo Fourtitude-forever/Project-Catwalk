@@ -1,11 +1,10 @@
 import React from 'react';
 
-// import ProductDetail from './ProductDetail.jsx';
+import ProductDetail from './productDetail/ProductDetail.jsx';
 // import RelatedProducts from './RelatedProducts.jsx';
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import QuestionList from './questions/QuestionList.jsx';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -20,10 +19,10 @@ class App extends React.Component {
     return (
       <div>
         <div>Hello From App</div>
-
         {/* <ProductDetail productID={productID} />
         <RelatedProducts productID={productID} />
         <QuestionsAndAnswers productID={productID} /> */}
+        <ProductDetail productID={this.state.productID}/>
         <RatingsAndReviews productID={this.state.productID} />
         <QuestionList productID={this.state.productID} />
       </div>
