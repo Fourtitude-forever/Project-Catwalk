@@ -14,13 +14,13 @@ const Reviews = ({ reviews, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
-  // console.log(reviews);
+  console.log(reviews);
   return (
     <div>
       <div>
         {reviews.map((review) => (
-          <div key={review.id}>
-            <span><StyledH>{review.title}</StyledH></span>
+          <div key={review.review_id}>
+            <span><StyledH>{review.summary}</StyledH></span>
             <span><StyledP>{review.body}</StyledP></span>
           </div>
         ))}
