@@ -48,17 +48,6 @@ const Question = ({
         .then(() => {
           setIsHelpfulClicked(true);
         });
-      // $.ajax({
-      //   method: 'PUT',
-      //   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${questionID}/helpful`,
-      //   headers: {
-      //     Authorization: config.API_KEY,
-      //   },
-      //   success: (response) => {
-      //     console.log(response);
-      //   },
-      //   error: (err) => console.error(err),
-      // });
     }
   };
 
@@ -101,8 +90,8 @@ const Question = ({
           Report
         </Report>
       </p>
-      {answersShown.map((answer) => (
-        <Answer answer={answer} />
+      {answersShown.map((answer, i) => (
+        <Answer answer={answer} key={i} />
       ))}
       {answerButtonText}
     </div>

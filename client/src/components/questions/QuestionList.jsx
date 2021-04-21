@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Search from './Search.jsx';
 import Question from './Question.jsx';
 import request from '../../lib/getInfo.js';
 
@@ -25,6 +26,7 @@ const QuestionList = ({ productID }) => {
   const [currentList, setList] = useState(1);
   const [questionsPerPress] = useState(4);
   const [hasReachedEnd, setHasReachedEnd] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -59,21 +61,33 @@ const QuestionList = ({ productID }) => {
     setList(currentList + 1);
   };
 
+  const onSearchChange = (event) => {
+    event.preventDefault();
+    event.persist();
+    console.log(event);
+    setSearchInput(event.target.value);
+  };
+
+  const onSearchSubmit = (event) => {
+    event.preventDefault();
+
+  };
+
   let loadingIcon;
   if (isloading) {
     loadingIcon = <p>Please wait...loading</p>;
   }
 
-  let searchBar;
-  if (questions.length > 0) {
-    searchBar = <input type="text" placeholder="Search questions"></input>;
-  }
+  // let searchBar;
+  // if (questions.length > 0) {
+  // //   searchBar = <input type="text" onChange={onSearchChange} placeholder="Search questions"></input>;
+  // }
 
   return (
     <div>
       <h1>Questions and Answers</h1>
       {loadingIcon}
-      {searchBar}
+      <Search onSearchChange={onSearchChange} onSearchSubmit={onSearchSubmit} />
       {questionsShown.map((question) => (
         <Question
           key={question.question_id}
