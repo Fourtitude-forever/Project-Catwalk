@@ -72,14 +72,14 @@ const QuestionList = ({ productID }) => {
     console.log(searchInput);
     const queryArray = [];
     questions.forEach((question) => {
-      if (question.question_body.includes(searchInput)) {
+      if (question.question_body.toLowerCase().includes(searchInput)) {
         queryArray.push(question);
         return;
       }
       const answersPerQ = Object.values(question.answers);
       let searchFound = false;
       answersPerQ.forEach((answer) => {
-        if (answer.body.includes(searchInput) && !searchFound) {
+        if (answer.body.toLowerCase().includes(searchInput) && !searchFound) {
           queryArray.push(question);
           searchFound = true;
         }
