@@ -64,13 +64,28 @@ const QuestionList = ({ productID }) => {
   const onSearchChange = (event) => {
     event.preventDefault();
     event.persist();
-    console.log(event);
     setSearchInput(event.target.value);
   };
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
-    console.log(questions.map((question) => question.question_body));
+    console.log(searchInput);
+    const queryArray = [];
+    questions.forEach((question) => {
+      if (question.question_body.includes(searchInput)) {
+        queryArray.push(question);
+        return;
+      }
+      const answersPerQ = Object.values(question.answers);
+      let searchFound = false;
+      answersPerQ.forEach((answer) => {
+        if (answer.body.includes(searchInput) && !searchFound) {
+          queryArray.push(question);
+          searchFound = true;
+        }
+      });
+    });
+    setQuestionsShown(queryArray);
   };
 
   let loadingIcon;

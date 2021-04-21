@@ -10,8 +10,9 @@ const request = {
     }),
 
   putRequest: (questionID, helpfulOrReport) =>
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${questionID}/${helpfulOrReport}/`, {
+    axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${questionID}/${helpfulOrReport}/`, {
       headers: config,
+      method: 'PUT',
     }),
 };
 
