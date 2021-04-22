@@ -2,8 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import ProductDetail from './productDetail/ProductDetail.jsx';
-// import RelatedProducts from './RelatedProducts.jsx';
-// import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
+import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import QuestionList from './questions/QuestionList.jsx';
 
@@ -30,9 +29,9 @@ class App extends React.Component {
       <div>
         <GlobalStyle />
         <div>Hello From App</div>
-        {/* <ProductDetail productID={productID} />
-        <RelatedProducts productID={productID} />
-        <QuestionsAndAnswers productID={productID} /> */}
+        {/* <ProductDetail productID={productID} /> */}
+        <RelatedProducts productID={this.state.productID} />
+        {/* <QuestionsAndAnswers productID={productID} /> */}
         <ProductDetail productID={this.state.productID}/>
         <RatingsAndReviews productID={this.state.productID} />
         <QuestionList productID={this.state.productID} />
