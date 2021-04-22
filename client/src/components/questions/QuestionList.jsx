@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Search from './Search.jsx';
 import Question from './Question.jsx';
 import request from '../../lib/getInfo.js';
-import { Headers2, SectionBG1, Button, SmallButton } from '../../css/sharedcss.jsx';
+import { Headers2, SectionBG1, Button, CloseButton, Modal } from '../../css/sharedcss.jsx';
 
 const QuestionButton = styled(Button)`
 
@@ -21,21 +21,7 @@ const QuestionButton = styled(Button)`
   }}
 `;
 
-const QuestionModal = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  & > div {
-    width: 50%;
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    background-color: #d3e0ea;
-    border-radius: 30px;
-  }
+const QuestionModal = styled(Modal)`
   ${(props) => {
     if (!props.showModal) {
       return `
@@ -54,6 +40,7 @@ const QuestionList = ({ productID }) => {
   const [hasReachedEnd, setHasReachedEnd] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [productName, setProductName] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -66,6 +53,11 @@ const QuestionList = ({ productID }) => {
       .catch((err) => {
         throw err;
       });
+    request.getProductInfo(productID)
+      .then((info) => {
+        setProductName(info.data.name);
+      })
+      .catch((err) => { throw err; });
   }, []);
 
   // Update number of questions shown when currentList changes
@@ -114,6 +106,10 @@ const QuestionList = ({ productID }) => {
     setQuestionsShown(queryArray);
   };
 
+  const onOpenModalClick = () => {
+    setShowModal(true);
+  };
+
   let loadingIcon;
   if (isloading) {
     loadingIcon = <p>Please wait...loading</p>;
@@ -144,12 +140,13 @@ const QuestionList = ({ productID }) => {
         />
       ))}
       <QuestionButton type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</QuestionButton>
-      <Button type="button" onClick={() => setShowModal(true)}>Add a Question</Button>
+      <Button type="button" onClick={onOpenModalClick}>Add a Question</Button>
 
       <QuestionModal showModal={showModal} id="open-modal" className="modal-window">
         <div>
-          <SmallButton type="button" onClick={() => setShowModal(false)}>X</SmallButton>
-          <h1>Voilà!</h1>
+          <CloseButton type="button" onClick={() => setShowModal(false)}>X</CloseButton>
+          <Headers2>Ask your Question!</Headers2>
+          <h3>{`About the ${productName}`}</h3>
           <div>A CSS-only modal based on the :target pseudo-className</div>
         </div>
       </QuestionModal>

@@ -14,6 +14,12 @@ const request = {
       headers: config,
       method: 'PUT',
     }),
+
+  getProductInfo: (productID) =>
+    axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}`, {
+      headers: config,
+    }),
+
 };
 
 export default request;
