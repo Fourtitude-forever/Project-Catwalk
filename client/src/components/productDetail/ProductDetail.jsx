@@ -1,5 +1,40 @@
 import React from 'react';
-import Slider from './ImageSlider/Slider.jsx';
+import Slider from './Top/ImageSlider/Slider.jsx';
+import ProductOverview from './Top/ProductOverview/ProductOverview.jsx'
+import styled from 'styled-components';
+
+
+const ProductDetailDiv = styled.div`
+  border: 2px solid blue;
+  position: relative;
+  width:100%;
+  height:90vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+`;
+
+const Top = styled.div`
+  border: 5px solid green;
+  position: relative;
+  max-width: 90%;
+  height:80%;
+  display:flex;
+  margin:0.5%;
+`;
+
+const Down = styled.div`
+  border: 5px solid green;
+  position: relative;
+  width: 90%;
+  height:20%;
+  display:flex;
+  margin:0.5%;
+`;
+
+
 
 const images = [
   { img1: 'https://public-media.si-cdn.com/filer/a0/15/a015251a-6a1d-449c-bf13-8c1c129c4cc5/egypt_kitty_mobile.jpg'},
@@ -11,7 +46,15 @@ const images = [
 
 function ProductDetail() {
   return (
-    <Slider images={images} />
+    <ProductDetailDiv>
+      <Top>
+        <Slider images={images} />
+        <ProductOverview />
+      </Top>
+      <Down>
+        <h1>Product Description</h1>
+      </Down>
+    </ProductDetailDiv>
   );
 }
 

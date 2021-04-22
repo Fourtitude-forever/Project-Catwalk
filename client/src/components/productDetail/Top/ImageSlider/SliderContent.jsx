@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import _ from 'underscore';
 
 const SlideDiv = styled.img`
-  border: 1px solid blue;
+  border: 5px solid blue;
   position:relative;
   min-width:100%;
   height:100%;

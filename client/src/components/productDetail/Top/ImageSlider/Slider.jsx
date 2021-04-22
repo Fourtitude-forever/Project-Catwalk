@@ -5,10 +5,10 @@ import Thumbnails from './Thumbnails.jsx';
 import _ from 'underscore';
 
 const SliderDiv = styled.div`
-  border: 1px solid red;
+  border: 5px solid purple;
   position: relative;
-  width:60%;
-  height:50vh;
+  width:70%;
+  height:100%;
   box-sizing: border-box;
   display: flex;
   align-items:center;
@@ -61,14 +61,12 @@ function Slider({ images }) {
 
   return (
     <SliderDiv>
-
       {
         images.map((item, index) => {
           const imgKey = `img${index + 1}`;
           return (<SliderContent slide={item} imgKey={imgKey} key={index} currentIndex={x} />);
         })
       }
-
       <LeftButton onClick={goLeft}>Left</LeftButton>
       <RightButton onClick={goRight}>Right</RightButton>
       <Thumbnails images={images} currentIndex={x} />
