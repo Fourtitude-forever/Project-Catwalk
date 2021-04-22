@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Answer from './Answer.jsx';
 import request from '../../lib/getInfo.js';
+import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton } from '../../css/sharedcss.jsx';
 
 const Helpfulness = styled.span`
   ${(props) => {
@@ -65,17 +66,17 @@ const Question = ({
       // do not render button
     } else if (isCollapsed) {
       setAnswersShown(answersBody.slice(0, 2));
-      setAnswerButtonText(<button type="button" onClick={onAddMoreClick}>Show More Answers</button>);
+      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>Show More Answers</SmallButton>);
     } else {
       setAnswersShown(answersBody);
-      setAnswerButtonText(<button type="button" onClick={onAddMoreClick}>Collapse Answers</button>);
+      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>Collapse Answers</SmallButton>);
     }
   }, [isCollapsed]);
 
   return (
     <div>
-      <div>{`Q: ${question}`}</div>
-      <p>
+      <ThreadHeading>{`Q: ${question}`}</ThreadHeading>
+      <ThreadSubHeading>
         Helpful?
         <Helpfulness
           alreadyClicked={isHelpfulClicked}
@@ -89,11 +90,13 @@ const Question = ({
         >
           Report
         </Report>
-      </p>
-      {answersShown.map((answer, i) => (
-        <Answer answer={answer} key={i} />
-      ))}
-      {answerButtonText}
+      </ThreadSubHeading>
+      <ThreadSubList>
+        {answersShown.map((answer, i) => (
+          <Answer answer={answer} key={i} />
+        ))}
+        {answerButtonText}
+      </ThreadSubList>
     </div>
   );
 };

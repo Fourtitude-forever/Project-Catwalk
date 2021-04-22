@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import Search from './Search.jsx';
 import Question from './Question.jsx';
 import request from '../../lib/getInfo.js';
+import { Headers2, Section, SmallButton } from '../../css/sharedcss.jsx';
 
-const Button = styled.button`
+
+const QuestionButton = styled(SmallButton)`
   ${(props) => {
     if (props.reachedEnd) {
       return `
@@ -69,7 +71,6 @@ const QuestionList = ({ productID }) => {
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
-    console.log(searchInput);
     const queryArray = [];
     questions.forEach((question) => {
       if (question.question_body.toLowerCase().includes(searchInput)) {
@@ -99,8 +100,8 @@ const QuestionList = ({ productID }) => {
   }
 
   return (
-    <div>
-      <h1>Questions and Answers</h1>
+    <Section>
+      <Headers2>Questions and Answers</Headers2>
       {loadingIcon}
       <Search
         anyQuestions={anyQuestions}
@@ -116,8 +117,8 @@ const QuestionList = ({ productID }) => {
           helpfulness={question.question_helpfulness}
         />
       ))}
-      <Button type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</Button>
-    </div>
+      <QuestionButton type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</QuestionButton>
+    </Section>
   );
 };
 
