@@ -7,7 +7,6 @@ import Question from './Question.jsx';
 import request from '../../lib/getInfo.js';
 import { Headers2, Section, SmallButton } from '../../css/sharedcss.jsx';
 
-
 const QuestionButton = styled(SmallButton)`
   ${(props) => {
     if (props.reachedEnd) {

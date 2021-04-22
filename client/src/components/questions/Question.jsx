@@ -63,7 +63,7 @@ const Question = ({
 
   useEffect(() => {
     if (answersBody.length <= 2) {
-      // do not render button
+      setAnswersShown(answersBody.slice(0, 2));
     } else if (isCollapsed) {
       setAnswersShown(answersBody.slice(0, 2));
       setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>Show More Answers</SmallButton>);
