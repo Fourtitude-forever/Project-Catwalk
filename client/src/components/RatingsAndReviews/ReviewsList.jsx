@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Reviews from './Reviews.jsx';
-import config from '../../../../config.js';
+import config from '../../../../config';
 
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
