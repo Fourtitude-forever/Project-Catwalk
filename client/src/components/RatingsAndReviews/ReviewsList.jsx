@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Reviews from './Reviews.jsx';
 import config from '../../../../config';
+import AddReview from './AddReview.jsx'
 
 const Button = styled.button`
   ${(props) => {
@@ -74,7 +75,7 @@ const ReviewsList = ({ productID }) => {
       <h1>Ratings and Reviews</h1>
       <Reviews reviews={currentReviews} loading={loading} />
       <Button onClick={onAddMoreClick}>More Reviews</Button>
-      <button type="button">Add A Review +</button>
+      <AddReview />
     </div>
   );
 };
