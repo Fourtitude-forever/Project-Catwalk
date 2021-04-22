@@ -30,7 +30,6 @@ const RelatedProducts = ({ productID }) => {
     }
 
     useEffect(() => {
-      console.log(relatedProducts)
       relatedProducts.map((product) => {
         getHelper(product)
       })
