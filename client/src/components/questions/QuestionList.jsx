@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import Search from './Search.jsx';
 import Question from './Question.jsx';
 import request from '../../lib/getInfo.js';
-import { Headers2, Section, SmallButton } from '../../css/sharedcss.jsx';
+import { Headers2, SectionBG1, Button } from '../../css/sharedcss.jsx';
 
-const QuestionButton = styled(SmallButton)`
+const QuestionButton = styled(Button)`
   ${(props) => {
     if (props.reachedEnd) {
       return `
@@ -99,7 +99,7 @@ const QuestionList = ({ productID }) => {
   }
 
   return (
-    <Section>
+    <SectionBG1>
       <Headers2>Questions and Answers</Headers2>
       {loadingIcon}
       <Search
@@ -117,7 +117,7 @@ const QuestionList = ({ productID }) => {
         />
       ))}
       <QuestionButton type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</QuestionButton>
-    </Section>
+    </SectionBG1>
   );
 };
 

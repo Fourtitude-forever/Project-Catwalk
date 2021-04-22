@@ -66,10 +66,10 @@ const Question = ({
       setAnswersShown(answersBody.slice(0, 2));
     } else if (isCollapsed) {
       setAnswersShown(answersBody.slice(0, 2));
-      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>Show More Answers</SmallButton>);
+      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>+</SmallButton>);
     } else {
       setAnswersShown(answersBody);
-      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>Collapse Answers</SmallButton>);
+      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>-</SmallButton>);
     }
   }, [isCollapsed]);
 
