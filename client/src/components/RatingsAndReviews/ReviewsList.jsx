@@ -22,7 +22,6 @@ const ReviewsList = ({ productID }) => {
       params: { product_id: productID },
     })
       .then((list) => {
-        console.log(list);
         setReviews(list.data.results);
         setReviewsShown(list.data.results.slice(0, reviewsPerPress));
         setLoading(false);
