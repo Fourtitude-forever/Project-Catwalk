@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 
 const SelectorDiv = styled.div`
   border: 5px solid yellow;
@@ -25,16 +25,15 @@ const DropBtn = styled.button`
   max-width: 200px;
 `
 
-// const DropdownContent = styled.div`
-//   display: none;
-//   position: absolute;
-//   background-color: #f1f1f1;
-//   min-width: 160px;
-//   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-//   z-index: 1;
-// `
-
-
+// Dropdown styling
+  // const DropdownContent = styled.div`
+  //   display: none;
+  //   position: absolute;
+  //   background-color: #f1f1f1;
+  //   min-width: 160px;
+  //   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  //   z-index: 1;
+  // `
 
 function Selector() {
   return (
@@ -45,13 +44,10 @@ function Selector() {
       </div>
       <div>
         <DropBtn>Add to Bag</DropBtn>
-        <DropBtn>Star</DropBtn>
+        <DropBtn>⭐</DropBtn>
       </div>
     </SelectorDiv>
   );
 }
-
-
-
 
 export default Selector

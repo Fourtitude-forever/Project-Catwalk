@@ -18,8 +18,6 @@ const CirclesContainer = styled.div`
   display:flex;
 `
 
-
-
 const Circles = styled.div`
    border-radius:50%;
    border:1px solid grey;

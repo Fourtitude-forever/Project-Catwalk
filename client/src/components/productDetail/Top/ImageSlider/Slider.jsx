@@ -92,7 +92,7 @@ function Slider({ productID }) {
       }
       <LeftButton onClick={goLeft}>Left</LeftButton>
       <RightButton onClick={goRight}>Right</RightButton>
-      {/* <Thumbnails images={images} currentIndex={x} /> */}
+      {/* <Thumbnails currentIndex={x} /> */}
     </SliderDiv>
 
   );

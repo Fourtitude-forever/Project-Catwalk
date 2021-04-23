@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Slider from './Top/ImageSlider/Slider.jsx';
 import ProductOverview from './Top/ProductOverview/ProductOverview.jsx';
 import ProductDescription from './Down/ProductDescription.jsx';
-import styled from 'styled-components';
-
 
 const ProductDetailDiv = styled.div`
   border: 2px solid blue;
@@ -14,7 +14,6 @@ const ProductDetailDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
 `;
 
 const Top = styled.div`
@@ -29,7 +28,7 @@ const Top = styled.div`
 const Down = styled.div`
   border: 5px solid green;
   position: relative;
-  max-width: 90%;
+  min-width: 90%;
   height:20%;
   display:flex;
   margin:0.5%;
@@ -48,5 +47,9 @@ function ProductDetail({ productID }) {
     </ProductDetailDiv>
   );
 }
+
+ProductDetail.propTypes = {
+  productID: PropTypes.number.isRequired,
+};
 
 export default ProductDetail;

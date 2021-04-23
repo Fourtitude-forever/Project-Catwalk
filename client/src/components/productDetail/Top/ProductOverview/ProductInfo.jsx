@@ -1,7 +1,9 @@
 import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import config from '../../../../../../config.js';
+
 
 const ProductInfoDiv = styled.div`
   border: 5px solid yellow;
@@ -57,14 +59,18 @@ function ProductInformation({ productID }) {
 
   return (
     <ProductInfoDiv>
-      <div>{loadingIcon}</div>
+      {loadingIcon}
       <div>☆☆☆☆☆</div>
       <Cat>{category}</Cat>
       <Title>{title}</Title>
-      <div>{price}</div>
+      <Price>{price}</Price>
       {/* <div>Share on social media place holder</div> */}
     </ProductInfoDiv>
   );
 }
 
-export default ProductInformation
+ProductInformation.propTypes = {
+  productID: PropTypes.number.isRequired,
+};
+
+export default ProductInformation;
