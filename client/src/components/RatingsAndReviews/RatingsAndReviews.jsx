@@ -2,7 +2,7 @@ import React from 'react';
 import StarRating from './StarRating.jsx';
 import ReviewsList from './ReviewsList.jsx';
 
-function RatingsAndReviews({productID}) {
+function RatingsAndReviews({ productID }) {
   // Declare a new state variable, which we'll call "count"
 
   return (
