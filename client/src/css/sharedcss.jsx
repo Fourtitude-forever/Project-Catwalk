@@ -84,6 +84,12 @@ export const HiddenButton = styled(Button)`
   visibility: hidden;
 `;
 
+export const Icon = styled.i`
+  margin-left: 25px;
+  color: #B7B7B7;
+  visibility: hidden;
+`;
+
 /////////////////////////////////////////
 // STYLES FOR INPUTS //
 /////////////////////////////////////////

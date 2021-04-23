@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Answer from './Answer.jsx';
 import request from '../../lib/getInfo.js';
-import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton } from '../../css/sharedcss.jsx';
+import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
 
 const Helpfulness = styled.span`
   ${(props) => {
@@ -23,6 +23,26 @@ const Helpfulness = styled.span`
   }}
 `;
 
+const ReplyIcon = styled(Icon)`
+  ${(props) => {
+    if (props.showReplyIcon) {
+      return `
+        visibility: visible;
+      `;
+    }
+  }}
+`;
+
+const QAThreadHeading = styled(ThreadHeading)`
+  ${(props) => {
+    if (props.showReplyIcon) {
+      return `
+        color: #1687a7;
+      `;
+    }
+  }}
+`;
+
 const Report = styled(Helpfulness)``;
 
 const Question = ({
@@ -33,12 +53,17 @@ const Question = ({
   const [answerButtonText, setAnswerButtonText] = useState('');
   const [isHelpfulClicked, setIsHelpfulClicked] = useState(false);
   const [isReportClicked, setIsReportClicked] = useState(false);
+  const [showReplyIcon, setShowReplyIcon] = useState(false);
 
   const answersInfo = Object.values(answers);
   const answersBody = answersInfo.map((answer) => answer.body);
 
   const onAddMoreClick = () => {
     setIsCollapsed(!isCollapsed);
+  };
+
+  const onReplyHover = () => {
+    setShowReplyIcon(!showReplyIcon);
   };
 
   const onHelpfulnessClick = (questionID) => {
@@ -75,9 +100,9 @@ const Question = ({
 
   return (
     <div>
-      <ThreadHeading>{`Q: ${question}`}
-        <i className="fas fa-reply" />
-      </ThreadHeading>
+      <QAThreadHeading showReplyIcon={showReplyIcon} onMouseEnter={onReplyHover} onMouseLeave={onReplyHover}>{`Q: ${question}`}
+        <ReplyIcon showReplyIcon={showReplyIcon} className="fas fa-reply" />
+      </QAThreadHeading>
       <ThreadSubHeading>
         Helpful?
         <Helpfulness
