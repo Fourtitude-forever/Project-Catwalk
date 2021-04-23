@@ -32,6 +32,7 @@ const QuestionList = ({ productID }) => {
   const [searchInput, setSearchInput] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [productName, setProductName] = useState('');
+  const [countClick, setCountClick] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -111,8 +112,14 @@ const QuestionList = ({ productID }) => {
     anyQuestions = true;
   }
 
+  const onComponentClick = (event) => {
+    console.log('click event is: ', event);
+    setCountClick(countClick + 1);
+  }
+
   return (
-    <SectionBG1>
+    <SectionBG1 onClick={onComponentClick}
+    >
 
       <Headers2>Questions and Answers</Headers2>
       {loadingIcon}
