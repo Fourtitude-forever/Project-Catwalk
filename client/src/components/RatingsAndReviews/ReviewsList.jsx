@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import Reviews from './Reviews.jsx';
 import config from '../../../../config';
-import AddReview from './AddReview.jsx'
+import AddReview from './AddReview.jsx';
+import { Headers2, SectionBG1, Button } from '../../css/sharedcss.jsx';
 
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
@@ -42,12 +43,12 @@ const ReviewsList = ({ productID }) => {
   const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
 
   return (
-    <div>
-      <h1>Ratings and Reviews</h1>
+    <SectionBG1>
+      <Headers2>Ratings and Reviews</Headers2>
       <Reviews reviews={currentReviews} loading={loading} />
-      <button onClick={onAddMoreClick}>More Reviews </button>
+      <Button onClick={onAddMoreClick}>More Reviews </Button>
       <AddReview />
-    </div>
+    </SectionBG1>
   );
 };
 
