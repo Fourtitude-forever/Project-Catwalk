@@ -11,7 +11,7 @@ const SlideDiv = styled.img`
   transition: 0.5s;
   overflow: hidden;
   box-sizing: border-box;
-  object-fit: fill;
+  object-fit: contain;
 `;
 
 function SliderContent({ photo, currentIndex }) {
@@ -24,6 +24,5 @@ SliderContent.propTypes = {
   photo: PropTypes.string.isRequired,
   currentIndex: PropTypes.number.isRequired,
 };
-
 
 export default SliderContent;

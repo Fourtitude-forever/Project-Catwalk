@@ -10,12 +10,11 @@ const SliderDiv = styled.div`
   border: 5px solid purple;
   position: relative;
   width:70%;
-  height 100%;
+  height: 100%;
   box-sizing: border-box;
   display: flex;
   align-items:center;
   overflow: hidden;
-  flex: 1;
 `;
 
 const LeftButton = styled.button`
@@ -104,5 +103,3 @@ Slider.propTypes = {
 };
 
 export default Slider;
-
-// style={{ transform: `translateX(${currentIndex}%)` }}
