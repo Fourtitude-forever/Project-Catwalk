@@ -5,9 +5,11 @@ import styled from 'styled-components';
 import Search from './Search.jsx';
 import Question from './Question.jsx';
 import request from '../../lib/getInfo.js';
+import AddQuestion from './AddQuestion.jsx';
 import { Headers2, SectionBG1, Button } from '../../css/sharedcss.jsx';
 
 const QuestionButton = styled(Button)`
+
   ${(props) => {
     if (props.reachedEnd) {
       return `
@@ -28,6 +30,8 @@ const QuestionList = ({ productID }) => {
   const [questionsPerPress] = useState(4);
   const [hasReachedEnd, setHasReachedEnd] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [productName, setProductName] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -40,6 +44,11 @@ const QuestionList = ({ productID }) => {
       .catch((err) => {
         throw err;
       });
+    request.getProductInfo(productID)
+      .then((info) => {
+        setProductName(info.data.name);
+      })
+      .catch((err) => { throw err; });
   }, []);
 
   // Update number of questions shown when currentList changes
@@ -88,6 +97,10 @@ const QuestionList = ({ productID }) => {
     setQuestionsShown(queryArray);
   };
 
+  const onOpenModalClick = () => {
+    setShowModal(!showModal);
+  };
+
   let loadingIcon;
   if (isloading) {
     loadingIcon = <p>Please wait...loading</p>;
@@ -100,6 +113,7 @@ const QuestionList = ({ productID }) => {
 
   return (
     <SectionBG1>
+
       <Headers2>Questions and Answers</Headers2>
       {loadingIcon}
       <Search
@@ -114,9 +128,18 @@ const QuestionList = ({ productID }) => {
           question={question.question_body}
           answers={question.answers}
           helpfulness={question.question_helpfulness}
+          productName={productName}
         />
       ))}
+      <Button type="button" onClick={onOpenModalClick}>Add a Question</Button>
       <QuestionButton type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</QuestionButton>
+      <AddQuestion
+        showModal={showModal}
+        productName={productName}
+        onOpenModalClick={onOpenModalClick}
+        productID={productID}
+      />
+
     </SectionBG1>
   );
 };

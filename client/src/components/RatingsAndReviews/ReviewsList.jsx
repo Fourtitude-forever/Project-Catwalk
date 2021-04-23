@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Reviews from './Reviews.jsx';
 import config from '../../../../config';
+import AddReview from './AddReview.jsx'
 
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
@@ -45,7 +46,7 @@ const ReviewsList = ({ productID }) => {
     <div>
       <h1>Ratings and Reviews</h1>
       <Reviews reviews={currentReviews} loading={loading} />
-      <Button onClick={onAddMoreClick}>More Reviews</Button>
+      <button onClick={onAddMoreClick}>More Reviews </button>
       <AddReview />
     </div>
   );
