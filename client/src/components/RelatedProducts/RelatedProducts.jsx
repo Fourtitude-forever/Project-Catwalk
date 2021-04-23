@@ -7,6 +7,7 @@ const RelatedProducts = ({ productID }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productData, setProductData] = useState([]);
+  const [productStyle, setProductStyle] = useState([]);
 
 
   useEffect(() => {
@@ -19,30 +20,71 @@ const RelatedProducts = ({ productID }) => {
       })
     }, [])
 
-    const getHelper = (relatedProduct) => {
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${relatedProduct}`, {headers: config})
+    console.log('this is related producst', relatedProducts);
+
+    useEffect(() => {
+      if(relatedProducts.length > 0) {
+        getProductDataAsync();
+        getProductStyleAsync();
+      }
+    }, [relatedProducts])
+
+    const getProductDataAsync = async () =>{
+      const tempData =[];
+      for (var relatedProductId of relatedProducts) {
+       const data = await getProductData(relatedProductId);
+       tempData.push(data);
+      }
+      setProductData(tempData);
+    }
+
+    const getProductData = (relatedProduct) => {
+     return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${relatedProduct}`, {headers: config})
         .then((product) => {
-          productData.push(product.data)
+          return product.data;
         })
         .catch(() =>{
           console.log(response.err, 'err at req2')
         })
     }
 
-    useEffect(() => {
-      relatedProducts.map((product) => {
-        getHelper(product)
-      })
-    }, [relatedProducts])
+    console.log('this is product data', productData);
 
-  return (
+    const getProductStyleAsync = async () => {
+      var tempData = [];
+      for (var relatedProductStylesId of relatedProducts) {
+        const data = await getProductStyle(relatedProductStylesId);
+        tempData.push(data);
+      }
+      console.log(tempData, 'this is tempdata')
+      setProductStyle(tempData);
+    }
+
+    const getProductStyle = (relatedProduct) => {
+     return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${relatedProduct}/styles`, {headers: config})
+        .then((product) => {
+          return product.data
+        })
+        .catch(() =>{
+          console.log(response.err, 'err at req3')
+        })
+    }
+
+    console.log(productStyle)
+
+    return (
 
     <div className="RelatedProducts">
       <h1>Related Products</h1>
       <div className="carousel">
-        <div className="productCard">
-          <ProductCard />
-        </div>
+         { productData.map((product) => (
+          <ProductCard
+              id={product.id}
+              category={product.category}
+              name={product.name}
+              price={product.default_price}
+          />
+         ))}
         <div className="carousel_actions">
           <button id="carousel_button--prev" aria-label="Previous_cards">˂</button>
           <button id="carousel_button--next" aria-label="Next_cards">˃</button>

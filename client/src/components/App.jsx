@@ -19,9 +19,9 @@ class App extends React.Component {
       <div>
         <div>Hello From App</div>
         {/* <ProductDetail productID={productID} /> */}
-        <RelatedProducts productID={this.state.productID} />
         {/* <QuestionsAndAnswers productID={productID} /> */}
         <ProductDetail productID={this.state.productID}/>
+        <RelatedProducts productID={this.state.productID} />
         <RatingsAndReviews productID={this.state.productID} />
         <QuestionList productID={this.state.productID} />
       </div>
