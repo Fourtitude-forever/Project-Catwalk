@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import headers from '../../../../../../config.js';
+import config from '../../../../../../config.js';
 
 const ProductInfoDiv = styled.div`
   border: 5px solid yellow;
@@ -16,7 +16,6 @@ const ProductInfoDiv = styled.div`
 const Cat = styled.div`
   text-transform: uppercase;
   font-size: 20px;
-  padding-top:10px;
   padding-bottom:10px
 `;
 
@@ -27,7 +26,7 @@ const Title = styled.div`
 `;
 
 const Price = styled.div`
-  font-size: 15px;
+  font-size: 20px;
 `;
 
 function ProductInformation({ productID }) {
@@ -35,23 +34,14 @@ function ProductInformation({ productID }) {
   const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState();
-  //const [productOverview, setProductOverview] = useState('');
 
   useEffect(() => {
     setLoading(true);
-
-    const config = {
-      headers,
-      params: { product_id: productID },
-    };
-
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/23145', config)
+    axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}`, { headers: config })
       .then((list) => {
-        console.log(list.data);
         setCategory(list.data.category);
         setTitle(list.data.name);
         setPrice(list.data.default_price);
-        //setProductOverview(list.data.description);
         setLoading(false);
       })
       .catch((err) => {
@@ -67,8 +57,8 @@ function ProductInformation({ productID }) {
 
   return (
     <ProductInfoDiv>
-      <div>Stars placeholder</div>
       <div>{loadingIcon}</div>
+      <div>☆☆☆☆☆</div>
       <Cat>{category}</Cat>
       <Title>{title}</Title>
       <div>{price}</div>

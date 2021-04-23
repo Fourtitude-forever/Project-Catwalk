@@ -18,10 +18,10 @@ const ProducOverviewDiv = styled.div`
 
 
 
-function ProductOverview() {
+function ProductOverview({ productID }) {
   return (
     <ProducOverviewDiv>
-      <ProductInfo />
+      <ProductInfo productID={productID} />
       <Styles />
       <Selector />
     </ProducOverviewDiv>
