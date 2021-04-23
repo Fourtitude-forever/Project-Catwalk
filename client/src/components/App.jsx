@@ -1,16 +1,8 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-
 import ProductDetail from './productDetail/ProductDetail.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
-<<<<<<< HEAD
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
-<<<<<<< HEAD
-=======
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
->>>>>>> review_p
-=======
->>>>>>> 044a824a7ea805faf1b65faa14d1195efa22ba2c
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import QuestionList from './questions/QuestionList.jsx';
 
