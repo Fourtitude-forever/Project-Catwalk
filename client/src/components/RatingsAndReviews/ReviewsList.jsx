@@ -4,20 +4,6 @@ import styled from 'styled-components';
 
 import Reviews from './Reviews.jsx';
 import config from '../../../../config';
-import AddReview from './AddReview.jsx';
-
-const Button = styled.button`
-  ${(props) => {
-    if (props.reachedEnd) {
-      return `
-        visibility: hidden;
-      `;
-    }
-    return `
-      visibility: normal;
-    `;
-  }}
-`;
 
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);

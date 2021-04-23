@@ -2,6 +2,7 @@ import React from 'react';
 import ProductDetail from './productDetail/ProductDetail.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
+// import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import QuestionList from './questions/QuestionList.jsx';
 
