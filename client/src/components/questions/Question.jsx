@@ -1,11 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Answer from './Answer.jsx';
+import styled from 'styled-components';
 
-const Question = ({ question, answers }) => {
+import Answer from './Answer.jsx';
+import AddAnswer from './AddAnswer.jsx';
+import request from '../../lib/getInfo.js';
+import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
+
+const Helpfulness = styled.span`
+  ${(props) => {
+    if (!props.alreadyClicked) {
+      return `
+        &:hover {
+          text-decoration: underline;
+        }
+      `;
+    }
+    return `
+    &:hover {
+      text-decoration: none;
+    }
+    `;
+  }}
+`;
+
+const ReplyIcon = styled(Icon)`
+  ${(props) => {
+    if (props.showReplyIcon) {
+      return `
+        visibility: visible;
+      `;
+    }
+  }}
+`;
+
+const QAThreadHeading = styled(ThreadHeading)`
+  ${(props) => {
+    if (props.showReplyIcon) {
+      return `
+        color: #1687a7;
+      `;
+    }
+  }}
+`;
+
+const Report = styled(Helpfulness)``;
+
+const Question = ({
+  id, question, answers, helpfulness, productName,
+}) => {
   const [answersShown, setAnswersShown] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [answerButtonText, setAnswerButtonText] = useState('');
+  const [isHelpfulClicked, setIsHelpfulClicked] = useState(false);
+  const [isReportClicked, setIsReportClicked] = useState(false);
+  const [showReplyIcon, setShowReplyIcon] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const answersInfo = Object.values(answers);
   const answersBody = answersInfo.map((answer) => answer.body);
@@ -14,25 +64,79 @@ const Question = ({ question, answers }) => {
     setIsCollapsed(!isCollapsed);
   };
 
+  const onReplyHover = () => {
+    setShowReplyIcon(!showReplyIcon);
+  };
+
+  const onOpenModalClick = () => {
+    setShowModal(!showModal);
+  };
+
+  const onHelpfulnessClick = (questionID) => {
+    if (!isHelpfulClicked) {
+      request.putRequest(questionID, 'helpful')
+        .then((response) => console.log(response))
+        .catch((err) => console.log(err))
+        .then(() => {
+          setIsHelpfulClicked(true);
+        });
+    }
+  };
+
+  const onReportClick = (questionID) => {
+    if (!isReportClicked) {
+      request.putRequest(questionID, 'report')
+        .then((response) => console.log(response))
+        .catch((err) => console.log(err))
+        .then(() => setIsReportClicked(true));
+    }
+  };
+
   useEffect(() => {
     if (answersBody.length <= 2) {
-      // do not render button
+      setAnswersShown(answersBody.slice(0, 2));
     } else if (isCollapsed) {
       setAnswersShown(answersBody.slice(0, 2));
-      setAnswerButtonText(<button type="button" onClick={onAddMoreClick}>Show More Answers</button>);
+      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>+</SmallButton>);
     } else {
       setAnswersShown(answersBody);
-      setAnswerButtonText(<button type="button" onClick={onAddMoreClick}>Collapse Answers</button>);
+      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>-</SmallButton>);
     }
   }, [isCollapsed]);
 
   return (
     <div>
-      <div>{`Q: ${question}`}</div>
-      {answersShown.map((answer) => (
-        <Answer answer={answer} />
-      ))}
-      {answerButtonText}
+      <QAThreadHeading showReplyIcon={showReplyIcon} onMouseEnter={onReplyHover} onMouseLeave={onReplyHover} onClick={onOpenModalClick}>{`Q: ${question}`}
+        <ReplyIcon showReplyIcon={showReplyIcon} className="fas fa-reply" />
+      </QAThreadHeading>
+      <ThreadSubHeading>
+        Helpful?
+        <Helpfulness
+          alreadyClicked={isHelpfulClicked}
+          onClick={() => onHelpfulnessClick(id)}
+        >
+          {` Yes (${helpfulness}) `}
+        </Helpfulness>
+        <Report
+          alreadyClicked={isReportClicked}
+          onClick={() => onReportClick(id)}
+        >
+          Report
+        </Report>
+      </ThreadSubHeading>
+      <ThreadSubList>
+        {answersShown.map((answer, i) => (
+          <Answer answer={answer} key={i} />
+        ))}
+        {answerButtonText}
+      </ThreadSubList>
+      <AddAnswer
+        showModal={showModal}
+        productName={productName}
+        onOpenModalClick={onOpenModalClick}
+        question={question}
+        id={id}
+      />
     </div>
   );
 };
@@ -40,6 +144,9 @@ const Question = ({ question, answers }) => {
 Question.propTypes = {
   question: PropTypes.string.isRequired,
   answers: PropTypes.object.isRequired,
+  helpfulness: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 export default Question;
