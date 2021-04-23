@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Answer from './Answer.jsx';
+import AddAnswer from './AddAnswer.jsx';
 import request from '../../lib/getInfo.js';
 import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
 
@@ -46,7 +47,7 @@ const QAThreadHeading = styled(ThreadHeading)`
 const Report = styled(Helpfulness)``;
 
 const Question = ({
-  id, question, answers, helpfulness,
+  id, question, answers, helpfulness, productName,
 }) => {
   const [answersShown, setAnswersShown] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -54,6 +55,7 @@ const Question = ({
   const [isHelpfulClicked, setIsHelpfulClicked] = useState(false);
   const [isReportClicked, setIsReportClicked] = useState(false);
   const [showReplyIcon, setShowReplyIcon] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const answersInfo = Object.values(answers);
   const answersBody = answersInfo.map((answer) => answer.body);
@@ -64,6 +66,10 @@ const Question = ({
 
   const onReplyHover = () => {
     setShowReplyIcon(!showReplyIcon);
+  };
+
+  const onOpenModalClick = () => {
+    setShowModal(!showModal);
   };
 
   const onHelpfulnessClick = (questionID) => {
@@ -100,7 +106,7 @@ const Question = ({
 
   return (
     <div>
-      <QAThreadHeading showReplyIcon={showReplyIcon} onMouseEnter={onReplyHover} onMouseLeave={onReplyHover}>{`Q: ${question}`}
+      <QAThreadHeading showReplyIcon={showReplyIcon} onMouseEnter={onReplyHover} onMouseLeave={onReplyHover} onClick={onOpenModalClick}>{`Q: ${question}`}
         <ReplyIcon showReplyIcon={showReplyIcon} className="fas fa-reply" />
       </QAThreadHeading>
       <ThreadSubHeading>
@@ -124,6 +130,13 @@ const Question = ({
         ))}
         {answerButtonText}
       </ThreadSubList>
+      <AddAnswer
+        showModal={showModal}
+        productName={productName}
+        onOpenModalClick={onOpenModalClick}
+        question={question}
+        id={id}
+      />
     </div>
   );
 };
@@ -133,7 +146,7 @@ Question.propTypes = {
   answers: PropTypes.object.isRequired,
   helpfulness: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
-
+  productName: PropTypes.string.isRequired,
 };
 
 export default Question;

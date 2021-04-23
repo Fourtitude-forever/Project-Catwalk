@@ -32,6 +32,17 @@ const request = {
       },
     }),
 
+  postAnswerRequest: (questionID, formInfo) =>
+    axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${questionID}/answers`, {
+      headers: config,
+      method: 'POST',
+      params: {
+        body: formInfo[0].value,
+        name: formInfo[1].value,
+        email: formInfo[2].value,
+      },
+    }),
+
 };
 
 export default request;

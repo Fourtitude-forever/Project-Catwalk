@@ -128,10 +128,11 @@ const QuestionList = ({ productID }) => {
           question={question.question_body}
           answers={question.answers}
           helpfulness={question.question_helpfulness}
+          productName={productName}
         />
       ))}
-      <QuestionButton type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</QuestionButton>
       <Button type="button" onClick={onOpenModalClick}>Add a Question</Button>
+      <QuestionButton type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</QuestionButton>
       <AddQuestion
         showModal={showModal}
         productName={productName}
