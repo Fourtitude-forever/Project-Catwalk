@@ -61,6 +61,7 @@ export const Button = styled.button`
   border-radius: 16px;
   outline: none;
   margin-right: 25px;
+  margin-top: 20px;
 `;
 
 export const SmallButton = styled(Button)`
@@ -68,6 +69,7 @@ export const SmallButton = styled(Button)`
   height: 25px;
   padding: 1px;
   border-radius: 50%;
+  margin-top: 0px;
 `;
 
 export const CloseButton = styled(SmallButton)`
@@ -109,14 +111,41 @@ export const Modal = styled.div`
   z-index: 100;
   background: rgba(0, 0, 0, 0.35);
   & > div {
-    width: 50%;
+    width: 40%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #d3e0ea;
     border-radius: 30px;
-    padding: 1.5em;
+    padding: 2em;
     opacity: 1;
   }
+`;
+
+/////////////////////////////////////////
+// STYLES FOR FORM //
+/////////////////////////////////////////
+
+export const Form = styled.form`
+  input[type=text] {
+    display: block;
+    border: none;
+    border-bottom: 2px solid #1687a7;
+  }
+  input[type=text]:focus {
+    border: 2px solid #276678;
+  }
+`;
+
+export const FormInput = styled(SingleLineInput)`
+  width: 60%;
+  height: 25px;
+  margin-right: 25px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  outline: none;
 `;

@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import Search from './Search.jsx';
 import Question from './Question.jsx';
 import request from '../../lib/getInfo.js';
-import { Headers2, SectionBG1, Button, CloseButton, Modal } from '../../css/sharedcss.jsx';
+import AddQuestion from './AddQuestion.jsx';
+import { Headers2, SectionBG1, Button } from '../../css/sharedcss.jsx';
 
 const QuestionButton = styled(Button)`
 
@@ -18,16 +19,6 @@ const QuestionButton = styled(Button)`
     return `
       visibility: normal;
     `;
-  }}
-`;
-
-const QuestionModal = styled(Modal)`
-  ${(props) => {
-    if (!props.showModal) {
-      return `
-        visibility: hidden;
-      `;
-    }
   }}
 `;
 
@@ -107,7 +98,7 @@ const QuestionList = ({ productID }) => {
   };
 
   const onOpenModalClick = () => {
-    setShowModal(true);
+    setShowModal(!showModal);
   };
 
   let loadingIcon;
@@ -141,15 +132,12 @@ const QuestionList = ({ productID }) => {
       ))}
       <QuestionButton type="button" reachedEnd={hasReachedEnd} onClick={onAddMoreClick}>See More Questions...</QuestionButton>
       <Button type="button" onClick={onOpenModalClick}>Add a Question</Button>
-
-      <QuestionModal showModal={showModal} id="open-modal" className="modal-window">
-        <div>
-          <CloseButton type="button" onClick={() => setShowModal(false)}>X</CloseButton>
-          <Headers2>Ask your Question!</Headers2>
-          <h3>{`About the ${productName}`}</h3>
-          <div>A CSS-only modal based on the :target pseudo-className</div>
-        </div>
-      </QuestionModal>
+      <AddQuestion
+        showModal={showModal}
+        productName={productName}
+        onOpenModalClick={onOpenModalClick}
+        productID={productID}
+      />
 
     </SectionBG1>
   );

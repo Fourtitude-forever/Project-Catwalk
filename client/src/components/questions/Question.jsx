@@ -75,7 +75,9 @@ const Question = ({
 
   return (
     <div>
-      <ThreadHeading>{`Q: ${question}`}</ThreadHeading>
+      <ThreadHeading>{`Q: ${question}`}
+        <i className="fas fa-reply" />
+      </ThreadHeading>
       <ThreadSubHeading>
         Helpful?
         <Helpfulness
