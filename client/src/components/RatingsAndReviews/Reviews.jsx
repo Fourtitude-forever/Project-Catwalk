@@ -2,11 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import * as moment from 'moment';
 
-import { ThreadSubList, ThreadHeading, ThreadSubHeading } from '../../css/sharedcss.jsx';
+import { ThreadHeading } from '../../css/sharedcss.jsx';
+import StarRating from './starRating.jsx';
 
-const RatingsAndDateContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+const LineBreak = styled.div`
+width: 60%;
+border-bottom: solid 1px black;
+margin-bottom: 10px;
+margin-top: 10px;
 `;
 
 const Reviews = ({ reviews, loading }) => {
@@ -14,37 +17,30 @@ const Reviews = ({ reviews, loading }) => {
     return <h2>Loading...</h2>;
   }
 
-  console.log(reviews);
   return (
     <div>
       <div>
         {reviews.map((review) => (
           <div key={review.review_id}>
-            <span>{review.rating}</span>
-            <span> </span>
+            <StarRating stars={review.rating} />
             <ThreadHeading>
-              {' '}
-              {' '}
               {review.reviewer_name.charAt(0).toUpperCase()
               + review.reviewer_name.substr(1).toLowerCase()}
               ,
-              {' '}
-              {' '}
+              {'  '}
+              {'  '}
               {moment(review.date).format('MMMM DD, YYYY')}
             </ThreadHeading>
+            <br />
+            <br />
             <span>
-              <ThreadSubList>
-                Summary:
-                {review.summary}
-              </ThreadSubList>
+              {review.summary}
             </span>
+            <br />
             <span>
-              <ThreadSubList>
-                Full:
-                {review.body}
-              </ThreadSubList>
+              {review.body}
             </span>
-            <ThreadSubHeading />
+            <LineBreak />
           </div>
         ))}
       </div>

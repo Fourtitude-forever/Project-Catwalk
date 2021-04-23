@@ -14,7 +14,6 @@ const ReviewsList = ({ productID }) => {
   const [currentList, setCurrentList] = useState(1);
   const [reviewsPerPress] = useState(2);
   const [reviewsPerPage, setReviewsPerPage] = useState(2);
-  const [hasReachedEnd, setHasReachedEnd] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -44,10 +43,11 @@ const ReviewsList = ({ productID }) => {
 
   return (
     <SectionBG1>
-      <Headers2>Ratings and Reviews</Headers2>
       <Reviews reviews={currentReviews} loading={loading} />
-      <Button onClick={onAddMoreClick}>More Reviews </Button>
-      <AddReview />
+      <div>
+        <Button onClick={onAddMoreClick}>More Reviews </Button>
+        <AddReview />
+      </div>
     </SectionBG1>
   );
 };
