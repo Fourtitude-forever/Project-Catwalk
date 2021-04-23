@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Reviews from './Reviews.jsx';
 import config from '../../../../config';
-import AddReview from './AddReview.jsx'
+import AddReview from './AddReview.jsx';
 
 const Button = styled.button`
   ${(props) => {
@@ -44,21 +44,6 @@ const ReviewsList = ({ productID }) => {
         throw err;
       });
   }, []);
-
-  // Update number of questions shown when currentList changes
-  // useEffect(() => {
-  //   setReviewsShown(reviews.slice(0, reviewsPerPress * currentList));
-  //   if (reviews.length > 0 && reviews.length === reviewsShown.length) {
-  //     setHasReachedEnd(true);
-  //   }
-  // }, [currentList]);
-
-  // // Add more questions button disappears when end of list reached
-  // useEffect(() => {
-  //   if (reviews.length > 0 && reviews.length === reviewsShown.length) {
-  //     setHasReachedEnd(true);
-  //   }
-  // }, [reviewsShown]);
 
   // 'Add more' button click handler increments currentList
   const onAddMoreClick = () => {

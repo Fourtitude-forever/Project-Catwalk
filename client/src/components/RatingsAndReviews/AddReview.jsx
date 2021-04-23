@@ -15,7 +15,7 @@ const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 width: 200px;
 height: 50px;
-background: #C50000;
+background: #1687a7;
 color: white;
 border: none;
 border-width: thin;
@@ -53,7 +53,6 @@ const AddReview = () => {
   const [ReviewIsOpen, setReviewIsOpen] = useState(false);
   const [review, setReview] = useState('');
 
-
   return (
     <div>
       <StyledButton type="submit" onClick={() => setReviewIsOpen(true)}>Add A Review +</StyledButton>
@@ -65,27 +64,13 @@ const AddReview = () => {
 
         <StyledH2>Ask your Question about [Product Name Here]</StyledH2>
         <FormDiv
-          // onSubmit={(event) => {
-          //   event.preventDefault();
-          //   event.target.reset();
-          //   const newQuestion = { question: state.value };
-          //   const { list } = state;
-          //   list.push(newQuestion);
-          //   actions({
-          //     type: 'setState',
-          //     payload: {
-          //       ...state, list, value: '', name: '', email: '',
-          //     },
-          //   });
-
-          //   setReviewIsOpen(false);
-          // }}
           type="submit"
           value="Submit"
         >
           <label htmlFor="input">
-            <StyledDiv>Your Review:</StyledDiv>
+            <StyledDiv>Write Your Review:</StyledDiv>
             <span> </span>
+            <StyledDiv>About the [Product Name Here]:</StyledDiv>
             <StyledInput
               className="textbox"
               type="text"
