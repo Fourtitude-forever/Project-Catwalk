@@ -15,6 +15,7 @@ function RatingsAndReviews({ productID }) {
   return (
     <SectionBG1>
       <StarRating stars={3.6} />
+      <Top>Average Rating</Top>
       <Headers2>Ratings and Reviews</Headers2>
       <ReviewsList productID={productID} />
     </SectionBG1>

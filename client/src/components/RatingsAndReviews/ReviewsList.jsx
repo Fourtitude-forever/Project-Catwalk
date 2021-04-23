@@ -7,6 +7,12 @@ import config from '../../../../config';
 import AddReview from './AddReview.jsx';
 import { Headers2, SectionBG1, Button } from '../../css/sharedcss.jsx';
 
+const HelpfulDiv = styled.div`
+float: left;
+display: flex;
+padding-right: 20%;
+`;
+
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
   const [reviewsShown, setReviewsShown] = useState([]);
@@ -44,10 +50,10 @@ const ReviewsList = ({ productID }) => {
   return (
     <SectionBG1>
       <Reviews reviews={currentReviews} loading={loading} />
-      <div>
+      <HelpfulDiv>
         <Button onClick={onAddMoreClick}>More Reviews </Button>
         <AddReview />
-      </div>
+      </HelpfulDiv>
     </SectionBG1>
   );
 };
