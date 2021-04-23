@@ -20,21 +20,6 @@ const Reviews = ({ reviews, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
-  console.log(reviews);
-  // (2) [{…}, {…}]
-  // 0:
-  // body: "I really did or did not like this product based on whether
-  // it was sustainably sourced. Then I found out that its made from nothing at all."
-  // date: "2019-01-01T00:00:00.000Z"
-  // helpfulness: 8
-  // photos: []
-  // rating: 5
-  // recommend: true
-  // response: ""
-  // review_id: 308885
-  // reviewer_name: "funtime"
-  // summary: "This product was great!"
-
   return (
     <div>
       <div>
