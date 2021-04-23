@@ -1,6 +1,4 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-
 import ProductDetail from './productDetail/ProductDetail.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
