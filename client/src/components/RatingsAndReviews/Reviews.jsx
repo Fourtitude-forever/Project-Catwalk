@@ -20,7 +20,7 @@ const Reviews = ({ reviews, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
-  // console.log(reviews);
+
   return (
     <div>
       <div>
