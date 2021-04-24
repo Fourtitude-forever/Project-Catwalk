@@ -24,11 +24,6 @@ class App extends React.Component {
     };
   }
 
-  onComponentclick(event) {
-    console.log('click event is: ', event);
-    this.setState({ clickCount: this.state.clickCount + 1 });
-  }
-
   render() {
     // const { productID } = this.state.productID;
     return (
@@ -38,8 +33,7 @@ class App extends React.Component {
         <RelatedProducts productID={this.state.productID} />
         <ProductDetail productID={this.state.productID} />
         <RatingsAndReviews productID={this.state.productID} />
-        <QuestionList
-          onClick={() => this.onComponentClick}
+        <QuestionListWithTracking
           productID={this.state.productID}
         />
       </div>

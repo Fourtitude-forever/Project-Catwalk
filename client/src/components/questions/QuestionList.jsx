@@ -22,7 +22,7 @@ const QuestionButton = styled(Button)`
   }}
 `;
 
-const QuestionList = ({ productID }) => {
+const QuestionList = ({ productID, onCompClick }) => {
   const [questions, setQuestions] = useState([]);
   const [questionsShown, setQuestionsShown] = useState([]);
   const [isloading, setLoading] = useState(false);
@@ -112,15 +112,13 @@ const QuestionList = ({ productID }) => {
     anyQuestions = true;
   }
 
-  const onComponentClick = (event) => {
-    console.log('click event is: ', event);
-    setCountClick(countClick + 1);
-  }
+  // const onComponentClick = (event) => {
+  //   console.log('click event is: ', event);
+  //   setCountClick(countClick + 1);
+  // }
 
   return (
-    <SectionBG1 onClick={onComponentClick}
-    >
-
+    <SectionBG1 onClick={onCompClick}>
       <Headers2>Questions and Answers</Headers2>
       {loadingIcon}
       <Search
