@@ -11,7 +11,7 @@ S.WrapperDiv = styled.div`
 
 S.RatingSpan = styled.span`
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 600;
   padding-right: 5px;
   line-height: 1.8rem;
   font-family: Helvetica, Arial;

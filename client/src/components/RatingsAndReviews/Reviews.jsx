@@ -2,18 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import * as moment from 'moment';
 
-const StyledP = styled.p`
-border-bottom: 2px solid black;
-font-family: 'trebuchet ms'
+import StarRating from './starRating.jsx';
+
+const LineBreak = styled.div`
+width: 60%;
+border-bottom: solid 1px black;
+margin-bottom: 15px;
+margin-top: 10px;
 `;
 
-const StyledH3 = styled.h3`
-font-family: 'trebuchet ms'
-`;
-
-const RatingsAndDateContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+const ReviewHeading = styled.p`
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 0;
 `;
 
 const Reviews = ({ reviews, loading }) => {
@@ -26,19 +27,25 @@ const Reviews = ({ reviews, loading }) => {
       <div>
         {reviews.map((review) => (
           <div key={review.review_id}>
-            <RatingsAndDateContainer>
-              <span>{review.rating}</span>
-              <span>
-                {review.reviewer_name.charAt(0).toUpperCase()
+            <StarRating stars={review.rating} />
+            <ReviewHeading>
+              {review.reviewer_name.charAt(0).toUpperCase()
               + review.reviewer_name.substr(1).toLowerCase()}
-                ,
-                {' '}
-                {' '}
-                {moment(review.date).format('MMMM DD, YYYY')}
-              </span>
-            </RatingsAndDateContainer>
-            <span><StyledH3>{review.summary}</StyledH3></span>
-            <span><StyledP>{review.body}</StyledP></span>
+              ,
+              {'  '}
+              {'  '}
+              {moment(review.date).format('MMMM DD, YYYY')}
+            </ReviewHeading>
+            <br />
+            <span>
+              {review.summary}
+            </span>
+            <br />
+            <br />
+            <span>
+              {review.body}
+            </span>
+            <LineBreak />
           </div>
         ))}
       </div>
