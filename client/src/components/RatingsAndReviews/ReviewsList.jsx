@@ -42,6 +42,11 @@ const ReviewsList = ({ productID }) => {
     setReviewsPerPage(reviewsPerPage + 2);
   };
 
+  // Hide Button More Reviews Button
+  // if reviewsPerPage >= setReviews.length
+  // list.data.results.length
+  // Hide Button
+
   // Get current reviews
   const indexOfLastReview = currentList * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;

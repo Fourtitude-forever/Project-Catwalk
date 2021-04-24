@@ -2,14 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import * as moment from 'moment';
 
-import { ThreadHeading } from '../../css/sharedcss.jsx';
 import StarRating from './starRating.jsx';
 
 const LineBreak = styled.div`
 width: 60%;
 border-bottom: solid 1px black;
-margin-bottom: 10px;
+margin-bottom: 15px;
 margin-top: 10px;
+`;
+
+const ReviewHeading = styled.p`
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 0;
 `;
 
 const Reviews = ({ reviews, loading }) => {
@@ -23,19 +28,19 @@ const Reviews = ({ reviews, loading }) => {
         {reviews.map((review) => (
           <div key={review.review_id}>
             <StarRating stars={review.rating} />
-            <ThreadHeading>
+            <ReviewHeading>
               {review.reviewer_name.charAt(0).toUpperCase()
               + review.reviewer_name.substr(1).toLowerCase()}
               ,
               {'  '}
               {'  '}
               {moment(review.date).format('MMMM DD, YYYY')}
-            </ThreadHeading>
-            <br />
+            </ReviewHeading>
             <br />
             <span>
               {review.summary}
             </span>
+            <br />
             <br />
             <span>
               {review.body}
