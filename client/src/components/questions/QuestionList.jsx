@@ -22,7 +22,7 @@ const QuestionButton = styled(Button)`
   }}
 `;
 
-const QuestionList = ({ productID }) => {
+const QuestionList = ({ productID, onCompClick }) => {
   const [questions, setQuestions] = useState([]);
   const [questionsShown, setQuestionsShown] = useState([]);
   const [isloading, setLoading] = useState(false);
@@ -32,6 +32,7 @@ const QuestionList = ({ productID }) => {
   const [searchInput, setSearchInput] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [productName, setProductName] = useState('');
+  const [countClick, setCountClick] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -111,9 +112,13 @@ const QuestionList = ({ productID }) => {
     anyQuestions = true;
   }
 
-  return (
-    <SectionBG1>
+  // const onComponentClick = (event) => {
+  //   console.log('click event is: ', event);
+  //   setCountClick(countClick + 1);
+  // }
 
+  return (
+    <SectionBG1 onClick={onCompClick}>
       <Headers2>Questions and Answers</Headers2>
       {loadingIcon}
       <Search

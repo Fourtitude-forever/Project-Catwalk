@@ -43,6 +43,16 @@ const request = {
       },
     }),
 
+  postInteractionRequest: (elementClicked, widgetClicked, timeStamp) =>
+    axios('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/interactions', {
+      headers: config,
+      method: 'POST',
+      params: {
+        element: elementClicked,
+        widget: widgetClicked,
+        time: timeStamp,
+      }
+  }),
 };
 
 export default request;
