@@ -112,11 +112,6 @@ const QuestionList = ({ productID, onCompClick }) => {
     anyQuestions = true;
   }
 
-  // const onComponentClick = (event) => {
-  //   console.log('click event is: ', event);
-  //   setCountClick(countClick + 1);
-  // }
-
   return (
     <SectionBG1 onClick={onCompClick}>
       <Headers2>Questions and Answers</Headers2>

@@ -57,8 +57,8 @@ const Question = ({
   const [showReplyIcon, setShowReplyIcon] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const answersPerPress = 2;
   const answersInfo = Object.values(answers);
-  const answersBody = answersInfo.map((answer) => answer.body);
 
   const onAddMoreClick = () => {
     setIsCollapsed(!isCollapsed);
@@ -93,10 +93,10 @@ const Question = ({
   };
 
   useEffect(() => {
-    if (answersInfo.length <= 2) {
-      setAnswersShown(answersInfo.slice(0, 2));
+    if (answersInfo.length <= answersPerPress) {
+      setAnswersShown(answersInfo.slice(0, answersPerPress));
     } else if (isCollapsed) {
-      setAnswersShown(answersInfo.slice(0, 2));
+      setAnswersShown(answersInfo.slice(0, answersPerPress));
       setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>+</SmallButton>);
     } else {
       setAnswersShown(answersInfo);
