@@ -35,7 +35,8 @@ export const ThreadHeading = styled.p`
 export const ThreadSubHeading = styled.p`
   font-size: 0.75em;
   color: #314e52;
-  margin: 4px 0;
+  margin-top: 4px;
+  margin-bottom: 12px;
 `;
 
 export const ThreadSubList = styled.div`
@@ -47,6 +48,7 @@ export const ThreadSubList = styled.div`
 
 export const ThreadSubItem = styled.p`
   font-size: 0.8em;
+  margin: 0;
 `;
 
 /////////////////////////////////////////
@@ -62,6 +64,9 @@ export const Button = styled.button`
   outline: none;
   margin-right: 25px;
   margin-top: 20px;
+  &:hover {
+    background-color: #94b5c0;
+  }
 `;
 
 export const SmallButton = styled(Button)`

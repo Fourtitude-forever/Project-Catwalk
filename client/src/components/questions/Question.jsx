@@ -93,13 +93,13 @@ const Question = ({
   };
 
   useEffect(() => {
-    if (answersBody.length <= 2) {
-      setAnswersShown(answersBody.slice(0, 2));
+    if (answersInfo.length <= 2) {
+      setAnswersShown(answersInfo.slice(0, 2));
     } else if (isCollapsed) {
-      setAnswersShown(answersBody.slice(0, 2));
+      setAnswersShown(answersInfo.slice(0, 2));
       setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>+</SmallButton>);
     } else {
-      setAnswersShown(answersBody);
+      setAnswersShown(answersInfo);
       setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>-</SmallButton>);
     }
   }, [isCollapsed]);
