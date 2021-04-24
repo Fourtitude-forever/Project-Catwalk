@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import QuestionList from '../questions/QuestionList.jsx';
 import request from '../../lib/getInfo.js';
 
-
-function withTracking(WrappedComponent, eventHandler) {
+function withTracking(WrappedComponent) {
   return (props) => {
     const [countClick, setCountClick] = useState(0);
 
@@ -18,7 +16,6 @@ function withTracking(WrappedComponent, eventHandler) {
         .catch((err) => console.log(err));
     };
 
-
     return (
       <WrappedComponent
         onCompClick={(event) => onComponentClick(event)}
@@ -28,6 +25,12 @@ function withTracking(WrappedComponent, eventHandler) {
   };
 }
 
-const QuestionListWithTracking = withTracking(QuestionList);
+// const QuestionListWithTracking = withTracking(QuestionList);
+// const RelatedProductsWithTracking = withTracking(RelatedProducts);
+// const ProductDetailWithTracking = withTracking(ProductDetail);
+// const RatingsAndReviewsWithTracking = withTracking(RatingsAndReviews);
 
-export default QuestionListWithTracking;
+export default withTracking;
+// export default RelatedProductsWithTracking;
+// export default ProductDetailWithTracking;
+// export default RatingsAndReviewsWithTracking;

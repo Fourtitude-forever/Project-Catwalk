@@ -5,7 +5,7 @@ import ProductDetail from './productDetail/ProductDetail.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import QuestionList from './questions/QuestionList.jsx';
-import QuestionListWithTracking from './Interactions/interactions.jsx';
+import withTracking from './Interactions/interactions.jsx';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -15,6 +15,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
 `;
+
+const QuestionListWithTracking = withTracking(QuestionList);
+const RelatedProductsWithTracking = withTracking(RelatedProducts);
+const ProductDetailWithTracking = withTracking(ProductDetail);
+const RatingsAndReviewsWithTracking = withTracking(RatingsAndReviews);
 
 class App extends React.Component {
   constructor(props) {
