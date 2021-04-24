@@ -9,14 +9,6 @@ S.WrapperDiv = styled.div`
   align-items: center;
 `;
 
-S.RatingSpan = styled.span`
-  font-size: 1.8rem;
-  font-weight: 600;
-  padding-right: 5px;
-  line-height: 1.8rem;
-  font-family: Helvetica, Arial;
-`;
-
 S.BackStarsDiv = styled.div`
   display: flex;
   position: relative;
@@ -29,8 +21,7 @@ S.FrontDiv = styled.div`
   top: 0;
   overflow: hidden;
   width: ${(props) => props.rating};
-  // color: #ffbc0b;
-  color: #000;
+  color: #ffbc0b;
 `;
 
 function StarRating(props) {
@@ -44,7 +35,6 @@ function StarRating(props) {
   return (
     <>
       <S.WrapperDiv>
-        <S.RatingSpan>{props.stars || 'N/A'}</S.RatingSpan>
         <S.BackStarsDiv>
           <IconStar />
           <IconStar />
