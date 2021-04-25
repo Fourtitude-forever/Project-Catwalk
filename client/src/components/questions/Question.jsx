@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Answer from './Answer.jsx';
+import AddAnswer from './AddAnswer.jsx';
 import request from '../../lib/getInfo.js';
+import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
 
 const Helpfulness = styled.span`
   ${(props) => {
@@ -22,22 +24,52 @@ const Helpfulness = styled.span`
   }}
 `;
 
+const ReplyIcon = styled(Icon)`
+  ${(props) => {
+    if (props.showReplyIcon) {
+      return `
+        visibility: visible;
+      `;
+    }
+  }}
+`;
+
+const QAThreadHeading = styled(ThreadHeading)`
+  ${(props) => {
+    if (props.showReplyIcon) {
+      return `
+        color: #1687a7;
+      `;
+    }
+  }}
+`;
+
 const Report = styled(Helpfulness)``;
 
 const Question = ({
-  id, question, answers, helpfulness,
+  id, question, answers, helpfulness, productName,
 }) => {
   const [answersShown, setAnswersShown] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [answerButtonText, setAnswerButtonText] = useState('');
   const [isHelpfulClicked, setIsHelpfulClicked] = useState(false);
   const [isReportClicked, setIsReportClicked] = useState(false);
+  const [showReplyIcon, setShowReplyIcon] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const answersInfo = Object.values(answers);
   const answersBody = answersInfo.map((answer) => answer.body);
 
   const onAddMoreClick = () => {
     setIsCollapsed(!isCollapsed);
+  };
+
+  const onReplyHover = () => {
+    setShowReplyIcon(!showReplyIcon);
+  };
+
+  const onOpenModalClick = () => {
+    setShowModal(!showModal);
   };
 
   const onHelpfulnessClick = (questionID) => {
@@ -62,20 +94,22 @@ const Question = ({
 
   useEffect(() => {
     if (answersBody.length <= 2) {
-      // do not render button
+      setAnswersShown(answersBody.slice(0, 2));
     } else if (isCollapsed) {
       setAnswersShown(answersBody.slice(0, 2));
-      setAnswerButtonText(<button type="button" onClick={onAddMoreClick}>Show More Answers</button>);
+      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>+</SmallButton>);
     } else {
       setAnswersShown(answersBody);
-      setAnswerButtonText(<button type="button" onClick={onAddMoreClick}>Collapse Answers</button>);
+      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>-</SmallButton>);
     }
   }, [isCollapsed]);
 
   return (
     <div>
-      <div>{`Q: ${question}`}</div>
-      <p>
+      <QAThreadHeading showReplyIcon={showReplyIcon} onMouseEnter={onReplyHover} onMouseLeave={onReplyHover} onClick={onOpenModalClick}>{`Q: ${question}`}
+        <ReplyIcon showReplyIcon={showReplyIcon} className="fas fa-reply" />
+      </QAThreadHeading>
+      <ThreadSubHeading>
         Helpful?
         <Helpfulness
           alreadyClicked={isHelpfulClicked}
@@ -89,11 +123,20 @@ const Question = ({
         >
           Report
         </Report>
-      </p>
-      {answersShown.map((answer, i) => (
-        <Answer answer={answer} key={i} />
-      ))}
-      {answerButtonText}
+      </ThreadSubHeading>
+      <ThreadSubList>
+        {answersShown.map((answer, i) => (
+          <Answer answer={answer} key={i} />
+        ))}
+        {answerButtonText}
+      </ThreadSubList>
+      <AddAnswer
+        showModal={showModal}
+        productName={productName}
+        onOpenModalClick={onOpenModalClick}
+        question={question}
+        id={id}
+      />
     </div>
   );
 };
@@ -103,7 +146,7 @@ Question.propTypes = {
   answers: PropTypes.object.isRequired,
   helpfulness: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
-
+  productName: PropTypes.string.isRequired,
 };
 
 export default Question;

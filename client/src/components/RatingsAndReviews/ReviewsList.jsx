@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import Reviews from './Reviews.jsx';
-import config from '../../../../config.js';
+import config from '../../../../config';
+import AddReview from './AddReview.jsx'
 
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
+  const [reviewsShown, setReviewsShown] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [reviewsPerPage] = useState(2);
+  const [currentList, setCurrentList] = useState(1);
+  const [reviewsPerPress] = useState(2);
+  const [reviewsPerPage, setReviewsPerPage] = useState(2);
+  const [hasReachedEnd, setHasReachedEnd] = useState(false);
 
   useEffect(() => {
-    // const fetchPosts = async () => {
-    //   setLoading(true);
-    //   const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    //   setReviews(res.data);
-    //   console.log(res.data);
-    //   setLoading(false);
-    // };
-    // fetchPosts();
     setLoading(true);
     axios('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/', {
       headers: config,
@@ -26,7 +23,7 @@ const ReviewsList = ({ productID }) => {
     })
       .then((list) => {
         setReviews(list.data.results);
-
+        setReviewsShown(list.data.results.slice(0, reviewsPerPress));
         setLoading(false);
       })
       .catch((err) => {
@@ -34,8 +31,13 @@ const ReviewsList = ({ productID }) => {
       });
   }, []);
 
+  // 'Add more' button click handler increments currentList
+  const onAddMoreClick = () => {
+    setReviewsPerPage(reviewsPerPage + 2);
+  };
+
   // Get current reviews
-  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfLastReview = currentList * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
   const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
 
@@ -43,8 +45,8 @@ const ReviewsList = ({ productID }) => {
     <div>
       <h1>Ratings and Reviews</h1>
       <Reviews reviews={currentReviews} loading={loading} />
-      <button type="button">More Reviews</button>
-      <button type="button">Add A Review +</button>
+      <button onClick={onAddMoreClick}>More Reviews </button>
+      <AddReview />
     </div>
   );
 };

@@ -9,11 +9,50 @@ const request = {
       params: { product_id: productID },
     }),
 
+  getProductInfo: (productID) =>
+    axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}`, {
+      headers: config,
+    }),
+
   putRequest: (questionID, helpfulOrReport) =>
     axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${questionID}/${helpfulOrReport}/`, {
       headers: config,
       method: 'PUT',
     }),
+
+  postQuestionRequest: (productID, formInfo) =>
+    axios('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/', {
+      headers: config,
+      method: 'POST',
+      params: {
+        body: formInfo[0].value,
+        name: formInfo[1].value,
+        email: formInfo[2].value,
+        product_id: productID,
+      },
+    }),
+
+  postAnswerRequest: (questionID, formInfo) =>
+    axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${questionID}/answers`, {
+      headers: config,
+      method: 'POST',
+      params: {
+        body: formInfo[0].value,
+        name: formInfo[1].value,
+        email: formInfo[2].value,
+      },
+    }),
+
+  postInteractionRequest: (elementClicked, widgetClicked, timeStamp) =>
+    axios('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/interactions', {
+      headers: config,
+      method: 'POST',
+      params: {
+        element: elementClicked,
+        widget: widgetClicked,
+        time: timeStamp,
+      }
+  }),
 };
 
 export default request;

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { SingleLineInput, HiddenButton } from '../../css/sharedcss.jsx';
 
-const Form = styled.form`
+const SearchForm = styled.form`
   ${(props) => {
     if (!props.anyQuestions) {
       return `
@@ -17,10 +18,10 @@ const Form = styled.form`
 
 const Search = ({ onSearchChange, onSearchSubmit, anyQuestions }) => (
 
-  <Form anyQuestions={anyQuestions}>
-    <input type="text" onChange={(e) => { onSearchChange(e); }} placeholder="Search questions" />
-    <input type="submit" value="Search" onClick={(e) => onSearchSubmit(e)} />
-  </Form>
+  <SearchForm anyQuestions={anyQuestions}>
+    <SingleLineInput type="text" onChange={(e) => { onSearchChange(e); }} placeholder="Search questions" />
+    <HiddenButton type="submit" value="Search" onClick={(e) => onSearchSubmit(e)} />
+  </SearchForm>
 
 );
 
