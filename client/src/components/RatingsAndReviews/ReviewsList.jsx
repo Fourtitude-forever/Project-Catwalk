@@ -4,7 +4,14 @@ import styled from 'styled-components';
 
 import Reviews from './Reviews.jsx';
 import config from '../../../../config';
-import AddReview from './AddReview.jsx'
+import AddReview from './AddReview.jsx';
+import { Headers2, SectionBG1, Button } from '../../css/sharedcss.jsx';
+
+const HelpfulDiv = styled.div`
+float: left;
+display: flex;
+padding-right: 20%;
+`;
 
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
@@ -13,7 +20,6 @@ const ReviewsList = ({ productID }) => {
   const [currentList, setCurrentList] = useState(1);
   const [reviewsPerPress] = useState(2);
   const [reviewsPerPage, setReviewsPerPage] = useState(2);
-  const [hasReachedEnd, setHasReachedEnd] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -36,18 +42,24 @@ const ReviewsList = ({ productID }) => {
     setReviewsPerPage(reviewsPerPage + 2);
   };
 
+  // Hide Button More Reviews Button
+  // if reviewsPerPage >= setReviews.length
+  // list.data.results.length
+  // Hide Button
+
   // Get current reviews
   const indexOfLastReview = currentList * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
   const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
 
   return (
-    <div>
-      <h1>Ratings and Reviews</h1>
+    <SectionBG1>
       <Reviews reviews={currentReviews} loading={loading} />
-      <button onClick={onAddMoreClick}>More Reviews </button>
-      <AddReview />
-    </div>
+      <HelpfulDiv>
+        <Button onClick={onAddMoreClick}>More Reviews </Button>
+        <AddReview />
+      </HelpfulDiv>
+    </SectionBG1>
   );
 };
 

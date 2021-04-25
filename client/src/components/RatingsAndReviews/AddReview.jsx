@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
+import {
+  Headers2, Button, CloseButton, Form, FormInput} from '../../css/sharedcss.jsx';
+
 const StyledInput = styled.input`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 width: 800px;
@@ -55,7 +58,7 @@ const AddReview = () => {
 
   return (
     <div>
-      <StyledButton type="submit" onClick={() => setReviewIsOpen(true)}>Add A Review +</StyledButton>
+      <Button type="submit" onClick={() => setReviewIsOpen(true)}>Add A Review +</Button>
       <Modal
         isOpen={ReviewIsOpen}
         ariaHideApp={false}
@@ -80,7 +83,7 @@ const AddReview = () => {
             />
           </label>
           <p> </p>
-          <StyledButton type="submit"> SUBMIT</StyledButton>
+          <Button type="submit">SUBMIT</Button>
         </FormDiv>
       </Modal>
     </div>
