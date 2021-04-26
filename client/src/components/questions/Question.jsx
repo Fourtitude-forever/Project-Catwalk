@@ -52,7 +52,7 @@ const Question = ({
   const [answersShown, setAnswersShown] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [answerButtonText, setAnswerButtonText] = useState('');
-  const [isHelpfulClicked, setIsHelpfulClicked] = useState(false);
+  const [isHelpfulClicked, setIsHelpfulClicked] = useState(localStorage.getItem('helpfulSubmitted'));
   const [isReportClicked, setIsReportClicked] = useState(false);
   const [showReplyIcon, setShowReplyIcon] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -79,6 +79,7 @@ const Question = ({
         .catch((err) => console.log(err))
         .then(() => {
           setIsHelpfulClicked(true);
+          localStorage.setItem('helpfulSubmitted', true);
         });
     }
   };
