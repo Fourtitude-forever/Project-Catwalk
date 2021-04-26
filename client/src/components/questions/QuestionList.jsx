@@ -32,16 +32,13 @@ const QuestionList = ({ productID, onCompClick }) => {
   const [searchInput, setSearchInput] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [productName, setProductName] = useState('');
-  const [countClick, setCountClick] = useState(0);
 
   useEffect(() => {
     setLoading(true);
     request.getProductRequest(productID)
       .then((list) => {
         const unsortedQ = list.data.results;
-        console.log('unsorted  is ', unsortedQ);
         const sortedQ = unsortedQ.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
-        console.log('sorted  is ', sortedQ);
         setQuestions(sortedQ);
         setQuestionsShown(sortedQ.slice(0, questionsPerPress));
         setLoading(false);
@@ -150,6 +147,7 @@ const QuestionList = ({ productID, onCompClick }) => {
 
 QuestionList.propTypes = {
   productID: PropTypes.number.isRequired,
+  onCompClick: PropTypes.func.isRequired,
 };
 
 export default QuestionList;
