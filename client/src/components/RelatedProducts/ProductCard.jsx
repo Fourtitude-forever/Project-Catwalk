@@ -14,6 +14,7 @@ const ProductCardDiv = styled.div`
   margin:10px;
   box-shadow: 2px 10px 12px rgba(0,0,0,0.5);
   box-sizing: border-box;
+
 `;
 
 const ProductCategoryDiv = styled.div`
@@ -106,6 +107,7 @@ const ProductCard = ({ id, category, name, price, style = {}}) => {
         <ProductPrice_Div>
           <Price>{price}</Price>
         </ProductPrice_Div>
+        <div>☆☆☆☆☆</div>
       </Details_Div>
     </ProductCardDiv>
   )
