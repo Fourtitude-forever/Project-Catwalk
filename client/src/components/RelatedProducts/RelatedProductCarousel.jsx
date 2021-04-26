@@ -4,8 +4,12 @@ import styled from 'styled-components';
 import { get } from 'lodash';
 
 
-const RelatedProductCarousel = ({ productData, productStyle }) => {
+const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler}) => {
   const [carouselIndex, setcarouselIndex] = useState(0);
+
+  const onClickHandler = (productCard_id) => {
+
+  };
 
   const CarouselDiv = styled.div`
   display: flex;
@@ -26,7 +30,9 @@ const RelatedProductCarousel = ({ productData, productStyle }) => {
       </div>
       { productData.map((product, key) => (
           <ProductCard
+              clickHandler={cardClickHandler}
               key={product.id}
+              id={product.id}
               category={product.category}
               name={product.name}
               price={product.default_price}

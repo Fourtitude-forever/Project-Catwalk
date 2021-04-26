@@ -76,7 +76,7 @@ const StarButton = styled.button`
   display: flex;
 `;
 
-const ProductCard = ({ id, category, name, price, style = {}}) => {
+const ProductCard = ({ id, category, name, price, style = {}, clickHandler}) => {
 
   // const image = get(style, 'results[0].photos[0].thumbnail_url');
   // console.log('thisis our image', image);
@@ -92,7 +92,10 @@ const ProductCard = ({ id, category, name, price, style = {}}) => {
   };
 
   return(
-    <ProductCardDiv>
+    <ProductCardDiv onClick={() => {
+      console.log('you clicked')
+      clickHandler(id);
+    }}>
       <ThumbnailDiv>
         <ProductThumbnail src={getPicture(style.results)} />
         {/* <StarButton>☆</StarButton> */}

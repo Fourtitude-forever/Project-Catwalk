@@ -27,16 +27,25 @@ class App extends React.Component {
     this.state = {
       productID: 23146,
     };
+
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+
+  //======function for setting state with clicking a related product card====
+  onClickHandler(relatedProduct_id) {
+    this.setState({productID: relatedProduct_id})
+
   }
 
   render() {
     // const { productID } = this.state.productID;
+    console.log('this is state', this.state);
     return (
       <div>
         <GlobalStyle />
         <div>Hello From App</div>
         <ProductDetail productID={this.state.productID} />
-        <RelatedProducts productID={this.state.productID} />
+        <RelatedProducts productID={this.state.productID} clickHandler={this.onClickHandler}/>
         <RatingsAndReviews productID={this.state.productID} />
         <QuestionListWithTracking
           productID={this.state.productID}

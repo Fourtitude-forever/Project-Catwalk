@@ -6,7 +6,7 @@ import RelatedProductCarousel from './RelatedProductCarousel.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
 
-const RelatedProducts = ({ productID }) => {
+const RelatedProducts = ({ productID, clickHandler }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -17,12 +17,12 @@ const RelatedProducts = ({ productID }) => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}/related`, {headers: config})
       .then((products) => {
         // TODO: Remove double data
-        setRelatedProducts([...products.data, ...products.data]);
+        setRelatedProducts([...products.data,]);
       })
       .catch((err) => {
         console.log(err.response, 'err in req1')
       })
-    }, [])
+    }, [productID])
 
   useEffect(() => {
     if(relatedProducts.length > 0) {
@@ -71,13 +71,14 @@ const RelatedProducts = ({ productID }) => {
 
   console.log('productData', productData);
   console.log('productStyle', productStyle);
+  console.log('relatedProducts', relatedProducts);
 
 
 
   return (
     <div className="RelatedProducts">
       <h1>Related Products</h1>
-      <RelatedProductCarousel productData={productData} productStyle={productStyle} />
+      <RelatedProductCarousel productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
     </div>
   )
 }
