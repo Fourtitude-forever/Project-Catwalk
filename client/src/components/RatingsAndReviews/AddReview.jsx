@@ -16,6 +16,32 @@ const AddReview = () => {
         isOpen={ReviewIsOpen}
         ariaHideApp={false}
         onRequestClose={() => setReviewIsOpen(false)}
+        style={{
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.35)',
+          },
+          content: {
+            width: '40%',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            right: '40px',
+            bottom: '40px',
+            transform: 'translate(-50%, -50%)',
+            border: '1px solid #ccc',
+            background: '#d3e0ea',
+            overflow: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            borderRadius: '30px',
+            outline: 'none',
+            padding: '20px',
+          },
+        }}
       >
 
         <Headers2>Place You Review Below</Headers2>
