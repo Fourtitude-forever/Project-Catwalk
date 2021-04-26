@@ -38,8 +38,12 @@ const QuestionList = ({ productID, onCompClick }) => {
     setLoading(true);
     request.getProductRequest(productID)
       .then((list) => {
-        setQuestions(list.data.results);
-        setQuestionsShown(list.data.results.slice(0, questionsPerPress));
+        const unsortedQ = list.data.results;
+        console.log('unsorted  is ', unsortedQ);
+        const sortedQ = unsortedQ.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
+        console.log('sorted  is ', sortedQ);
+        setQuestions(sortedQ);
+        setQuestionsShown(sortedQ.slice(0, questionsPerPress));
         setLoading(false);
       })
       .catch((err) => {
