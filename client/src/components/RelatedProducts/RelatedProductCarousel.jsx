@@ -20,25 +20,30 @@ const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler})
   padding: 10px;
   height: 350px;
   width: 100%;
-  overflow-x: hidden;
 `;
-
+const ProductCards = styled.div`
+  display: flex;
+  overflow-x: hidden;
+  //box-shaddow:
+`;
   return (
     <CarouselDiv >
       <div className="carousel_actions">
         <button id="carousel_button--prev" aria-label="Previous_cards">˂</button>
       </div>
-      { productData.map((product, key) => (
-          <ProductCard
-              clickHandler={cardClickHandler}
-              key={product.id}
-              id={product.id}
-              category={product.category}
-              name={product.name}
-              price={product.default_price}
-              style={get(productStyle, key)}
-          />
-      ))}
+      <ProductCards>
+        { productData.map((product, key) => (
+            <ProductCard
+                clickHandler={cardClickHandler}
+                key={product.id}
+                id={product.id}
+                category={product.category}
+                name={product.name}
+                price={product.default_price}
+                style={get(productStyle, key)}
+            />
+        ))}
+      </ProductCards>
       <div className="carousel_actions">
         <button id="carousel_button--next" aria-label="Next_cards">˃</button>
       </div>
