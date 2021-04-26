@@ -8,7 +8,6 @@ import { SectionBG1, Headers2 } from '../../css/sharedcss.jsx';
 import config from '../../../../config';
 
 const HelpfulDiv = styled.div`
-
 display: flex;
 padding-right: 20%;
 `;

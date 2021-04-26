@@ -20,6 +20,7 @@ const ReviewsList = ({ productID }) => {
   const [currentList, setCurrentList] = useState(1);
   const [reviewsPerPress] = useState(2);
   const [reviewsPerPage, setReviewsPerPage] = useState(2);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -42,10 +43,9 @@ const ReviewsList = ({ productID }) => {
     setReviewsPerPage(reviewsPerPage + 2);
   };
 
-  // Hide Button More Reviews Button
-  // if reviewsPerPage >= setReviews.length
-  // list.data.results.length
-  // Hide Button
+  const onOpenModalClick = () => {
+    setShowModal(!showModal);
+  };
 
   // Get current reviews
   const indexOfLastReview = currentList * reviewsPerPage;
