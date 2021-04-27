@@ -13,6 +13,19 @@ display: flex;
 padding-right: 20%;
 `;
 
+const MoreReviewsButton = styled(Button)`
+${(props) => {
+    if (props.reachedEnd) {
+      return `
+      visibility: hidden;
+    `;
+    }
+    return `
+    visibility: normal;
+  `;
+  }}
+`;
+
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
   const [reviewsShown, setReviewsShown] = useState([]);
@@ -20,7 +33,6 @@ const ReviewsList = ({ productID }) => {
   const [currentList, setCurrentList] = useState(1);
   const [reviewsPerPress] = useState(2);
   const [reviewsPerPage, setReviewsPerPage] = useState(2);
-  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -41,10 +53,6 @@ const ReviewsList = ({ productID }) => {
   // 'Add more' button click handler increments currentList
   const onAddMoreClick = () => {
     setReviewsPerPage(reviewsPerPage + 2);
-  };
-
-  const onOpenModalClick = () => {
-    setShowModal(!showModal);
   };
 
   // Get current reviews

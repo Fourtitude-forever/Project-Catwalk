@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import * as moment from 'moment';
 
 import StarRating from './starRating.jsx';
+import { ThreadSubHeading } from '../../css/sharedcss.jsx';
 
 const LineBreak = styled.div`
 width: 60%;
@@ -17,11 +18,27 @@ const ReviewHeading = styled.p`
   margin-bottom: 0;
 `;
 
+const Helpfulness = styled.span`
+  ${(props) => {
+    if (!props.alreadyClicked) {
+      return `
+        &:hover {
+          text-decoration: underline;
+        }
+      `;
+    }
+    return `
+    &:hover {
+      text-decoration: none;
+    }
+    `;
+  }}
+`;
+
 const Reviews = ({ reviews, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
-
   return (
     <div>
       <div>
@@ -45,6 +62,15 @@ const Reviews = ({ reviews, loading }) => {
             <span>
               {review.body}
             </span>
+            <ThreadSubHeading>
+              Helpful?
+              <Helpfulness>
+                {` Yes (${review.helpfulness}) `}
+              </Helpfulness>
+              <Helpfulness>
+                Report
+              </Helpfulness>
+            </ThreadSubHeading>
             <LineBreak />
           </div>
         ))}

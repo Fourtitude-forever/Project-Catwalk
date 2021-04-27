@@ -55,7 +55,6 @@ function RatingsAndReviews({ productID }) {
         <RatingSpan>{avgRating}</RatingSpan>
         <StarRating stars={avgRating} />
       </HelpfulDiv>
-      <span> </span>
       <Top>Average Rating</Top>
       <Headers2>Ratings and Reviews</Headers2>
       <ReviewsList productID={productID} />
