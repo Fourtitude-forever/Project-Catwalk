@@ -38,7 +38,7 @@ class App extends React.Component {
         <RelatedProducts productID={this.state.productID} />
         <ProductDetail productID={this.state.productID} />
         <RatingsAndReviews productID={this.state.productID} />
-        <QuestionListWithTracking
+        <QuestionList
           productID={this.state.productID}
         />
       </div>
