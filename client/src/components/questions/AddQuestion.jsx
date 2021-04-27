@@ -61,7 +61,7 @@ const AddQuestion = ({
 
 AddQuestion.propTypes = {
   productName: PropTypes.string.isRequired,
-  // productID: PropTypes.number.isRequired,
+  productID: PropTypes.number.isRequired,
   onOpenModalClick: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
 };

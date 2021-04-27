@@ -144,8 +144,8 @@ const QuestionList = ({ productID, onCompClick }) => {
   );
 };
 
-// QuestionList.propTypes = {
-//   productID: PropTypes.number.isRequired,
-// };
+QuestionList.propTypes = {
+  productID: PropTypes.number.isRequired,
+};
 
 export default QuestionList;
