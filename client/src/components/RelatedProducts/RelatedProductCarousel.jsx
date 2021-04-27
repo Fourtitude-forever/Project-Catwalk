@@ -62,10 +62,15 @@ const NextButton_Div = styled.div`
 `;
 
   const prevButton = () => {
-    setcarouselStartIndex(carouselStartIndex - 1);
+    if (carouselStartIndex > 0) {
+      setcarouselStartIndex(carouselStartIndex - 1);
+    }
   }
   const nextButton = () => {
-    setcarouselStartIndex(carouselStartIndex + 1);
+    if(carouselStartIndex < productData.length - 1){
+      setcarouselStartIndex(carouselStartIndex + 1);
+    }
+
   }
 
   const productDataFromStart = productData.slice(carouselStartIndex)
