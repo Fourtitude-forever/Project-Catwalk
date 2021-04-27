@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import * as moment from 'moment';
 
 import StarRating from './starRating.jsx';
@@ -78,4 +79,10 @@ const Reviews = ({ reviews, loading }) => {
     </div>
   );
 };
+
+Reviews.propTypes = {
+  reviews: PropTypes.array.isRequired,
+
+};
+
 export default Reviews;
