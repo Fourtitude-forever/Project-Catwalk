@@ -17,7 +17,7 @@ const RelatedProducts = ({ productID, clickHandler }) => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}/related`, {headers: config})
       .then((products) => {
         // TODO: Remove double data
-        setRelatedProducts([...products.data,]);
+        setRelatedProducts(products.data);
       })
       .catch((err) => {
         console.log(err.response, 'err in req1')

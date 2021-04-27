@@ -14,52 +14,55 @@ const ProductCardDiv = styled.div`
   margin:10px;
   box-shadow: 2px 10px 12px rgba(0,0,0,0.5);
   box-sizing: border-box;
-
+  cursor: pointer;
+  transition: 0.5s;
 `;
 
 const ProductCategoryDiv = styled.div`
-  border: 3px solid blue;
+  //border: 3px solid blue;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  padding-top: 3px;
 `;
 
 const ThumbnailDiv = styled.div`
-  border: 3px solid red;
+  //border: 3px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const Details_Div = styled.div`
-  border: 3px solid teal;
+  //border: 3px solid teal;
   display: flex;
   flex-direction: column;
   align-items: baseline;
   align-self: stretch;
+  padding-left: 3px;
 `;
 
 const ProductName_Div = styled.div`
-  border: 3px solid purple;
+  //border: 3px solid purple;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 5px;
 `;
 
 const ProductPrice_Div = styled.div`
-  border: 3px solid yellow;
+  //border: 3px solid yellow;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const Category = styled.span`
-  font-size: 12px;
+  font-size: 16px;
 `;
 
 const Price = styled.span`
-  font-size: 12px;
+  font-size: 14px;
 `;
 
 const ProductThumbnail = styled.img`
@@ -71,9 +74,18 @@ const ProductThumbnail = styled.img`
   height: 200px;
 `;
 
+const Name = styled.span`
+  font-weight: bold;
+  font-size: 16px;
+`;
+
 const StarButton = styled.button`
   border: 0px;
   display: flex;
+`;
+
+const Rating_Div = styled.div`
+  padding-top: 3px;
 `;
 
 const ProductCard = ({ id, category, name, price, style = {}, clickHandler}) => {
@@ -105,12 +117,12 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler}) => 
           <Category>{category}</Category>
         </ProductCategoryDiv>
         <ProductName_Div>
-          <span>{name}</span>
+          <Name>{name}</Name>
         </ProductName_Div>
         <ProductPrice_Div>
           <Price>{price}</Price>
         </ProductPrice_Div>
-        <div>☆☆☆☆☆</div>
+        <Rating_Div>☆☆☆☆☆</Rating_Div>
       </Details_Div>
     </ProductCardDiv>
   )

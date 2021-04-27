@@ -5,34 +5,80 @@ import { get } from 'lodash';
 
 
 const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler}) => {
-  const [carouselIndex, setcarouselIndex] = useState(0);
+  const [carouselStartIndex, setcarouselStartIndex] = useState(0);
 
   const onClickHandler = (productCard_id) => {
 
   };
 
   const CarouselDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid orange;
-  margin: 20px;
-  padding: 10px;
-  height: 350px;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid orange;
+    margin: 20px;
+    padding: 10px;
+    height: 350px;
+    width: 85%;
+    overflow: hidden;
+    position: relative;
+  `;
+
+  const ProductCards = styled.div`
+    display: flex;
+    width: 85%;
+    height: 350px;
+    margin: 200px auto;
+    overflow-x: auto;
+
+  `;
+
+  const PrevButton = styled.button`
+    position: absolute;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;
+    background: none;
+    border: none;
+  `;
+
+const NextButton = styled.button`
+  position: absolute;
+  font-size: 60px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1;
+  background: none;
+  border: none;
+  justify-content: right;
 `;
-const ProductCards = styled.div`
+
+const NextButton_Div = styled.div`
   display: flex;
-  overflow-x: hidden;
-  //box-shaddow:
+  //position: absolute;
+  //justify-content: right;
+  padding-right:40px;
 `;
+
+  const prevButton = () => {
+    setcarouselStartIndex(carouselStartIndex - 1);
+  }
+  const nextButton = () => {
+    setcarouselStartIndex(carouselStartIndex + 1);
+  }
+
+  const productDataFromStart = productData.slice(carouselStartIndex)
+  const productStyleFromStart = productStyle.slice(carouselStartIndex)
+
+
   return (
     <CarouselDiv >
       <div className="carousel_actions">
-        <button id="carousel_button--prev" aria-label="Previous_cards">˂</button>
+        <PrevButton id="carousel_button--prev" onClick={prevButton}>˂</PrevButton>
       </div>
       <ProductCards>
-        { productData.map((product, key) => (
+        { productDataFromStart.map((product, key) => (
             <ProductCard
                 clickHandler={cardClickHandler}
                 key={product.id}
@@ -40,13 +86,13 @@ const ProductCards = styled.div`
                 category={product.category}
                 name={product.name}
                 price={product.default_price}
-                style={get(productStyle, key)}
+                style={get(productStyleFromStart, key)}
             />
         ))}
       </ProductCards>
-      <div className="carousel_actions">
-        <button id="carousel_button--next" aria-label="Next_cards">˃</button>
-      </div>
+      <NextButton_Div>
+        <NextButton id="carousel_button--next" onClick={nextButton}>˃</NextButton>
+      </NextButton_Div>
     </CarouselDiv>
   )
 }
