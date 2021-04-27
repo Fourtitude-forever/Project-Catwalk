@@ -13,6 +13,19 @@ display: flex;
 padding-right: 20%;
 `;
 
+const MoreReviewsButton = styled(Button)`
+${(props) => {
+    if (props.reachedEnd) {
+      return `
+      visibility: hidden;
+    `;
+    }
+    return `
+    visibility: normal;
+  `;
+  }}
+`;
+
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
   const [reviewsShown, setReviewsShown] = useState([]);
@@ -41,11 +54,6 @@ const ReviewsList = ({ productID }) => {
   const onAddMoreClick = () => {
     setReviewsPerPage(reviewsPerPage + 2);
   };
-
-  // Hide Button More Reviews Button
-  // if reviewsPerPage >= setReviews.length
-  // list.data.results.length
-  // Hide Button
 
   // Get current reviews
   const indexOfLastReview = currentList * reviewsPerPage;

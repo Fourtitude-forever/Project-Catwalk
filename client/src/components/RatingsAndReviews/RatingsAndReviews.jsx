@@ -8,7 +8,6 @@ import { SectionBG1, Headers2 } from '../../css/sharedcss.jsx';
 import config from '../../../../config';
 
 const HelpfulDiv = styled.div`
-
 display: flex;
 padding-right: 20%;
 `;
@@ -56,7 +55,6 @@ function RatingsAndReviews({ productID }) {
         <RatingSpan>{avgRating}</RatingSpan>
         <StarRating stars={avgRating} />
       </HelpfulDiv>
-      <span> </span>
       <Top>Average Rating</Top>
       <Headers2>Ratings and Reviews</Headers2>
       <ReviewsList productID={productID} />
