@@ -52,8 +52,9 @@ const Question = ({
   const [answersShown, setAnswersShown] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [answerButtonText, setAnswerButtonText] = useState('');
-  const [isHelpfulClicked, setIsHelpfulClicked] = useState(false);
-  const [isReportClicked, setIsReportClicked] = useState(false);
+  const [isHelpfulClicked, setIsHelpfulClicked] = useState(localStorage.getItem(`${id}`));
+  const [helpfulCount, setHelpfulCount] = useState(helpfulness);
+  const [isReportClicked, setIsReportClicked] = useState(localStorage.getItem(`report-${id}`));
   const [showReplyIcon, setShowReplyIcon] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -79,6 +80,8 @@ const Question = ({
         .catch((err) => console.log(err))
         .then(() => {
           setIsHelpfulClicked(true);
+          setHelpfulCount(helpfulness + 1);
+          localStorage.setItem(`${id}`, true);
         });
     }
   };
@@ -88,7 +91,10 @@ const Question = ({
       request.putRequest(questionID, 'report')
         .then((response) => console.log(response))
         .catch((err) => console.log(err))
-        .then(() => setIsReportClicked(true));
+        .then(() => {
+          setIsReportClicked(true);
+          localStorage.setItem(`reported-${id}`, true);
+        });
     }
   };
 
@@ -104,6 +110,10 @@ const Question = ({
     }
   }, [isCollapsed]);
 
+  // useEffect(() => {
+  //   setHelpfulCount(helpfulness);
+  // }, [helpfulCount]);
+
   return (
     <div>
       <QAThreadHeading showReplyIcon={showReplyIcon} onMouseEnter={onReplyHover} onMouseLeave={onReplyHover} onClick={onOpenModalClick}>{`Q: ${question}`}
@@ -115,13 +125,13 @@ const Question = ({
           alreadyClicked={isHelpfulClicked}
           onClick={() => onHelpfulnessClick(id)}
         >
-          {` Yes (${helpfulness}) `}
+          {` Yes (${helpfulCount}) `}
         </Helpfulness>
         <Report
           alreadyClicked={isReportClicked}
           onClick={() => onReportClick(id)}
         >
-          Report
+          { isReportClicked ? 'Reported' : 'Report' }
         </Report>
       </ThreadSubHeading>
       <ThreadSubList>
