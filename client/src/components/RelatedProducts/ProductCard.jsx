@@ -90,9 +90,6 @@ const Rating_Div = styled.div`
 
 const ProductCard = ({ id, category, name, price, style = {}, clickHandler}) => {
 
-  // const image = get(style, 'results[0].photos[0].thumbnail_url');
-  // console.log('thisis our image', image);
-
   const getPicture = (results = []) => {
     for (var result of results ) {
       if (result.['default?'] === true) {
@@ -110,7 +107,6 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler}) => 
     }}>
       <ThumbnailDiv>
         <ProductThumbnail src={getPicture(style.results)} />
-        {/* <StarButton>☆</StarButton> */}
       </ThumbnailDiv>
       <Details_Div>
         <ProductCategoryDiv>

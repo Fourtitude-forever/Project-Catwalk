@@ -6,6 +6,17 @@ import RelatedProductCarousel from './RelatedProductCarousel.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
 
+const CarouselDiv = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+border: 3px solid orange;
+margin: 20px;
+padding: 10px;
+height: 350px;
+width: 100%;
+`;
+
 const RelatedProducts = ({ productID, clickHandler }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);

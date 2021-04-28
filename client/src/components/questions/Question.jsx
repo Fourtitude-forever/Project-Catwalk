@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Answer from './Answer.jsx';
 import AddAnswer from './AddAnswer.jsx';
 import request from '../../lib/getInfo.js';
-import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
+import { ThreadBlock, ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
 
 const Helpfulness = styled.span`
   ${(props) => {
@@ -44,6 +44,11 @@ const QAThreadHeading = styled(ThreadHeading)`
   }}
 `;
 
+const AnswerHeading = styled(ThreadHeading)`
+  vertical-align: top;
+  font-size: 0.8em;
+`;
+
 const Report = styled(Helpfulness)``;
 
 const Question = ({
@@ -52,8 +57,9 @@ const Question = ({
   const [answersShown, setAnswersShown] = useState([]);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [answerButtonText, setAnswerButtonText] = useState('');
-  const [isHelpfulClicked, setIsHelpfulClicked] = useState(false);
-  const [isReportClicked, setIsReportClicked] = useState(false);
+  const [isHelpfulClicked, setIsHelpfulClicked] = useState(localStorage.getItem(`${id}`));
+  const [helpfulCount, setHelpfulCount] = useState(helpfulness);
+  const [isReportClicked, setIsReportClicked] = useState(localStorage.getItem(`report-${id}`));
   const [showReplyIcon, setShowReplyIcon] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -79,6 +85,8 @@ const Question = ({
         .catch((err) => console.log(err))
         .then(() => {
           setIsHelpfulClicked(true);
+          setHelpfulCount(helpfulness + 1);
+          localStorage.setItem(`${id}`, true);
         });
     }
   };
@@ -88,7 +96,10 @@ const Question = ({
       request.putRequest(questionID, 'report')
         .then((response) => console.log(response))
         .catch((err) => console.log(err))
-        .then(() => setIsReportClicked(true));
+        .then(() => {
+          setIsReportClicked(true);
+          localStorage.setItem(`reported-${id}`, true);
+        });
     }
   };
 
@@ -97,12 +108,16 @@ const Question = ({
       setAnswersShown(answersInfo.slice(0, answersPerPress));
     } else if (isCollapsed) {
       setAnswersShown(answersInfo.slice(0, answersPerPress));
-      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>+</SmallButton>);
+      setAnswerButtonText(<SmallButton type="button" aria-label="add" onClick={onAddMoreClick}>+</SmallButton>);
     } else {
       setAnswersShown(answersInfo);
-      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>-</SmallButton>);
+      setAnswerButtonText(<SmallButton type="button" aria-label="less" onClick={onAddMoreClick}>-</SmallButton>);
     }
   }, [isCollapsed]);
+
+  // useEffect(() => {
+  //   setHelpfulCount(helpfulness);
+  // }, [helpfulCount]);
 
   return (
     <div>
@@ -115,15 +130,16 @@ const Question = ({
           alreadyClicked={isHelpfulClicked}
           onClick={() => onHelpfulnessClick(id)}
         >
-          {` Yes (${helpfulness}) `}
+          {` Yes (${helpfulCount}) `}
         </Helpfulness>
         <Report
           alreadyClicked={isReportClicked}
           onClick={() => onReportClick(id)}
         >
-          Report
+          { isReportClicked ? 'Reported' : 'Report' }
         </Report>
       </ThreadSubHeading>
+      <AnswerHeading as="span">A: </AnswerHeading>
       <ThreadSubList>
         {answersShown.map((answer, i) => (
           <Answer answer={answer} key={i} />

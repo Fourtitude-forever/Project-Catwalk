@@ -1,7 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import headers from '../../../../../../config.js';
 
 const StylesDiv = styled.div`
   border: 5px solid yellow;
@@ -9,21 +7,25 @@ const StylesDiv = styled.div`
   height:33%;
   display:flex;
   flex-direction: column;
+  box-sizing: border-box;
 `;
 
 const CirclesContainer = styled.div`
-  border: 5px solid orange;
   position: relative;
-  height:40%;
+  height:50%;
   display:flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 `
 
-const Circles = styled.div`
-   border-radius:50%;
+const Circles = styled.input`
+   border-radius: 50%;
    border:1px solid grey;
-   height:50px;
-   width:50px;
-   margin:5px
+   height:75%;
+   width:15%;
+   margin:10px;
+   overflow: hidden;
+   object-fit: cover;
 `
 
 const StyleTitle = styled.div`
@@ -38,7 +40,7 @@ const SelectedStyleTitle = styled.span`
 `
 
 
-function Styles() {
+function Styles({ styles, id, onStyleChange }) {
   return (
     <StylesDiv>
       <StyleTitle>
@@ -49,16 +51,15 @@ function Styles() {
       </StyleTitle>
 
       <CirclesContainer>
-        <Circles> </Circles>
-        <Circles> </Circles>
-        <Circles> </Circles>
-        <Circles> </Circles>
-      </CirclesContainer>
-      <CirclesContainer>
-        <Circles> </Circles>
-        <Circles> </Circles>
-        <Circles> </Circles>
-        <Circles> </Circles>
+        {
+          styles.map((style, index) => {
+            return <Circles
+                type="image"
+                src={style.photos[0].thumbnail_url}
+                onClick={() => onStyleChange(style.style_id)}
+              />
+          })
+        }
       </CirclesContainer>
     </StylesDiv>
   );
