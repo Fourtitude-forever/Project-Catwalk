@@ -26,6 +26,10 @@ export const Headers2 = styled.h2`
 // STYLES FOR THREADS //
 /////////////////////////////////////////
 
+export const ThreadBlock = styled.div`
+  border-bottom: solid 1px black;
+`;
+
 export const ThreadHeading = styled.p`
   font-size: 0.9em;
   font-weight: bold;
@@ -40,10 +44,11 @@ export const ThreadSubHeading = styled.p`
 `;
 
 export const ThreadSubList = styled.div`
-  margin-top: 5px;
-  margin-left: 35px;
+  margin-top: 0;
+  margin-left: 25px;
   max-height: 50vh;
   overflow: auto;
+  display: inline-block;
 `;
 
 export const ThreadSubItem = styled.p`
