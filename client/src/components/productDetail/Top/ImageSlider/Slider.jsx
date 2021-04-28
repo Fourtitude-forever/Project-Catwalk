@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import axios from 'axios';
 import SliderContent from './SliderContent.jsx';
 import Thumbnails from './Thumbnails.jsx';
-import config from '../../../../../../config.js';
 
 const SliderDiv = styled.div`
   border: 5px solid purple;
@@ -38,25 +36,9 @@ const RightButton = styled.button`
   background: none;
 `;
 
-function Slider({ productID }) {
-  // dummy array
-  // const sliderArr = images;
-
-  const [isloading, setLoading] = useState();
-  const [products, setProducts] = useState([]);
+function Slider({ selectedStyle }) {
   const [x, setX] = useState(0);
-
-  useEffect(() => {
-    setLoading(true);
-    axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}/styles`, { headers: config })
-      .then((product) => {
-        setProducts(product.data.results);
-        setLoading(false);
-      })
-      .catch((err) => {
-        throw err;
-      });
-  }, []);
+  const [isloading, setLoading] = useState(false);
 
   const goLeft = () => {
     if (x === 0) {
@@ -67,39 +49,56 @@ function Slider({ productID }) {
   };
 
   const goRight = () => {
-    if (x === -100 * (products.length - 1)) {
+    if (x === -100 * (selectedStyle[0].photos.length - 1)) {
       setX(0);
     } else {
       setX(x - 100);
     }
   };
 
+  function onThumbClick(index) {
+    setX(index);
+  }
+
+  let loadingIcon;
+  if (isloading) {
+    loadingIcon = <p>Please wait...loading</p>;
+  }
+
   return (
+
     <SliderDiv>
       {
-        products.map((item) => {
-          const styleId = 129643;
-          if (item.style_id === styleId) {
-            return item.photos.map((photo, i) => (
-              <SliderContent
-                photo={photo.url}
-                currentIndex={x}
-                key={i}
-              />
-            ));
-          }
-        })
+        selectedStyle[0] ? selectedStyle[0].photos.map((photo) => (
+          <SliderContent
+            photo={photo}
+            currentIndex={x}
+          />
+        )) : loadingIcon
+
       }
-      <LeftButton onClick={goLeft}>Left</LeftButton>
-      <RightButton onClick={goRight}>Right</RightButton>
-      {/* <Thumbnails currentIndex={x} /> */}
+      <LeftButton onClick={goLeft}>ᐸ</LeftButton>
+      <RightButton onClick={goRight}>ᐳ</RightButton>
+
+      {
+        selectedStyle[0] ? selectedStyle[0].photos.map((photo, i) => (
+          <Thumbnails
+            photo={photo}
+            currentIndex={x}
+            key={i}
+            id={i}
+            onThumbClick={onThumbClick}
+          />
+        )) : loadingIcon
+      }
+
     </SliderDiv>
 
   );
 }
 
 Slider.propTypes = {
-  productID: PropTypes.number.isRequired,
+  selectedStyle: PropTypes.array.isRequired,
 };
 
 export default Slider;

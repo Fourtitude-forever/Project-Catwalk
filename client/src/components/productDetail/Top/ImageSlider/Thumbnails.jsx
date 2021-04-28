@@ -1,50 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const ThumbnailsDiv = styled.div`
+const Img = styled.input`
   border: 1px solid grey;
   position: absolute;
-  left: 10px;
-  width:60px;
-  height:60px;
-  overflow:hidden;
+  left: 30px;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  object-fit: cover;
 `;
 
-const Img1 = styled.img`
-  top: 10px;
-`;
+function Thumbnails({ photo, id, onThumbClick }) {
+  const topVal = {
+    top: `${(id + 1) * 100}px`,
+  };
 
-const Img2 = styled.img`
-  top: 80px;
-`;
-
-const Img3 = styled.img`
-  top: 150px;
-`;
-
-const Img4 = styled.img`
-  top: 230px;
-`;
-
-const Img5 = styled.img`
-  top: 300px;
-`;
-
-function Thumbnails({ photo, currentIndex }) {
   return (
-    <ThumbnailsDiv>
-      <Img1 />
-      <Img2 />
-      <Img3 />
-      <Img4 />
-      <Img5 />
-    </ThumbnailsDiv>
+    <Img type="image" src={photo.thumbnail_url} style={topVal} onClick={() => onThumbClick(id * -100)} alt="thumbnail" />
   );
 }
 
 Thumbnails.propTypes = {
   photo: PropTypes.string.isRequired,
-  currentIndex: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  onThumbClick: PropTypes.func.isRequired,
 };
 export default Thumbnails;
