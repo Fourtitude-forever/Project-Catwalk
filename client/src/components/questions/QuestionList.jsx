@@ -37,8 +37,10 @@ const QuestionList = ({ productID, onCompClick }) => {
     setLoading(true);
     request.getProductRequest(productID)
       .then((list) => {
-        setQuestions(list.data.results);
-        setQuestionsShown(list.data.results.slice(0, questionsPerPress));
+        const unsortedQ = list.data.results;
+        const sortedQ = unsortedQ.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
+        setQuestions(sortedQ);
+        setQuestionsShown(sortedQ.slice(0, questionsPerPress));
         setLoading(false);
       })
       .catch((err) => {
@@ -145,6 +147,7 @@ const QuestionList = ({ productID, onCompClick }) => {
 
 QuestionList.propTypes = {
   productID: PropTypes.number.isRequired,
+  onCompClick: PropTypes.func.isRequired,
 };
 
 export default QuestionList;
