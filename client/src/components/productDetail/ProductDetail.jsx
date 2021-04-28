@@ -36,7 +36,7 @@ const Down = styled.div`
   margin:0.5%;
 `;
 
-function ProductDetail({ productID }) {
+function ProductDetail({ productID, onStarChange }) {
   const [isloading, setLoading] = useState(false);
   const [styles, setStyles] = useState([]);
   const [styleId, setStyleId] = useState();
@@ -46,7 +46,6 @@ function ProductDetail({ productID }) {
     setLoading(true);
     axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${productID}/styles`, { headers: config })
       .then((product) => {
-        console.log(product.data.results)
         setStyles(product.data.results);
         setStyleId(product.data.results[0].style_id);
         setSelectedStyle(product.data.results.filter((style) => (style.style_id === styleId)));
@@ -78,6 +77,7 @@ function ProductDetail({ productID }) {
           styleId={styleId}
           productID={productID}
           onStyleChange={onStyleChange}
+          onStarChange={onStarChange}
         />
       </Top>
       <Down>

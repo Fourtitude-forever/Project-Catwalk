@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
 
-import {
-  Headers2, Button,
-} from '../../../../css/sharedcss.jsx';
-
 const SelectorDiv = styled.div`
   border: 5px solid yellow;
   position: relative;
@@ -28,7 +24,7 @@ const DropBtn = styled.select`
   width: 200px;
 `;
 
-function Selectors({ selectedStyle }) {
+function Selectors({ selectedStyle, onStarChange }) {
   const [selectSku, setSelectSku] = useState();
   const [skus, setSkus] = useState({});
   const loadingIcon = <p>Please wait...loading</p>;
@@ -46,6 +42,7 @@ function Selectors({ selectedStyle }) {
       <SizeSelector selectedStyle={selectedStyle} onSizeChange={onSizeChange} />
       <QuantitySelector selectedStyle={selectedStyle} selectSku={selectSku} />
       <AddToBag />
+      <Star selectedStyle={selectedStyle} onStarChange={onStarChange} />
     </div>
   );
 }
@@ -100,7 +97,7 @@ function QuantitySelector({ selectedStyle, selectSku }) {
         {
           selectedStyle[0]
             ? setQuantity(selectedStyle[0]?.skus[selectSku]?.quantity)
-              .map((quantity) => <option>{quantity}</option>) : isloading
+              .map((quantity, i) => <option key={i}>{quantity}</option>) : isloading
         }
       </DropBtn>
     </form>
@@ -125,6 +122,24 @@ function AddToBag() {
     <AddtoBagButton>
       Add to bag
     </AddtoBagButton>
+  );
+}
+
+const StarButton = styled.button`
+border: 1px solid black;
+background: none;
+position: relative;
+display: inline-block;
+padding: 10px;
+margin: 10px;
+font-size: 20px;
+cursor: pointer;
+width: 200px;
+text-align: left;
+`
+function Star({ selectedStyle, onStarChange }) {
+  return (
+    <StarButton onClick={() => onStarChange(selectedStyle)}>⭐</StarButton>
   );
 }
 
