@@ -5,6 +5,17 @@ import ProductCard from './ProductCard.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
 
+const CarouselDiv = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+border: 3px solid orange;
+margin: 20px;
+padding: 10px;
+height: 350px;
+width: 100%;
+`;
+
 const RelatedProducts = ({ productID }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -66,20 +77,6 @@ const RelatedProducts = ({ productID }) => {
         console.log(response.err, 'err at req3')
       })
   }
-
-  console.log('productData', productData);
-  console.log('productStyle', productStyle);
-
-  const CarouselDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid orange;
-    margin: 20px;
-    padding: 10px;
-    height: 350px;
-    width: 100%;
-  `;
 
   return (
     <div className="RelatedProducts">

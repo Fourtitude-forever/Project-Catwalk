@@ -77,9 +77,6 @@ const StarButton = styled.button`
 
 const ProductCard = ({ id, category, name, price, style = {}}) => {
 
-  // const image = get(style, 'results[0].photos[0].thumbnail_url');
-  // console.log('thisis our image', image);
-
   const getPicture = (results = []) => {
     for (var result of results ) {
       if (result.['default?'] === true) {
@@ -94,7 +91,6 @@ const ProductCard = ({ id, category, name, price, style = {}}) => {
     <ProductCardDiv>
       <ThumbnailDiv>
         <ProductThumbnail src={getPicture(style.results)} />
-        {/* <StarButton>☆</StarButton> */}
       </ThumbnailDiv>
       <Details_Div>
         <ProductCategoryDiv>
