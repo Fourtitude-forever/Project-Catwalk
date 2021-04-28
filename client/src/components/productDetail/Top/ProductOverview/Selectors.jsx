@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import _ from 'underscore';
 
 import {
-  Headers2, Button
+  Headers2, Button,
 } from '../../../../css/sharedcss.jsx';
 
 const SelectorDiv = styled.div`
@@ -31,15 +31,14 @@ const DropBtn = styled.select`
 function Selectors({ selectedStyle }) {
   const [selectSku, setSelectSku] = useState();
   const [skus, setSkus] = useState({});
-  // const [selectSku, setSelectSku] = useState();
-  // v
+  const loadingIcon = <p>Please wait...loading</p>;
 
   function onSizeChange(sku) {
     setSelectSku(sku);
   }
 
   useEffect(() => {
-    selectedStyle[0] ? setSkus(selectedStyle[0].skus) : console.log('neyney');
+    selectedStyle[0] ? setSkus(selectedStyle[0].skus) : loadingIcon;
   }, []);
 
   return (
@@ -52,12 +51,24 @@ function Selectors({ selectedStyle }) {
 }
 
 function SizeSelector({ selectedStyle, onSizeChange }) {
+  const [isloading, setLoading] = useState(false);
+
+  let loadingIcon;
+  if (isloading) {
+    loadingIcon = <p>Please wait...loading</p>;
+  }
   return (
     <form>
       <DropBtn onChange={(e) => onSizeChange(e.target.value)}>
         <option>Select Size</option>
         {
-            selectedStyle[0] ? _.map(selectedStyle[0].skus, (sku, key) => (<option value={key}>{sku.size}</option>)) : console.log('nene')
+            selectedStyle[0]
+              ? _.map(selectedStyle[0].skus,
+                (sku, key) => (
+                  <option value={key} key={key}>
+                    {sku.size}
+                  </option>
+                )) : loadingIcon
           }
       </DropBtn>
     </form>
@@ -65,6 +76,8 @@ function SizeSelector({ selectedStyle, onSizeChange }) {
 }
 
 function QuantitySelector({ selectedStyle, selectSku }) {
+  const [isloading, setLoading] = useState(false);
+
   function setQuantity(num) {
     const quantities = [];
     let i = 0;
@@ -75,21 +88,26 @@ function QuantitySelector({ selectedStyle, selectSku }) {
     return quantities;
   }
 
+  let loadingIcon;
+  if (isloading) {
+    loadingIcon = <p>Please wait...loading</p>;
+  }
+
   return (
     <form>
       <DropBtn>
         <option>Quantity</option>
         {
           selectedStyle[0]
-            ? setQuantity(selectedStyle[0]?.skus[selectSku]?.quantity).map((quantity) => <option>{quantity}</option>) : console.log('yabadaba')
+            ? setQuantity(selectedStyle[0]?.skus[selectSku]?.quantity)
+              .map((quantity) => <option>{quantity}</option>) : isloading
         }
       </DropBtn>
     </form>
   );
 }
 
-function AddToBag() {
-  const AddtoBagButton = styled.button`
+const AddtoBagButton = styled.button`
     border: 1px solid black;
     background: none;
     position: relative;
@@ -102,14 +120,10 @@ function AddToBag() {
     text-align: left;
   `;
 
-  const Icon = styled.span`
-  text-align: center;
-  `;
-
+function AddToBag() {
   return (
     <AddtoBagButton>
       Add to bag
-      <Icon><i className="fas fa-shopping-cart" /></Icon>
     </AddtoBagButton>
   );
 }
