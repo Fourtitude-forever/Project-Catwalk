@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import _ from 'underscore';
 
 const SlideDiv = styled.img`
   border: 5px solid blue;
@@ -16,7 +15,7 @@ const SlideDiv = styled.img`
 
 function SliderContent({ photo, currentIndex }) {
   return (
-    <SlideDiv src={photo} style={{ transform: `translateX(${currentIndex}%)` }} />
+    <SlideDiv src={photo.url} style={{ transform: `translateX(${currentIndex}%)` }} />
   );
 }
 

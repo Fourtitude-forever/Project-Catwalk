@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import config from '../../../../../../config.js';
+import {
+  Headers2, Button
+} from '../../../../css/sharedcss.jsx';
 
 
 const ProductInfoDiv = styled.div`
@@ -17,18 +20,18 @@ const ProductInfoDiv = styled.div`
 
 const Cat = styled.div`
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 30px;
   padding-bottom:10px
 `;
 
 const Title = styled.div`
   font-weight: bold;
-  font-size: 30px;
+  font-size: 40px;
   padding-bottom:10px;
 `;
 
 const Price = styled.div`
-  font-size: 20px;
+  font-size: 30px;
 `;
 
 function ProductInformation({ productID }) {
