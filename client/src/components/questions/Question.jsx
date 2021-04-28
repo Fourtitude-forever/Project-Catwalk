@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Answer from './Answer.jsx';
 import AddAnswer from './AddAnswer.jsx';
 import request from '../../lib/getInfo.js';
-import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
+import { ThreadBlock, ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
 
 const Helpfulness = styled.span`
   ${(props) => {
@@ -42,6 +42,11 @@ const QAThreadHeading = styled(ThreadHeading)`
       `;
     }
   }}
+`;
+
+const AnswerHeading = styled(ThreadHeading)`
+  vertical-align: top;
+  font-size: 0.8em;
 `;
 
 const Report = styled(Helpfulness)``;
@@ -134,6 +139,7 @@ const Question = ({
           { isReportClicked ? 'Reported' : 'Report' }
         </Report>
       </ThreadSubHeading>
+      <AnswerHeading as="span">A: </AnswerHeading>
       <ThreadSubList>
         {answersShown.map((answer, i) => (
           <Answer answer={answer} key={i} />
