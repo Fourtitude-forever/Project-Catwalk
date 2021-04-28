@@ -32,7 +32,6 @@ const QuestionList = ({ productID, onCompClick }) => {
   const [searchInput, setSearchInput] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [productName, setProductName] = useState('');
-  const [countClick, setCountClick] = useState(0);
 
   useEffect(() => {
     setLoading(true);

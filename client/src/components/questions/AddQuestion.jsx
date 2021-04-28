@@ -19,7 +19,7 @@ const QuestionModal = styled(Modal)`
 `;
 
 const AddQuestion = ({
-  productName, onOpenModalClick, productID, showModal
+  productName, onOpenModalClick, productID, showModal,
 }) => {
   const onModalSubmit = (event) => {
     event.preventDefault();
@@ -29,7 +29,7 @@ const AddQuestion = ({
         console.log('Post Success!');
         onOpenModalClick();
       })
-      .then(() => location.reload())
+      // .then(() => location.reload())
       .catch((err) => { console.log(err); });
   };
 
