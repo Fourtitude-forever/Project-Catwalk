@@ -97,10 +97,10 @@ const Question = ({
       setAnswersShown(answersInfo.slice(0, answersPerPress));
     } else if (isCollapsed) {
       setAnswersShown(answersInfo.slice(0, answersPerPress));
-      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>+</SmallButton>);
+      setAnswerButtonText(<SmallButton type="button" aria-label="add" onClick={onAddMoreClick}>+</SmallButton>);
     } else {
       setAnswersShown(answersInfo);
-      setAnswerButtonText(<SmallButton type="button" onClick={onAddMoreClick}>-</SmallButton>);
+      setAnswerButtonText(<SmallButton type="button" aria-label="less" onClick={onAddMoreClick}>-</SmallButton>);
     }
   }, [isCollapsed]);
 

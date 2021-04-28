@@ -43,14 +43,6 @@ const server = setupServer(
           helpfulness: 6,
           photos: [],
         },
-        78: {
-          id: 78,
-          body: "9 lives",
-          date: "2019-11-12T00:00:00.000Z",
-          answerer_name: "iluvdogz",
-          helpfulness: 31,
-          photos: [],
-        },
       },
     },
     {
@@ -124,6 +116,18 @@ describe('QuestionList', () => {
     expect(screen.getByText('Questions and Answers')).toBeInTheDocument();
   });
 
+  it('renders Ratings and Reviews component', () => {
+    // render(<App />);
+    const { debug } = render(<App />);
+    expect(screen.getByText('Ratings and Reviews')).toBeInTheDocument();
+  });
+
+  it('renders Related Products component', () => {
+    // render(<App />);
+    const { debug } = render(<App />);
+    expect(screen.getByText('Related Products')).toBeInTheDocument();
+  });
+
   it('renders more questions on button press', async () => {
     render(<App />);
     expect(screen.getByText('See More Questions...')).toBeInTheDocument();
@@ -136,11 +140,18 @@ describe('QuestionList', () => {
   });
 
   it('renders more answers on button press', async () => {
-    render(<App />);
-    expect(screen.getByText('+')).toBeInTheDocument();
+    const { debug } = render(<App />);
+    expect(screen.getByText('+', { exact: false })).toBeInTheDocument();
+    expect(screen.queryByText('-')).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('+', { exact: false }));
+    await waitFor(() => {
+      // expect(screen.getByText('A: We are selling'), { exact: false }).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'less' })).toBeInTheDocument();
+    });
   });
 
-  xit('handles server error', async () => {
+  it('handles server error', async () => {
     server.use(
       // override the initial "GET /greeting" request handler
       // to return a 500 Server Error
