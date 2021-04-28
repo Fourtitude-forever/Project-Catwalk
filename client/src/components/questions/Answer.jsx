@@ -7,7 +7,7 @@ import { ThreadSubItem, ThreadSubHeading } from '../../css/sharedcss.jsx';
 const Answer = ({ answer }) => (
 
   <div>
-    <ThreadSubItem>{`A: ${answer.body}`}</ThreadSubItem>
+    <ThreadSubItem>{answer.body}</ThreadSubItem>
     <ThreadSubHeading>{`By ${answer.answerer_name}, ${moment(answer.date).format('MMMM DD, YYYY')}`}</ThreadSubHeading>
   </div>
 
