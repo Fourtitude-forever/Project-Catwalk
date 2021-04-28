@@ -46,6 +46,7 @@
     "bootstrap": "^3.3.7",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mongoose": "^5.11.9",
     "mysql": "^2.18.1",
