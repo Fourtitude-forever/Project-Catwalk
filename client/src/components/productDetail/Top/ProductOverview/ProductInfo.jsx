@@ -7,6 +7,7 @@ import {
   Headers2, Button
 } from '../../../../css/sharedcss.jsx';
 
+import StarRating from '../../../RatingsAndReviews/StarRating.jsx';
 
 const ProductInfoDiv = styled.div`
   border: 5px solid yellow;
@@ -34,7 +35,9 @@ const Price = styled.div`
   font-size: 20px;
 `;
 
-function ProductInformation({ productID }) {
+
+
+function ProductInformation({ productID, stars }) {
   const [isloading, setLoading] = useState(false);
   const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
@@ -63,7 +66,9 @@ function ProductInformation({ productID }) {
   return (
     <ProductInfoDiv>
       {loadingIcon}
-      <div>☆☆☆☆☆</div>
+      <p>
+        <StarRating stars={stars} />
+      </p>
       <Cat>{category}</Cat>
       <Title>{title}</Title>
       <Price>{price}</Price>
@@ -77,3 +82,4 @@ ProductInformation.propTypes = {
 };
 
 export default ProductInformation;
+

@@ -16,11 +16,11 @@ const ProducOverviewDiv = styled.div`
 `;
 
 function ProductOverview({
-  productID, styles, onStyleChange, selectedStyle, onStarChange
+  productID, styles, onStyleChange, selectedStyle, onStarChange, average
 }) {
   return (
     <ProducOverviewDiv>
-      <ProductInfo productID={productID} />
+      <ProductInfo productID={productID} stars={average} />
       <Styles styles={styles} onStyleChange={onStyleChange} />
       <Selectors selectedStyle={selectedStyle} onStarChange={onStarChange} />
     </ProducOverviewDiv>

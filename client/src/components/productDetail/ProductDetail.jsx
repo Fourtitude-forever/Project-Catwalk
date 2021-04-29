@@ -36,7 +36,7 @@ const Down = styled.div`
   margin:0.5%;
 `;
 
-function ProductDetail({ productID, onStarChange }) {
+function ProductDetail({ productID, onStarChange, average }) {
   const [isloading, setLoading] = useState(false);
   const [styles, setStyles] = useState([]);
   const [styleId, setStyleId] = useState();
@@ -78,6 +78,7 @@ function ProductDetail({ productID, onStarChange }) {
           productID={productID}
           onStyleChange={onStyleChange}
           onStarChange={onStarChange}
+          average={average}
         />
       </Top>
       <Down>
