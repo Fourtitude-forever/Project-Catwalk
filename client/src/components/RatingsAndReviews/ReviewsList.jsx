@@ -43,6 +43,13 @@ const ReviewsList = ({ productID }) => {
     setReviewsPerPage(reviewsPerPage + 2);
   };
 
+  // 'Sort Reviews' button click handler
+  const onSortClick = () => {
+    // console.log(reviews);
+    const sortedReviews = reviews.sort((x, y) => y.rating - x.rating);
+    setReviewsShown(sortedReviews);
+  };
+
   // Get current reviews
   const indexOfLastReview = currentList * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
@@ -52,6 +59,7 @@ const ReviewsList = ({ productID }) => {
     <SectionBG1>
       <Reviews reviews={currentReviews} loading={loading} />
       <HelpfulDiv>
+        <Button onClick={onSortClick}>Sort Reviews</Button>
         <Button onClick={onAddMoreClick}>More Reviews </Button>
         <AddReview />
       </HelpfulDiv>
