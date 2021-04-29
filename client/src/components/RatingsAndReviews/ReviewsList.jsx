@@ -1,29 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import Reviews from './Reviews.jsx';
 import config from '../../../../config';
 import AddReview from './AddReview.jsx';
-import { Headers2, SectionBG1, Button } from '../../css/sharedcss.jsx';
+import { SectionBG1, Button } from '../../css/sharedcss.jsx';
 
 const HelpfulDiv = styled.div`
 float: left;
 display: flex;
 padding-right: 20%;
-`;
-
-const MoreReviewsButton = styled(Button)`
-${(props) => {
-    if (props.reachedEnd) {
-      return `
-      visibility: hidden;
-    `;
-    }
-    return `
-    visibility: normal;
-  `;
-  }}
 `;
 
 const ReviewsList = ({ productID }) => {
@@ -69,6 +57,10 @@ const ReviewsList = ({ productID }) => {
       </HelpfulDiv>
     </SectionBG1>
   );
+};
+
+ReviewsList.propTypes = {
+  productID: PropTypes.number.isRequired,
 };
 
 export default ReviewsList;

@@ -27,17 +27,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productID: 23146,
+      productID: 23149,
       productAvgRating: 0,
+      starStyle: {},
     };
 
+    this.onStarChange = this.onStarChange.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
-  }
-
-  //======function for setting state with clicking a related product card====
-  onClickHandler(relatedProduct_id) {
-    this.setState({productID: relatedProduct_id})
-
   }
 
   componentDidMount() {
@@ -61,6 +57,14 @@ class App extends React.Component {
     sendRequest();
   }
 
+  onStarChange(style) {
+    this.setState({ starStyle: style });
+  }
+
+  onClickHandler(relatedProduct_id) {
+    this.setState({productID: relatedProduct_id})
+  }
+  
   render() {
     // const { productID } = this.state.productID;
     console.log('this is state', this.state);
@@ -68,8 +72,8 @@ class App extends React.Component {
       <div>
         <GlobalStyle />
         <div>Hello From App</div>
-        <ProductDetail productID={this.state.productID} />
         <RelatedProducts productID={this.state.productID} clickHandler={this.onClickHandler}/>
+        <ProductDetail productID={this.state.productID} onStarChange={this.onStarChange} average={this.state.productAvgRating} />
         <RatingsAndReviews average={this.state.productAvgRating} productID={this.state.productID} />
         <QuestionListWithTracking
           productID={this.state.productID}

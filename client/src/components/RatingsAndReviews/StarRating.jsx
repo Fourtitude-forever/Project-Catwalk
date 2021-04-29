@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 import IconStar from './IconStar.jsx';
 
 const S = {};
@@ -53,5 +55,9 @@ function StarRating(props) {
     </>
   );
 }
+
+StarRating.propTypes = {
+  stars: PropTypes.number.isRequired,
+};
 
 export default StarRating;
