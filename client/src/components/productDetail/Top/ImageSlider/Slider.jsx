@@ -69,10 +69,11 @@ function Slider({ selectedStyle }) {
 
     <SliderDiv>
       {
-        selectedStyle[0] ? selectedStyle[0].photos.map((photo) => (
+        selectedStyle[0] ? selectedStyle[0].photos.map((photo, i) => (
           <SliderContent
             photo={photo}
             currentIndex={x}
+            key={i}
           />
         )) : loadingIcon
 

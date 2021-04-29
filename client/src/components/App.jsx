@@ -27,9 +27,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productID: 23146,
+      productID: 23149,
       productAvgRating: 0,
+      starStyle: {},
     };
+
+    this.onStarChange = this.onStarChange.bind(this);
   }
 
   componentDidMount() {
@@ -53,14 +56,19 @@ class App extends React.Component {
     sendRequest();
   }
 
+  onStarChange(style) {
+    this.setState({ starStyle: style });
+  }
+
+
   render() {
     // const { productID } = this.state.productID;
     return (
       <div>
         <GlobalStyle />
         <div>Hello From App</div>
-        <ProductDetail productID={this.state.productID} />
         <RelatedProducts productID={this.state.productID} />
+        <ProductDetail productID={this.state.productID} onStarChange={this.onStarChange} />
         <RatingsAndReviews average={this.state.productAvgRating} productID={this.state.productID} />
         <QuestionListWithTracking
           productID={this.state.productID}
