@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import * as moment from 'moment';
 
-import StarRating from './starRating.jsx';
+import StarRating from './StarRating.jsx';
 import { ThreadSubHeading } from '../../css/sharedcss.jsx';
 
 const LineBreak = styled.div`
