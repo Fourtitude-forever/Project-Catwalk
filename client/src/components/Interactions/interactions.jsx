@@ -7,10 +7,10 @@ function withTracking(WrappedComponent) {
 
     const onComponentClick = (event) => {
       event.persist();
-      console.log('clicked widget is: ', WrappedComponent.name);
-      console.log('clicked element is: ', event.target);
+      // console.log('clicked widget is: ', WrappedComponent.name);
+      // console.log('clicked element is: ', event.target);
       const timeStamp = new Date().toISOString();
-      console.log('clicked time is: ', timeStamp);
+      // console.log('clicked time is: ', timeStamp);
       request.postInteractionRequest(event.target.toString(), WrappedComponent.name, timeStamp)
         .then(() => console.log('success'))
         .catch((err) => console.log(err));

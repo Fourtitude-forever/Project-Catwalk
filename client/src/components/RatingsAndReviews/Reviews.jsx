@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 import PropTypes from 'prop-types';
-import * as moment from 'moment';
 
 import StarRating from './starRating.jsx';
 import { ThreadSubHeading } from '../../css/sharedcss.jsx';
