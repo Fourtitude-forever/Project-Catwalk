@@ -5,6 +5,7 @@ import axios from 'axios';
 import ProductDetail from './productDetail/ProductDetail.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
+import MyOutfit from './MyOutfit/MyOutfit.jsx'
 import QuestionList from './questions/QuestionList.jsx';
 import withTracking from './Interactions/interactions.jsx';
 import config from '../../../config';
@@ -64,7 +65,7 @@ class App extends React.Component {
   onClickHandler(relatedProduct_id) {
     this.setState({productID: relatedProduct_id})
   }
-  
+
   render() {
     // const { productID } = this.state.productID;
     console.log('this is state', this.state);
@@ -72,8 +73,9 @@ class App extends React.Component {
       <div>
         <GlobalStyle />
         <div>Hello From App</div>
-        <RelatedProducts productID={this.state.productID} clickHandler={this.onClickHandler}/>
         <ProductDetail productID={this.state.productID} onStarChange={this.onStarChange} average={this.state.productAvgRating} />
+        <RelatedProducts productID={this.state.productID} clickHandler={this.onClickHandler} average={this.state.productAvgRating}/>
+        <MyOutfit />
         <RatingsAndReviews average={this.state.productAvgRating} productID={this.state.productID} />
         <QuestionListWithTracking
           productID={this.state.productID}

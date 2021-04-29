@@ -52,7 +52,7 @@ padding-right:40px;
 `;
 
 
-const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler}) => {
+const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, average}) => {
   const [carouselStartIndex, setcarouselStartIndex] = useState(0);
 
   const prevButton = () => {
@@ -86,6 +86,7 @@ const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler})
                 name={product.name}
                 price={product.default_price}
                 style={get(productStyleFromStart, key)}
+                average={average}
             />
         ))}
       </ProductCards>
