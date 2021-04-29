@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import config from '../../../../config.js';
 import axios from 'axios';
 import ProductCard from './ProductCard.jsx';
+import RelatedProductCarousel from './RelatedProductCarousel.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
 
@@ -16,7 +17,7 @@ height: 350px;
 width: 100%;
 `;
 
-const RelatedProducts = ({ productID }) => {
+const RelatedProducts = ({ productID, clickHandler }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -31,7 +32,7 @@ const RelatedProducts = ({ productID }) => {
       .catch((err) => {
         console.log(err.response, 'err in req1')
       })
-    }, [])
+    }, [productID])
 
   useEffect(() => {
     if(relatedProducts.length > 0) {
@@ -81,21 +82,7 @@ const RelatedProducts = ({ productID }) => {
   return (
     <div className="RelatedProducts">
       <h1>Related Products</h1>
-      <CarouselDiv >
-         { productData.map((product, key) => (
-          <ProductCard
-              id={product.id}
-              category={product.category}
-              name={product.name}
-              price={product.default_price}
-              style={get(productStyle, key)}
-          />
-         ))}
-        <div className="carousel_actions">
-          <button id="carousel_button--prev" aria-label="Previous_cards">˂</button>
-          <button id="carousel_button--next" aria-label="Next_cards">˃</button>
-        </div>
-      </CarouselDiv>
+      <RelatedProductCarousel productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
     </div>
   )
 }
