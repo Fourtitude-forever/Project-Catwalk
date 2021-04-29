@@ -68,7 +68,7 @@ class App extends React.Component {
         <GlobalStyle />
         <div>Hello From App</div>
         <RelatedProducts productID={this.state.productID} />
-        <ProductDetail productID={this.state.productID} onStarChange={this.onStarChange} />
+        <ProductDetail productID={this.state.productID} onStarChange={this.onStarChange} average={this.state.productAvgRating} />
         <RatingsAndReviews average={this.state.productAvgRating} productID={this.state.productID} />
         <QuestionListWithTracking
           productID={this.state.productID}

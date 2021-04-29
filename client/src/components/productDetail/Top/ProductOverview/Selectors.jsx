@@ -136,7 +136,8 @@ font-size: 20px;
 cursor: pointer;
 width: 200px;
 text-align: left;
-`
+`;
+
 function Star({ selectedStyle, onStarChange }) {
   return (
     <StarButton onClick={() => onStarChange(selectedStyle)}>⭐</StarButton>
