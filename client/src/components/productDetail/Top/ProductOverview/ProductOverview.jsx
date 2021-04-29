@@ -17,6 +17,7 @@ const ProducOverviewDiv = styled.div`
 
 function ProductOverview({
   productID, styles, onStyleChange, selectedStyle, onStarChange, average
+
 }) {
   return (
     <ProducOverviewDiv>
