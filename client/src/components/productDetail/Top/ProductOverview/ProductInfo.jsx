@@ -20,18 +20,18 @@ const ProductInfoDiv = styled.div`
 
 const Cat = styled.div`
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 20px;
   padding-bottom:10px
 `;
 
 const Title = styled.div`
   font-weight: bold;
-  font-size: 40px;
+  font-size: 30px;
   padding-bottom:10px;
 `;
 
 const Price = styled.div`
-  font-size: 30px;
+  font-size: 20px;
 `;
 
 function ProductInformation({ productID }) {

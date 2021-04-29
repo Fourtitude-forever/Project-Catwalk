@@ -20,7 +20,7 @@ function SliderContent({ photo, currentIndex }) {
 }
 
 SliderContent.propTypes = {
-  photo: PropTypes.string.isRequired,
+  photo: PropTypes.object.isRequired,
   currentIndex: PropTypes.number.isRequired,
 };
 

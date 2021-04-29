@@ -6,15 +6,15 @@ const Img = styled.input`
   border: 1px solid grey;
   position: absolute;
   left: 30px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   object-fit: cover;
 `;
 
 function Thumbnails({ photo, id, onThumbClick }) {
   const topVal = {
-    top: `${(id + 1) * 100}px`,
+    top: `${(id + 1) * 60}px`,
   };
 
   return (
@@ -23,7 +23,7 @@ function Thumbnails({ photo, id, onThumbClick }) {
 }
 
 Thumbnails.propTypes = {
-  photo: PropTypes.string.isRequired,
+  photo: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
   onThumbClick: PropTypes.func.isRequired,
 };
