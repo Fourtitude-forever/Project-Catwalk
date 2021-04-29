@@ -16,13 +16,14 @@ const ProducOverviewDiv = styled.div`
 `;
 
 function ProductOverview({
-  productID, styles, onStyleChange, styleId, selectedStyle
+  productID, styles, onStyleChange, selectedStyle, onStarChange, average
+
 }) {
   return (
     <ProducOverviewDiv>
-      <ProductInfo productID={productID} />
+      <ProductInfo productID={productID} stars={average} />
       <Styles styles={styles} onStyleChange={onStyleChange} />
-      <Selectors selectedStyle={selectedStyle}/>
+      <Selectors selectedStyle={selectedStyle} onStarChange={onStarChange} />
     </ProducOverviewDiv>
   );
 }
@@ -30,7 +31,6 @@ function ProductOverview({
 ProductOverview.propTypes = {
   productID: PropTypes.number.isRequired,
   onStyleChange: PropTypes.func.isRequired,
-  styleId: PropTypes.number.isRequired,
   styles: PropTypes.array.isRequired,
   selectedStyle: PropTypes.array.isRequired,
 };

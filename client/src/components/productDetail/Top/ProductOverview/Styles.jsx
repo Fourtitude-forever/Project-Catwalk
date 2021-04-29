@@ -57,6 +57,7 @@ function Styles({ styles, id, onStyleChange }) {
                 type="image"
                 src={style.photos[0].thumbnail_url}
                 onClick={() => onStyleChange(style.style_id)}
+                key={index}
               />
           })
         }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 
 import StarRating from './StarRating.jsx';
 import ReviewsList from './ReviewsList.jsx';
@@ -36,4 +36,10 @@ function RatingsAndReviews({ productID, average }) {
     </SectionBG1>
   );
 }
+
+RatingsAndReviews.propTypes = {
+  productID: PropTypes.number.isRequired,
+  average: PropTypes.number.isRequired,
+};
+
 export default RatingsAndReviews;
