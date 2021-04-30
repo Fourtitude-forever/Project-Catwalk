@@ -23,10 +23,17 @@ const AddQuestion = ({
 }) => {
   const onModalSubmit = (event) => {
     event.preventDefault();
-    const parsedForm = $('Form').serializeArray();
+    const rawParsedForm = $('#question-form').serializeArray();
+    const parsedForm = [];
+    rawParsedForm.forEach((entry) => {
+      console.log('entry is: ', entry.value);
+      if (entry.value !== '') {
+        parsedForm.push(entry);
+      }
+    });
     request.postQuestionRequest(productID, parsedForm)
-      .then(() => {
-        console.log('Post Success!');
+      .then((success) => {
+        console.log(success);
         onOpenModalClick();
       })
       // .then(() => location.reload())
@@ -39,7 +46,7 @@ const AddQuestion = ({
         <CloseButton type="button" onClick={onOpenModalClick}>X</CloseButton>
         <Headers2>Ask your Question!</Headers2>
         <h3>{`About the ${productName}`}</h3>
-        <Form>
+        <Form id="question-form">
           <label>
             Your Question:*
             <FormInput type="text" name="question" required />
@@ -50,7 +57,7 @@ const AddQuestion = ({
           </label>
           <label>
             Your email:*
-            <FormInput type="text" name="email" required />
+            <FormInput type="email" name="email" required />
           </label>
           <Button as="input" type="submit" onClick={onModalSubmit} />
         </Form>

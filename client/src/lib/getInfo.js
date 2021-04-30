@@ -1,35 +1,49 @@
 import axios from 'axios';
 import config from '../../../config.js';
 
-const urlRequest = (endpoint, method, params) =>
+const getRequest = (endpoint, method, params) =>
   axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/${endpoint}`, {
     headers: config,
     method: method,
     params: params,
   });
 
+const postRequest = (endpoint, params) =>
+  axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/${endpoint}`, {
+    headers: config,
+    method: 'POST',
+    data: params,
+  });
+
 const request = {
 
-  getProductRequest: (productID) => urlRequest('qa/questions', 'GET', { product_id: productID }),
+  getProductRequest: (productID) => getRequest('qa/questions', 'GET', { product_id: productID }),
 
-  getProductInfo: (productID) => urlRequest(`products/${productID}`, 'GET'),
+  getProductInfo: (productID) => getRequest(`products/${productID}`, 'GET'),
 
-  putRequest: (questionID, helpfulOrReport) => urlRequest(`qa/questions/${questionID}/${helpfulOrReport}/`, 'PUT'),
+  putRequest: (questionID, helpfulOrReport) => getRequest(`qa/questions/${questionID}/${helpfulOrReport}/`, 'PUT'),
 
   postQuestionRequest: (productID, formInfo) => {
-    const form = `{"body": "${formInfo[12].value}", "name": "${formInfo[13].value}", "email": "${formInfo[14].value}", "product_id": ${productID}}`;
     console.log('form is: ', formInfo);
-    // return urlRequest('qa/questions/', 'POST', form);
-    return axios('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
-      headers: config,
-      method: 'POST',
-      data: {
-        body: formInfo[12].value,
-        name: formInfo[13].value,
-        email: formInfo[14].value,
-        product_id: productID,
-      },
-    });
+    console.log('product ID is ', productID);
+    const form = {
+      body: formInfo[0].value,
+      name: formInfo[1].value,
+      email: formInfo[2].value,
+      product_id: productID,
+    };
+    console.log('form to submit is ', form);
+    return postRequest('qa/questions/', form);
+    // return axios('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
+    //   headers: config,
+    //   method: 'POST',
+    //   data: {
+    //     body: formInfo[0].value,
+    //     name: formInfo[1].value,
+    //     email: formInfo[2].value,
+    //     product_id: productID,
+    //   },
+    // });
   },
 
   postAnswerRequest: (questionID, formInfo) => {
@@ -38,7 +52,7 @@ const request = {
       'name': formInfo[1].value,
       'email': formInfo[2].value,
     };
-    return urlRequest(`qa/questions/${questionID}/answers`, 'POST', form);
+    return postRequest(`qa/questions/${questionID}/answers`, form);
   },
 
   postInteractionRequest: (elementClicked, widgetClicked, timeStamp) => {
@@ -47,7 +61,7 @@ const request = {
       widget: widgetClicked,
       time: timeStamp,
     };
-    return urlRequest('interactions', 'POST', form);
+    return postRequest('interactions', 'POST', form);
   },
 
 };

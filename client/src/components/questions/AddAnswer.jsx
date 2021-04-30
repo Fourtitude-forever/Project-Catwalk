@@ -23,8 +23,8 @@ const AddAnswer = ({
 }) => {
   const onModalSubmit = (event) => {
     event.preventDefault();
-    const parsedForm = $('Form').serializeArray();
-    request.postAnswerRequest(id, parsedForm)
+    const rawParsedForm = $(`#question-${id}`).serializeArray();
+    request.postAnswerRequest(id, rawParsedForm)
       .then(() => {
         console.log('Post Success!');
         onOpenModalClick();
@@ -39,7 +39,7 @@ const AddAnswer = ({
         <CloseButton type="button" onClick={onOpenModalClick}>X</CloseButton>
         <Headers2>Submit Your Answer!</Headers2>
         <h3>{`${productName}: ${question}`}</h3>
-        <Form>
+        <Form id={`question-${id}`}>
           <label>
             Your Answer:*
             <FormInput type="text" name="answer" required />
