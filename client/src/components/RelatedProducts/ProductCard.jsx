@@ -103,7 +103,6 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
 
   return(
     <ProductCardDiv onClick={() => {
-      console.log('you clicked')
       clickHandler(id);
     }}>
       <ThumbnailDiv>

@@ -5,6 +5,7 @@ import ProductCard from './ProductCard.jsx';
 import RelatedProductCarousel from './RelatedProductCarousel.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
+import MyOutfit from './MyOutfit.jsx';
 
 const CarouselDiv = styled.div`
 display: flex;
@@ -83,6 +84,7 @@ const RelatedProducts = ({ productID, clickHandler, average }) => {
     <div className="RelatedProducts">
       <h1>Related Products</h1>
       <RelatedProductCarousel average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
+      <MyOutfit average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
     </div>
   )
 }
