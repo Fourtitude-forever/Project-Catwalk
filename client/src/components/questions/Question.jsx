@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Answer from './Answer.jsx';
 import AddAnswer from './AddAnswer.jsx';
 import request from '../../lib/getInfo.js';
-import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon } from '../../css/sharedcss.jsx';
+import { ThreadHeading, ThreadSubHeading, ThreadSubList, SmallButton, Icon, Divider } from '../../css/sharedcss.jsx';
 
 const Helpfulness = styled.span`
   ${(props) => {
@@ -153,6 +153,7 @@ const Question = ({
         ))}
         {answerButtonText}
       </ThreadSubList>
+      <Divider></Divider>
       <AddAnswer
         showModal={showModal}
         productName={productName}

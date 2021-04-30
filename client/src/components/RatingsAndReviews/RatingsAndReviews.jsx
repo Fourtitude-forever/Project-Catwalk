@@ -11,12 +11,12 @@ display: flex;
 padding-right: 20%;
 `;
 
-const Top = styled.h1`
+const Top = styled.h3`
 font-size: 25px;
 `;
 
 const RatingSpan = styled.span`
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 600;
   padding-right: 5px;
   line-height: 1.8rem;
@@ -26,12 +26,11 @@ const RatingSpan = styled.span`
 function RatingsAndReviews({ productID, average }) {
   return (
     <SectionBG1>
+      <Headers2>Ratings and Reviews</Headers2>
       <HelpfulDiv>
         <RatingSpan>{average}</RatingSpan>
         <StarRating stars={average} />
       </HelpfulDiv>
-      <Top>Average Rating</Top>
-      <Headers2>Ratings and Reviews</Headers2>
       <ReviewsList productID={productID} />
     </SectionBG1>
   );
