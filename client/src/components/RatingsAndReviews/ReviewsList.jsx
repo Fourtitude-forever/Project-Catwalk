@@ -14,6 +14,10 @@ display: flex;
 padding-right: 20%;
 `;
 
+const StyledSectionBG1 = styled(SectionBG1)`
+  padding-top: 0;
+`;
+
 const ReviewsList = ({ productID }) => {
   const [reviews, setReviews] = useState([]);
   const [reviewsShown, setReviewsShown] = useState([]);
@@ -56,14 +60,14 @@ const ReviewsList = ({ productID }) => {
   const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
 
   return (
-    <SectionBG1>
+    <StyledSectionBG1>
       <Reviews reviews={currentReviews} loading={loading} />
       <HelpfulDiv>
         <Button onClick={onSortClick}>Sort Reviews</Button>
         <Button onClick={onAddMoreClick}>More Reviews </Button>
         <AddReview />
       </HelpfulDiv>
-    </SectionBG1>
+    </StyledSectionBG1>
   );
 };
 

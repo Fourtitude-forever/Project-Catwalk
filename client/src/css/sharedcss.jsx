@@ -39,7 +39,7 @@ export const ThreadHeading = styled.p`
 export const ThreadSubHeading = styled.p`
   font-size: 0.75em;
   color: #314e52;
-  margin-top: 4px;
+  margin-top: 12px;
   margin-bottom: 12px;
 `;
 
@@ -168,4 +168,15 @@ export const FormInput = styled(SingleLineInput)`
 
 export const FormError = styled(ThreadSubItem)`
   color: red;
+`;
+
+/////////////////////////////////////////
+// STYLES FOR DIVIDER //
+/////////////////////////////////////////
+
+export const Divider = styled.div`
+  border-bottom: 1px solid gray;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 40%;
 `;
