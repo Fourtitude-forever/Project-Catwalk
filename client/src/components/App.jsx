@@ -71,13 +71,14 @@ class App extends React.Component {
     return (
       <div>
         <GlobalStyle />
-        <RelatedProducts
-          productID={this.state.productID}
-          clickHandler={this.onClickHandler}
-        />
         <ProductDetail
           productID={this.state.productID}
           onStarChange={this.onStarChange}
+          average={this.state.productAvgRating}
+        />
+        <RelatedProducts
+          productID={this.state.productID}
+          clickHandler={this.onClickHandler}
           average={this.state.productAvgRating}
         />
         <RatingsAndReviews

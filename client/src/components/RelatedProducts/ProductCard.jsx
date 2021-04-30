@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
+import StarRating from '../RatingsAndReviews/StarRating.jsx';
 
 const ProductCardDiv = styled.div`
   border: 3px solid black;
@@ -88,7 +89,7 @@ const Rating_Div = styled.div`
   padding-top: 3px;
 `;
 
-const ProductCard = ({ id, category, name, price, style = {}, clickHandler}) => {
+const ProductCard = ({ id, category, name, price, style = {}, clickHandler, average}) => {
 
   const getPicture = (results = []) => {
     for (var result of results ) {
@@ -102,7 +103,6 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler}) => 
 
   return(
     <ProductCardDiv onClick={() => {
-      console.log('you clicked')
       clickHandler(id);
     }}>
       <ThumbnailDiv>
@@ -118,7 +118,8 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler}) => 
         <ProductPrice_Div>
           <Price>{price}</Price>
         </ProductPrice_Div>
-        <Rating_Div>☆☆☆☆☆</Rating_Div>
+        {/* <Rating_Div>☆☆☆☆☆</Rating_Div> */}
+        <StarRating stars={average} />
       </Details_Div>
     </ProductCardDiv>
   )
