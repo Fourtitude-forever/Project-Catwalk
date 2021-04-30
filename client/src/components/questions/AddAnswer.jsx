@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 import request from '../../lib/getInfo.js';
 import {
-  Headers2, Button, CloseButton, Form, FormInput, Modal,
+  Headers2, Button, CloseButton, Form, FormInput, Modal, FormError,
 } from '../../css/sharedcss.jsx';
 
 const AnswerModal = styled(Modal)`
@@ -18,19 +18,54 @@ const AnswerModal = styled(Modal)`
   }}
 `;
 
+const FormErr = styled(FormError)`
+  ${(props) => {
+    if (!props.hasError) {
+      return `
+        display: none;
+      `;
+    }
+  }}
+`;
+
 const AddAnswer = ({
   productName, onOpenModalClick, question, showModal, id,
 }) => {
+  const [unfilledError, setUnfilledError] = useState(false);
+  const [incorrectEmail, setIncorrectEmail] = useState(false);
+
+  const clearForm = (index) => {
+    // if (index) { $('#question-form')[0].reset(); }
+    $('#question-form')[0].reset();
+  };
+
   const onModalSubmit = (event) => {
     event.preventDefault();
-    const parsedForm = $('Form').serializeArray();
-    request.postAnswerRequest(id, parsedForm)
-      .then(() => {
-        console.log('Post Success!');
-        onOpenModalClick();
-      })
-      .then(() => location.reload())
-      .catch((err) => { console.log(err); });
+    const parsedForm = $(`#question-${id}`).serializeArray();
+
+    let errFlag = false;
+    setUnfilledError(false);
+    setIncorrectEmail(false);
+
+    parsedForm.forEach((entry) => {
+      if (entry.value === '') {
+        errFlag = true;
+        setUnfilledError(true);
+      }
+    });
+    if (!parsedForm[2].value.includes('@')) {
+      errFlag = true;
+      setIncorrectEmail(true);
+    }
+    if (!errFlag) {
+      request.postAnswerRequest(id, parsedForm)
+        .then(() => {
+          console.log('Post Success!');
+          onOpenModalClick();
+        })
+        .then(() => location.reload())
+        .catch((err) => { console.log(err); });
+    }
   };
 
   return (
@@ -39,7 +74,7 @@ const AddAnswer = ({
         <CloseButton type="button" onClick={onOpenModalClick}>X</CloseButton>
         <Headers2>Submit Your Answer!</Headers2>
         <h3>{`${productName}: ${question}`}</h3>
-        <Form>
+        <Form id={`question-${id}`}>
           <label>
             Your Answer:*
             <FormInput type="text" name="answer" required />
@@ -52,6 +87,8 @@ const AddAnswer = ({
             Your email:*
             <FormInput type="text" name="email" placeholder="Example: jack@email.com" required />
           </label>
+          <FormErr hasError={unfilledError}>All fields denoted * are required</FormErr>
+          <FormErr hasError={incorrectEmail}>Email provided is invalid</FormErr>
           <Button as="input" type="submit" onClick={onModalSubmit} />
         </Form>
       </div>
