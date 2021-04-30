@@ -165,3 +165,7 @@ export const FormInput = styled(SingleLineInput)`
   border-style: solid;
   outline: none;
 `;
+
+export const FormError = styled(ThreadSubItem)`
+  color: red;
+`;

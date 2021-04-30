@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 import request from '../../lib/getInfo.js';
 import {
-  Headers2, Button, CloseButton, Form, FormInput, Modal,
+  Headers2, Button, CloseButton, Form, FormInput, Modal, FormError,
 } from '../../css/sharedcss.jsx';
 
 const QuestionModal = styled(Modal)`
@@ -18,20 +18,60 @@ const QuestionModal = styled(Modal)`
   }}
 `;
 
+const FormErr = styled(FormError)`
+  ${(props) => {
+    if (!props.hasError) {
+      return `
+        display: none;
+      `;
+    }
+  }}
+`;
+
 const AddQuestion = ({
   productName, onOpenModalClick, productID, showModal,
 }) => {
+  const [unfilledError, setUnfilledError] = useState(false);
+  const [incorrectEmail, setIncorrectEmail] = useState(false);
+
+  const clearForm = (index) => {
+    // if (index) { $('#question-form')[0].reset(); }
+    $('#question-form')[0].reset();
+  };
+
   const onModalSubmit = (event) => {
     event.preventDefault();
+    console.log('form submit is: ', $('#question-form')[0]);
     const parsedForm = $('#question-form').serializeArray();
-    request.postQuestionRequest(productID, parsedForm)
-      .then((success) => {
-        console.log(success);
-        onOpenModalClick();
-      })
-      // .then(() => location.reload())
-      .catch((err) => { console.log(err); });
+
+    let errFlag = false;
+    setUnfilledError(false);
+    setIncorrectEmail(false);
+
+    parsedForm.forEach((entry) => {
+      if (entry.value === '') {
+        errFlag = true;
+        setUnfilledError(true);
+      }
+    });
+    if (!parsedForm[2].value.includes('@')) {
+      errFlag = true;
+      setIncorrectEmail(true);
+    }
+    if (!errFlag) {
+      request.postQuestionRequest(productID, parsedForm)
+        .then((success) => {
+          console.log(success);
+          onOpenModalClick();
+        })
+        .then(() => clearForm())
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
   };
+
 
   return (
     <QuestionModal showModal={showModal}>
@@ -52,6 +92,8 @@ const AddQuestion = ({
             Your email:*
             <FormInput type="email" name="email" required />
           </label>
+          <FormErr hasError={unfilledError}>All fields denoted * are required</FormErr>
+          <FormErr hasError={incorrectEmail}>Email provided is invalid</FormErr>
           <Button as="input" type="submit" onClick={onModalSubmit} />
         </Form>
       </div>
