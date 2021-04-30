@@ -41,7 +41,6 @@ const AddQuestion = ({
 
   const onModalSubmit = (event) => {
     event.preventDefault();
-    console.log('form submit is: ', $('#question-form')[0]);
     const parsedForm = $('#question-form').serializeArray();
 
     let errFlag = false;
@@ -69,7 +68,6 @@ const AddQuestion = ({
           console.log(err);
         });
     }
-
   };
 
 
