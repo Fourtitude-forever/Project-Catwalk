@@ -27,7 +27,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productID: 23146,
+      productID: 23145,
       productAvgRating: 0,
       starStyle: {},
     };
@@ -71,10 +71,21 @@ class App extends React.Component {
     return (
       <div>
         <GlobalStyle />
-        <ProductDetail productID={this.state.productID} onStarChange={this.onStarChange} average={this.state.productAvgRating} />
-        <RelatedProducts productID={this.state.productID} clickHandler={this.onClickHandler} average={this.state.productAvgRating}/>
-        <RatingsAndReviews average={this.state.productAvgRating} productID={this.state.productID} />
-        <QuestionListWithTracking
+        <ProductDetail
+          productID={this.state.productID}
+          onStarChange={this.onStarChange}
+          average={this.state.productAvgRating}
+        />
+        <RelatedProducts
+          productID={this.state.productID}
+          clickHandler={this.onClickHandler}
+          average={this.state.productAvgRating}
+        />
+        <RatingsAndReviews
+          average={this.state.productAvgRating}
+          productID={this.state.productID}
+        />
+        <QuestionList
           productID={this.state.productID}
         />
       </div>

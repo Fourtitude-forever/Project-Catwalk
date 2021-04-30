@@ -22,7 +22,7 @@ const QuestionButton = styled(Button)`
   }}
 `;
 
-const QuestionList = ({ productID, onCompClick }) => {
+const QuestionList = ({ productID, onCompClick, trialProp }) => {
   const [questions, setQuestions] = useState([]);
   const [questionsShown, setQuestionsShown] = useState([]);
   const [isloading, setLoading] = useState(false);
@@ -51,7 +51,7 @@ const QuestionList = ({ productID, onCompClick }) => {
         setProductName(info.data.name);
       })
       .catch((err) => { throw err; });
-  }, []);
+  }, [productID]);
 
   // Update number of questions shown when currentList changes
   useEffect(() => {
