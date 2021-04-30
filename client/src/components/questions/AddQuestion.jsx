@@ -23,14 +23,7 @@ const AddQuestion = ({
 }) => {
   const onModalSubmit = (event) => {
     event.preventDefault();
-    const rawParsedForm = $('#question-form').serializeArray();
-    const parsedForm = [];
-    rawParsedForm.forEach((entry) => {
-      console.log('entry is: ', entry.value);
-      if (entry.value !== '') {
-        parsedForm.push(entry);
-      }
-    });
+    const parsedForm = $('#question-form').serializeArray();
     request.postQuestionRequest(productID, parsedForm)
       .then((success) => {
         console.log(success);

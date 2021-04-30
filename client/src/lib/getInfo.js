@@ -24,33 +24,20 @@ const request = {
   putRequest: (questionID, helpfulOrReport) => getRequest(`qa/questions/${questionID}/${helpfulOrReport}/`, 'PUT'),
 
   postQuestionRequest: (productID, formInfo) => {
-    console.log('form is: ', formInfo);
-    console.log('product ID is ', productID);
     const form = {
       body: formInfo[0].value,
       name: formInfo[1].value,
       email: formInfo[2].value,
       product_id: productID,
     };
-    console.log('form to submit is ', form);
     return postRequest('qa/questions/', form);
-    // return axios('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', {
-    //   headers: config,
-    //   method: 'POST',
-    //   data: {
-    //     body: formInfo[0].value,
-    //     name: formInfo[1].value,
-    //     email: formInfo[2].value,
-    //     product_id: productID,
-    //   },
-    // });
   },
 
   postAnswerRequest: (questionID, formInfo) => {
     const form = {
-      'body': formInfo[0].value,
-      'name': formInfo[1].value,
-      'email': formInfo[2].value,
+      body: formInfo[0].value,
+      name: formInfo[1].value,
+      email: formInfo[2].value,
     };
     return postRequest(`qa/questions/${questionID}/answers`, form);
   },
