@@ -62,7 +62,7 @@ class App extends React.Component {
   }
 
   onClickHandler(relatedProduct_id) {
-    this.setState({productID: relatedProduct_id});
+    this.setState({ productID: relatedProduct_id });
   }
 
   render() {
