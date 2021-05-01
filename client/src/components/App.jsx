@@ -26,10 +26,7 @@ const RatingsAndReviewsWithTracking = withTracking(RatingsAndReviews);
 const App = () => {
   const [productID, setProductID] = useState(23145);
   const [productAvgRating, setProductAvgRating] = useState(0);
-  const [starStyle, setStarStyle] = useState({});
-
-  // this.onStarChange = this.onStarChange.bind(this);
-  // this.onClickHandler = this.onClickHandler.bind(this);
+  const [starStyle, setStarStyle] = useState([]);
 
   useEffect(() => {
     const sendRequest = async () => {
@@ -52,13 +49,17 @@ const App = () => {
     sendRequest();
   }, [productID]);
 
-  const onStarChange = (style) => {
-    setStarStyle(style);
+const onStarChange = (style) => {
+    setStarStyle([...starStyle, style]);
   };
 
-  const onClickHandler = (relatedProductID) => {
+const onClickHandler = (relatedProductID) => {
     setProductID(relatedProductID);
   };
+
+const deleteStarStyle = (product_id) => {
+      setStarStyle(starStyle.filter((_, i) => i !== product_id));
+  }
 
   return (
     <div>
@@ -72,6 +73,9 @@ const App = () => {
         productID={productID}
         clickHandler={onClickHandler}
         average={productAvgRating}
+        starStyle={starStyle}
+        deleteStyle={deleteStarStyle}
+        addStarStyle={onStarChange}
       />
       <RatingsAndReviews
         average={productAvgRating}
@@ -83,74 +87,5 @@ const App = () => {
     </div>
   );
 };
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       productID: 23145,
-//       productAvgRating: 0,
-//       starStyle: {},
-//     };
-
-//     this.onStarChange = this.onStarChange.bind(this);
-//     this.onClickHandler = this.onClickHandler.bind(this);
-//   }
-
-//   componentDidMount() {
-//     const sendRequest = async () => {
-//       await axios({
-//         method: 'GET',
-//         url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/',
-//         headers: config,
-//         params: { product_id: this.state.productID },
-//       })
-//         .then((resp) => {
-//           const { count } = resp.data;
-//           let tempRating = 0;
-//           resp.data.results.map((review) => {
-//             tempRating += (review.rating);
-//           });
-//           tempRating /= count;
-//           this.setState({ productAvgRating: tempRating });
-//         });
-//     };
-//     sendRequest();
-//   }
-
-//   onStarChange(style) {
-//     this.setState({ starStyle: style });
-//   }
-
-//   onClickHandler(relatedProductID) {
-//     this.setState({ productID: relatedProductID });
-//   }
-
-//   render() {
-//     // const { productID } = this.state.productID;
-//     console.log('this is state', this.state);
-//     return (
-//       <div>
-//         <GlobalStyle />
-//         <ProductDetail
-//           productID={this.state.productID}
-//           onStarChange={this.onStarChange}
-//           average={this.state.productAvgRating}
-//         />
-//         <RelatedProducts
-//           productID={this.state.productID}
-//           clickHandler={this.onClickHandler}
-//           average={this.state.productAvgRating}
-//         />
-//         <RatingsAndReviews
-//           average={this.state.productAvgRating}
-//           productID={this.state.productID}
-//         />
-//         <QuestionListWithTracking
-//           productID={this.state.productID}
-//         />
-//       </div>
-//     );
-//   }
-// }
 
 export default App;

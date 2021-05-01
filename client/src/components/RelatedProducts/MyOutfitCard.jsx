@@ -72,24 +72,14 @@ const Price = styled.span`
 font-size: 14px;
 `;
 
-const MyOutfitCard = ({ id, category, name, price, style = {}, clickHandler, average}) => {
-
-    const getPicture = (results = []) => {
-      for (var result of results ) {
-        if (result.['default?'] === true) {
-          return get(result, 'photos[0].thumbnail_url');
-        }
-      }
-
-      return get(results, '[0].photos[0].thumbnail_url');
-    };
+const MyOutfitCard = ({ id, category, name, price, style, clickHandler, average}) => {
 
     return(
       <MyOutfitCard_Div onClick={() => {
         clickHandler(id);
       }}>
         <Thumbnail_Div>
-          <Thumbnail src={getPicture(style.results)} />
+          <Thumbnail src={style} />
         </Thumbnail_Div>
         <Details_Div>
           <ProductCategory_Div>

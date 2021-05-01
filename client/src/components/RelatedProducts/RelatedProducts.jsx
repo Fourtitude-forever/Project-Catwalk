@@ -20,7 +20,7 @@ height: 350px;
 width: 100%;
 `;
 
-const RelatedProducts = ({ productID, clickHandler, average }) => {
+const RelatedProducts = ({ productID, clickHandler, average, starStyle, deleteStyle, addStarStyle }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -83,10 +83,24 @@ const RelatedProducts = ({ productID, clickHandler, average }) => {
   }
 
   return (
-    <SectionBG1 >
+    <SectionBG1>
       <Headers2>Related Products</Headers2>
-      <RelatedProductCarousel average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
-      <MyOutfit average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
+      <RelatedProductCarousel
+        average={average}
+        productData={productData}
+        productStyle={productStyle}
+        cardClickHandler={clickHandler}
+        addStar={addStarStyle}
+      />
+      <MyOutfit
+        productID={productID}
+        average={average}
+        productData={productData}
+        productStyle={productStyle}
+        cardClickHandler={clickHandler}
+        starStyle={starStyle}
+        deleteStyle={deleteStyle}
+      />
     </SectionBG1>
   )
 }

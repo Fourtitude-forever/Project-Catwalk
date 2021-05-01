@@ -55,7 +55,13 @@ top: 45%;
 transform: translateY(-50%);
 `;
 
-const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, average}) => {
+const NextButton_Div = styled.div`
+display: flex;
+padding-right:40px;
+`;
+
+const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, average, addStar}) => {
+
   const [carouselStartIndex, setcarouselStartIndex] = useState(0);
 
   const prevButton = () => {
@@ -90,6 +96,7 @@ const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, 
                 price={product.default_price}
                 style={get(productStyleFromStart, key)}
                 average={average}
+                addStar={addStar}
             />
         ))}
       </ProductCards>
