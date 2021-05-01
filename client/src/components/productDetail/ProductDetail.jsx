@@ -20,18 +20,18 @@ const ProductDetailDiv = styled.div`
 
 const Top = styled.div`
   //border: 5px solid green;
-  //border: 2px solid #1687a7;
+  border: 1px solid #187690;
   position: relative;
-  width: 90%;
-  height:80%;
+  width: 95%;
+  height:100%;
   display:flex;
-  margin:0.5%;
+  margin:1%;
 `;
 
 const Down = styled.div`
   //border: 5px solid green;
   position: relative;
-  width: 90%;
+  width: 50%;
   height:20%;
   display:flex;
   margin:0.5%;

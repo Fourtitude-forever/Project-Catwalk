@@ -5,12 +5,12 @@ import {
 } from '../../../../css/sharedcss.jsx';
 
 const StylesDiv = styled.div`
-  //border: 5px solid yellow;
   position: relative;
   height:33%;
   display:flex;
   flex-direction: column;
   box-sizing: border-box;
+  padding-left: 10px;
 `;
 
 const CirclesContainer = styled.div`
@@ -22,7 +22,6 @@ const CirclesContainer = styled.div`
 `
 
 const Circles = styled.input`
-   //clip-path: circle(50%);
    border-radius: 50%;
    border:1px solid grey;
    height:75%;
@@ -37,6 +36,7 @@ const Circles = styled.input`
 `
 
 const StyleTitle = styled.div`
+  color: #187690;
   font-weight: bold;
   font-size: x-large;
   text-transform: uppercase;

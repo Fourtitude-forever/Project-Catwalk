@@ -12,6 +12,7 @@ import StarRating from '../../../RatingsAndReviews/StarRating.jsx';
 const ProductInfoDiv = styled.div`
   //border: 5px solid yellow;
   position: relative;
+  //color: #187690;
   height:33%;
   display:flex;
   flex-direction: column;
@@ -20,18 +21,21 @@ const ProductInfoDiv = styled.div`
 `;
 
 const Cat = styled.div`
+//border: 5px solid black;
   text-transform: uppercase;
   font-size: x-large;
   padding-bottom:10px
 `;
 
 const Title = styled.div`
+//border: 5px solid black;
   font-weight: bold;
   font-size: xx-large;
   padding-bottom:10px;
 `;
 
 const Price = styled.div`
+//border: 5px solid black;
   font-size: large;
 `;
 

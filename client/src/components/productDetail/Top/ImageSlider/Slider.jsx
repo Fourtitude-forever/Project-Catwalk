@@ -10,7 +10,7 @@ const SliderDiv = styled.div`
   ${(props) => {
     if (!props.isExpanded) {
       return `
-        width:70%;
+        width:65%;
         transition: all 0.5s;
         //transform: translateY(4px);
       `;
@@ -25,7 +25,8 @@ const SliderDiv = styled.div`
   display: flex;
   align-items:center;
   overflow: hidden;
-  z-index: 5;
+  z-index: 10;
+  background-color: #f6f5f5;
 `;
 
 // position: ${(props) => (props.isExpanded ? 'relative' : 'absolute')};
@@ -38,15 +39,48 @@ const LeftButton = styled.button`
   width: 10%;
   height: 80%;
   background: none;
+  cursor: pointer;
+  ${(props) => {
+    if (!props.isExpanded) {
+      return `
+        visibility: translateY(2px);
+      `;
+    } return `
+    visibility: translateY(2px);
+    `;
+  }}
 `;
 
 const RightButton = styled.button`
   position:absolute;
+  cursor: pointer;
   border: none;
   top:10%;
   right: 2%;
   width: 10%;
   height: 80%;
+  background: none;
+`;
+
+const DownButton = styled.button`
+  position:absolute;
+  cursor: pointer;
+  border: none;
+  top:80%;
+  left: 5%;
+  // width: 10%;
+  // height: 80%;
+  background: none;
+`;
+
+const UpButton = styled.button`
+  position:absolute;
+  cursor: pointer;
+  border: none;
+  top:15%;
+  left: 5%;
+  // width: 10%;
+  // height: 80%;
   background: none;
 `;
 
@@ -79,8 +113,21 @@ const IconStyle = styled.i`
 }
 `;
 
+const ThumbNailsContainer = styled.div`
+//border: 2px solid pink;
+position: absolute;
+left: 20px;
+//top:10%;
+width: 10%;
+height: 55%;
+box-sizing: border-box;
+align-items: center;
+overflow: hidden;
+`;
+
 function Slider({ selectedStyle }) {
   const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
   const [isloading, setLoading] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -113,6 +160,22 @@ function Slider({ selectedStyle }) {
     }
   };
 
+  const goDown = () => {
+    if (y === -150 * (selectedStyle[0].photos.length - 1)) {
+      setY(0);
+    } else {
+      setY(y - 150);
+    }
+  };
+
+  const goUp = () => {
+    if (y === 0) {
+      setY(0);
+    } else {
+      setY(y + 150);
+    }
+  };
+
   function onThumbClick(index) {
     setX(index);
   }
@@ -138,19 +201,22 @@ function Slider({ selectedStyle }) {
       <ExpandButton onClick={onExpandClick}><IconStyle className="fas fa-expand" /></ExpandButton>
       <LeftButton onClick={goLeft}>ᐸ</LeftButton>
       <RightButton onClick={goRight}>ᐳ</RightButton>
-
-      {
+      <DownButton onClick={goDown}>ᐯ</DownButton>
+      <UpButton onClick={goUp}>ᐱ</UpButton>
+      <ThumbNailsContainer>
+        {
         selectedStyle[0] ? selectedStyle[0].photos.map((photo, i) => (
           <Thumbnails
             photo={photo}
             currentIndex={x}
+            currentYIndex={y}
             key={i}
             id={i}
             onThumbClick={onThumbClick}
           />
         )) : loadingIcon
       }
-
+      </ThumbNailsContainer>
     </SliderDiv>
 
   );

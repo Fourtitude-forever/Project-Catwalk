@@ -5,23 +5,27 @@ import PropTypes from 'prop-types';
 const Img = styled.input`
   border: 1px solid grey;
   position: absolute;
-  left: 20px;
-  width: 70px;
-  height: 60px;
-  //overflow: hidden;
+  width: 80%;
+  height: 20%;
+  overflow: hidden;
   object-fit: cover;
+  box-sizing: border-box;
   &:hover {
-    box-shadow: 0 0 4px 3px rgba(0, 140, 186, 0.5);
-  }
+    box-shadow: 0 0 4px 3px #1687a7;
+  };
+  transition: 1s;
 `;
 
-function Thumbnails({ photo, id, onThumbClick }) {
+function Thumbnails({ photo, id, onThumbClick, currentYIndex }) {
   const topVal = {
-    top: `${(id + 1) * 60}px`,
+    top: `${(id) * 80}px`,
+    transform: `translateY(${currentYIndex}%)`
   };
 
   return (
+
     <Img type="image" src={photo.thumbnail_url} style={topVal} onClick={() => onThumbClick(id * -100)} alt="thumbnail" />
+
   );
 }
 

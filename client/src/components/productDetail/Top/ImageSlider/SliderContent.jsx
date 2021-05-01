@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const SlideDiv = styled.img`
   //border: 5px solid blue;
   position:relative;
+  alt: product image;
   min-width: 100%;
   height: 100%;
   transition: 0.5s;
@@ -12,7 +13,7 @@ const SlideDiv = styled.img`
   box-sizing: border-box;
   object-fit: contain;
   visibility: visible;
-  background-color: white;
+  background-color: #f6f5f5;
 `;
 
 function SliderContent({ photo, currentIndex }) {

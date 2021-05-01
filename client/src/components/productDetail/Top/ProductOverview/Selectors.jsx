@@ -22,7 +22,7 @@ const DropBtn = styled.select`
   box-sizing: border-box;
   cursor: pointer;
   color: white;
-  background-color: #1687a7;
+  background-color: #187690;
   border-radius: 16px;
   outline: none;
   font-size: large;
@@ -158,7 +158,7 @@ const AddtoBagButton = styled.button`
     border-radius: 16px;
     border: 0;
     outline: none;
-    background-color: #1687a7;
+    background-color: #187690;
     box-sizing: border-box;
     width: 90%;
     height: 80%;
@@ -200,7 +200,7 @@ const StarButton = styled.button`
   text-align: center;
   border: 0;
   outline: none;
-  background-color: #1687a7;
+  background-color: #187690;
   display: inline-block;
   cursor: pointer;
   font-size: large;
