@@ -27,7 +27,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productID: 23149,
+      productID: 23145,
       productAvgRating: 0,
       starStyle: [],
     };
@@ -63,7 +63,7 @@ class App extends React.Component {
   }
 
   onClickHandler(relatedProduct_id) {
-    this.setState({productID: relatedProduct_id})
+    this.setState({ productID: relatedProduct_id });
   }
 
   deleteStarStyle(product_id) {
@@ -78,7 +78,6 @@ class App extends React.Component {
     return (
       <div>
         <GlobalStyle />
-        <div>Hello From App</div>
         <ProductDetail
           productID={this.state.productID}
           onStarChange={this.onStarChange}

@@ -18,8 +18,8 @@ function IconStar(props) {
   return (
     <S.svg
       viewBox="0 0 1000 1000"
-      width="1.8rem"
-      height="1.8rem"
+      width="1.2rem"
+      height="1.2rem"
       aria-hidden="true"
     >
       <path

@@ -16,10 +16,14 @@ const SearchForm = styled.form`
   }}
 `;
 
+const SearchBar = styled(SingleLineInput)`
+  font-family: Font-Awesome 5 Free, Helvetica;
+`;
+
 const Search = ({ onSearchChange, onSearchSubmit, anyQuestions }) => (
 
   <SearchForm anyQuestions={anyQuestions}>
-    <SingleLineInput type="text" onChange={(e) => { onSearchChange(e); }} placeholder="Search questions" />
+    <SearchBar type="text" onChange={(e) => { onSearchChange(e); }} placeholder="Search questions" />
     <HiddenButton type="submit" value="Search" onClick={(e) => onSearchSubmit(e)} />
   </SearchForm>
 

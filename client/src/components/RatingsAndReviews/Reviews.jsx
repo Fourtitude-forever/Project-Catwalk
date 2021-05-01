@@ -4,20 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 import StarRating from './StarRating.jsx';
-import { ThreadSubHeading } from '../../css/sharedcss.jsx';
-
-const LineBreak = styled.div`
-width: 60%;
-border-bottom: solid 1px black;
-margin-bottom: 15px;
-margin-top: 10px;
-`;
-
-const ReviewHeading = styled.p`
-  font-size: 17px;
-  font-weight: bold;
-  margin-bottom: 0;
-`;
+import { ThreadSubHeading, ThreadHeading, ThreadSubItem, Divider } from '../../css/sharedcss.jsx';
 
 const Helpfulness = styled.span`
   ${(props) => {
@@ -36,6 +23,10 @@ const Helpfulness = styled.span`
   }}
 `;
 
+const SmallerStarDiv = styled.div`
+  margin-top: 10px;
+`;
+
 const Reviews = ({ reviews, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
@@ -45,24 +36,24 @@ const Reviews = ({ reviews, loading }) => {
       <div>
         {reviews.map((review) => (
           <div key={review.review_id}>
-            <StarRating stars={review.rating} />
-            <ReviewHeading>
+            <ThreadHeading>
+              {review.summary}
+            </ThreadHeading>
+            <SmallerStarDiv>
+              <StarRating stars={review.rating} />
+            </SmallerStarDiv>
+            <br />
+            <ThreadSubItem>
+              {review.body}
+            </ThreadSubItem>
+            <ThreadSubHeading>
               {review.reviewer_name.charAt(0).toUpperCase()
               + review.reviewer_name.substr(1).toLowerCase()}
               ,
               {'  '}
               {'  '}
               {moment(review.date).format('MMMM DD, YYYY')}
-            </ReviewHeading>
-            <br />
-            <span>
-              {review.summary}
-            </span>
-            <br />
-            <br />
-            <span>
-              {review.body}
-            </span>
+            </ThreadSubHeading>
             <ThreadSubHeading>
               Helpful?
               <Helpfulness>
@@ -72,7 +63,7 @@ const Reviews = ({ reviews, loading }) => {
                 Report
               </Helpfulness>
             </ThreadSubHeading>
-            <LineBreak />
+            <Divider />
           </div>
         ))}
       </div>
