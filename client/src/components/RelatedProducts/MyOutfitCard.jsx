@@ -57,16 +57,6 @@ font-size: 14px;
 
 const MyOutfitCard = ({ id, category, name, price, style, clickHandler, average}) => {
 
-    const getPicture = (results = []) => {
-      for (var result of results ) {
-        if (result.['default?'] === true) {
-          return get(result, 'photos[0].thumbnail_url');
-        }
-      }
-
-      return get(results, '[0].photos[0].thumbnail_url');
-    };
-
     return(
       <MyOutfitCard_Div onClick={() => {
         clickHandler(id);
@@ -84,7 +74,6 @@ const MyOutfitCard = ({ id, category, name, price, style, clickHandler, average}
           <ProductPrice_Div>
             <Price>{price}</Price>
           </ProductPrice_Div>
-          {/* <Rating_Div>☆☆☆☆☆</Rating_Div> */}
           <StarRating stars={average} />
         </Details_Div>
       </MyOutfitCard_Div>

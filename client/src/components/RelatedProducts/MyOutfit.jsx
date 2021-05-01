@@ -51,7 +51,7 @@ display: flex;
 padding-right:40px;
 `;
 
-const MyOutfit = ({ productData, productStyle,  cardClickHandler, average, starStyle, deleteStyle }) => {
+const MyOutfit = ({ productID, productData, productStyle,  cardClickHandler, average, starStyle, deleteStyle }) => {
 
   const [carouselStartIndex, setcarouselStartIndex] = useState(0);
   const [outfitStyleData, setoutfitStyleData] = useState([])
@@ -82,8 +82,8 @@ const MyOutfit = ({ productData, productStyle,  cardClickHandler, average, starS
           { productDataFromStart.map((product, key) => (
               <MyOutfitCard
                 clickHandler={cardClickHandler}
-                key={product.id}
-                id={product[0].id}
+                key={product[0].style_id}
+                id={productID}
                 category={product.category}
                 name={product[0].name}
                 price={product[0].original_price}

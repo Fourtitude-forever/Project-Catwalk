@@ -91,6 +91,7 @@ const RelatedProducts = ({ productID, clickHandler, average, starStyle, deleteSt
         addStar={addStarStyle}
       />
       <MyOutfit
+        productID={productID}
         average={average}
         productData={productData}
         productStyle={productStyle}

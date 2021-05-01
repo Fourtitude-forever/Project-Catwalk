@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
 import StarRating from '../RatingsAndReviews/StarRating.jsx';
+import config from '../../../../config';
+import axios from 'axios';
 
 const ProductCardDiv = styled.div`
   border: 3px solid black;
@@ -92,6 +94,27 @@ const Rating_Div = styled.div`
 
 const ProductCard = ({ id, category, name, price, style = {}, clickHandler, average}) => {
 
+  const [starRating, setstarRating] = useState(0);
+
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/',
+      headers: config,
+      params: { product_id: id },
+    })
+      .then((resp) => {
+        const { count } = resp.data;
+        let tempRating = 0;
+        resp.data.results.map((review) => {
+          tempRating += (review.rating);
+        });
+        tempRating /= count;
+        setstarRating(tempRating);
+      })
+    }
+  )
+
   const getPicture = (results = []) => {
     for (var result of results ) {
       if (result.['default?'] === true) {
@@ -120,7 +143,7 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
         <ProductPrice_Div>
           <Price>{price}</Price>
         </ProductPrice_Div>
-        <StarRating stars={average} />
+        <StarRating stars={starRating} />
       </Details_Div>
     </ProductCardDiv>
   )
