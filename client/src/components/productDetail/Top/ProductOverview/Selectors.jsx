@@ -26,8 +26,9 @@ const DropBtn = styled.select`
   border-radius: 16px;
   outline: none;
   font-size: large;
-  width: 90%;
-  height: 80%;
+  width: 80%;
+  height: 60%;
+  top:40%;
   display: inline-block;
   flex-basis: auto;
   text-indent: 10%;
@@ -161,7 +162,7 @@ const AddtoBagButton = styled.button`
     background-color: #187690;
     box-sizing: border-box;
     width: 90%;
-    height: 80%;
+    height: 60%;
     display: inline-block;
     cursor: pointer;
     text-align: left;
@@ -187,7 +188,7 @@ const StarWrapper = styled.div`
   box-sizing: border-box;
   display:flex;
   flex-flow: row wrap;
-  align-items: center;
+  align-items: right;
   display: inline-block;
   padding:5px;
 `;
@@ -204,8 +205,8 @@ const StarButton = styled.button`
   display: inline-block;
   cursor: pointer;
   font-size: large;
-  width:80%;
-  height:80%;
+  width:50%;
+  height:60%;
   &:hover {
     background-color: #94b5c0;
   }

@@ -118,7 +118,7 @@ position: absolute;
 left: 20px;
 //top:10%;
 width: 10%;
-height: 55%;
+height: 50%;
 box-sizing: border-box;
 align-items: center;
 overflow: hidden;

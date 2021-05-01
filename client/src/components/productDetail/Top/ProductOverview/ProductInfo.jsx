@@ -37,6 +37,22 @@ const Title = styled.div`
 const Price = styled.div`
 //border: 5px solid black;
   font-size: large;
+  margin-bottom: 5%;
+`;
+
+const Ratings = styled.span`
+//border: 5px solid black;
+margin-bottom: 5%;
+//top: 0%;
+display: inline-block;
+text-align: left;
+//margin: 0 auto;
+
+`;
+
+const A = styled.a`
+font-size: 12px;
+
 `;
 
 
@@ -70,10 +86,10 @@ function ProductInformation({ productID, stars }) {
   return (
     <ProductInfoDiv>
       {loadingIcon}
-      <span>
+      <Ratings>
         <StarRating stars={stars} />
-        <span>Read all reviews</span>
-      </span>
+        <A href="#readReviews">Read all reviews</A>
+      </Ratings>
 
       <Cat>{category}</Cat>
       <Title>{title}</Title>

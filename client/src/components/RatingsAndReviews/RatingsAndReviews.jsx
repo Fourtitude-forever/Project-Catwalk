@@ -25,7 +25,7 @@ const RatingSpan = styled.span`
 
 function RatingsAndReviews({ productID, average }) {
   return (
-    <SectionBG2>
+    <SectionBG2 id='readReviews'>
       <Headers2>Ratings and Reviews</Headers2>
       <HelpfulDiv>
         <RatingSpan>{average}</RatingSpan>
