@@ -34,6 +34,7 @@ class App extends React.Component {
 
     this.onStarChange = this.onStarChange.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.deleteStarStyle = this.deleteStarStyle.bind(this);
   }
 
   componentDidMount() {
@@ -63,6 +64,12 @@ class App extends React.Component {
 
   onClickHandler(relatedProduct_id) {
     this.setState({productID: relatedProduct_id})
+  }
+
+  deleteStarStyle(product_id) {
+    this.setState({
+      starStyle: this.state.starStyle.filter((_, i) => i !== product_id)
+    });
   }
 
   render() {
