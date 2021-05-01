@@ -12,12 +12,10 @@ const SliderDiv = styled.div`
       return `
         width:65%;
         transition: all 0.5s;
-        //transform: translateY(4px);
       `;
     } return `
         width:100%;
         transition: all 0.5s;
-        //transform: translateY(4px);
     `;
   }}
   height: 100%;
@@ -28,8 +26,6 @@ const SliderDiv = styled.div`
   z-index: 10;
   background-color: #f6f5f5;
 `;
-
-// position: ${(props) => (props.isExpanded ? 'relative' : 'absolute')};
 
 const LeftButton = styled.button`
   position:absolute;
@@ -113,10 +109,8 @@ const IconStyle = styled.i`
 `;
 
 const ThumbNailsContainer = styled.div`
-//border: 2px solid pink;
 position: absolute;
 left: 20px;
-//top:10%;
 width: 10%;
 height: 50%;
 box-sizing: border-box;

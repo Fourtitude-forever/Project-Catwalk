@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const SlideDiv = styled.img`
-  //border: 5px solid blue;
   position:relative;
   alt: product image;
   min-width: 100%;

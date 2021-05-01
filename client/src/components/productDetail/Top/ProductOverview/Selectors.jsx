@@ -7,7 +7,6 @@ import {
 } from '../../../../css/sharedcss.jsx';
 
 const SelectorDiv = styled.div`
-  //border: 5px solid yellow;
   position: relative;
   height:33%;
   display:flex;
@@ -49,10 +48,6 @@ const Form = styled.form`
   padding:5px;
 `;
 
-const Option = styled.option`
-  //text-indent: 40%;
-`;
-
 function Selectors({ selectedStyle, onStarChange }) {
   const [selectSku, setSelectSku] = useState();
   const [skus, setSkus] = useState({});
@@ -86,7 +81,7 @@ function SizeSelector({ selectedStyle, onSizeChange }) {
   return (
     <Form>
       <DropBtn onChange={(e) => onSizeChange(e.target.value)}>
-        <Option>Select Size</Option>
+        <option>Select Size</option>
         {
             selectedStyle[0]
               ? _.map(selectedStyle[0].skus,
@@ -127,7 +122,7 @@ function QuantitySelector({ selectedStyle, selectSku }) {
         {
           selectedStyle[0]
             ? setQuantity(selectedStyle[0]?.skus[selectSku]?.quantity)
-              .map((quantity, i) => <option key={i}>{quantity}</option>) : isloading
+              .map((quantity, i) => <option key={i}>{quantity}</option>) : loadingIcon
         }
       </DropBtn>
     </Form>
@@ -135,7 +130,6 @@ function QuantitySelector({ selectedStyle, selectSku }) {
 }
 
 const Wrapper = styled.div`
-  //border: 5px solid black;
   width :70%;
   align-content: stretch;
   height: 50%;
@@ -151,7 +145,6 @@ const AddtoBagButton = styled.button`
 
     position: relative;
     text-indent: 10%;
-    //text-align: center;
     font-size: large;
     flex-basis: auto;
     color: white;

@@ -6,8 +6,6 @@ import Styles from './Styles.jsx';
 import Selectors from './Selectors.jsx';
 
 const ProducOverviewDiv = styled.div`
-  //border: 20px solid red;
-  //border: 5px solid #1687a7;
   position: absolute;
   right: 0px;
   width: 35%;

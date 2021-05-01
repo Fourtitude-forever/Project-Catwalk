@@ -8,7 +8,6 @@ import ProductOverview from './Top/ProductOverview/ProductOverview.jsx';
 import ProductDescription from './Down/ProductDescription.jsx';
 
 const ProductDetailDiv = styled.div`
-  //border: 2px solid blue;
   position: relative;
   width:100%;
   height:90vh;
@@ -19,8 +18,6 @@ const ProductDetailDiv = styled.div`
 `;
 
 const Top = styled.div`
-  //border: 5px solid green;
-  //border: 1px solid #187690;
   position: relative;
   width: 80%;
   height:100%;
@@ -29,7 +26,6 @@ const Top = styled.div`
 `;
 
 const Down = styled.div`
-  //border: 5px solid green;
   position: relative;
   width: 50%;
   height:20%;
