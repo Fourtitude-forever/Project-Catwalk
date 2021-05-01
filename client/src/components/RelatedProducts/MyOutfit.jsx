@@ -54,6 +54,7 @@ padding-right:40px;
 const MyOutfit = ({ productData, productStyle,  cardClickHandler, average}) => {
 
   const [carouselStartIndex, setcarouselStartIndex] = useState(0);
+  const [outfitStyleData, setoutfitStyleData] = useState([])
 
   const prevButton = () => {
     if (carouselStartIndex > 0) {

@@ -18,7 +18,7 @@ height: 350px;
 width: 100%;
 `;
 
-const RelatedProducts = ({ productID, clickHandler, average }) => {
+const RelatedProducts = ({ productID, clickHandler, average, starStyle }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -83,8 +83,19 @@ const RelatedProducts = ({ productID, clickHandler, average }) => {
   return (
     <div className="RelatedProducts">
       <h1>Related Products</h1>
-      <RelatedProductCarousel average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
-      <MyOutfit average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
+      <RelatedProductCarousel
+        average={average}
+        productData={productData}
+        productStyle={productStyle}
+        cardClickHandler={clickHandler}
+      />
+      <MyOutfit
+        average={average}
+        productData={productData}
+        productStyle={productStyle}
+        cardClickHandler={clickHandler}
+        starStyle={starStyle}
+      />
     </div>
   )
 }

@@ -29,7 +29,7 @@ class App extends React.Component {
     this.state = {
       productID: 23149,
       productAvgRating: 0,
-      starStyle: {},
+      starStyle: [],
     };
 
     this.onStarChange = this.onStarChange.bind(this);
@@ -58,7 +58,7 @@ class App extends React.Component {
   }
 
   onStarChange(style) {
-    this.setState({ starStyle: style });
+    this.setState({ starStyle: [...this.state.starStyle, style]});
   }
 
   onClickHandler(relatedProduct_id) {
@@ -72,9 +72,21 @@ class App extends React.Component {
       <div>
         <GlobalStyle />
         <div>Hello From App</div>
-        <ProductDetail productID={this.state.productID} onStarChange={this.onStarChange} average={this.state.productAvgRating} />
-        <RelatedProducts productID={this.state.productID} clickHandler={this.onClickHandler} average={this.state.productAvgRating}/>
-        <RatingsAndReviews average={this.state.productAvgRating} productID={this.state.productID} />
+        <ProductDetail
+          productID={this.state.productID}
+          onStarChange={this.onStarChange}
+          average={this.state.productAvgRating}
+        />
+        <RelatedProducts
+          productID={this.state.productID}
+          clickHandler={this.onClickHandler}
+          average={this.state.productAvgRating}
+          starStyle={this.state.starStyle}
+        />
+        <RatingsAndReviews
+          average={this.state.productAvgRating}
+          productID={this.state.productID}
+        />
         <QuestionListWithTracking
           productID={this.state.productID}
         />
