@@ -85,7 +85,7 @@ class App extends React.Component {
           average={this.state.productAvgRating}
           productID={this.state.productID}
         />
-        <QuestionList
+        <QuestionListWithTracking
           productID={this.state.productID}
         />
       </div>
