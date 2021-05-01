@@ -48,7 +48,7 @@ const request = {
       widget: widgetClicked,
       time: timeStamp,
     };
-    return postRequest('interactions', 'POST', form);
+    return postRequest('interactions', form);
   },
 
 };

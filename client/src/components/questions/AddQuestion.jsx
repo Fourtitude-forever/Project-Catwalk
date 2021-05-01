@@ -88,7 +88,7 @@ const AddQuestion = ({
           </label>
           <label>
             Your email:*
-            <FormInput type="email" name="email" required />
+            <FormInput type="text" name="email" required />
           </label>
           <FormErr hasError={unfilledError}>All fields denoted * are required</FormErr>
           <FormErr hasError={incorrectEmail}>Email provided is invalid</FormErr>

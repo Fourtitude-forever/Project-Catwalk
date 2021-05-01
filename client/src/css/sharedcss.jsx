@@ -11,7 +11,7 @@ export const SectionBG1 = styled.div`
 `;
 
 export const SectionBG2 = styled(SectionBG1)`
-  background-color: none;
+  background-color: #f6f5f5;
 `;
 
 /////////////////////////////////////////
@@ -49,6 +49,7 @@ export const ThreadSubList = styled.div`
   max-height: 50vh;
   overflow: auto;
   display: inline-block;
+  width: 50%;
 `;
 
 export const ThreadSubItem = styled.p`
@@ -62,7 +63,7 @@ export const ThreadSubItem = styled.p`
 
 export const Button = styled.button`
   border: 0;
-  background-color: #1687a7;
+  background-color: #187690;
   color: white;
   padding: 8px 13px;
   border-radius: 16px;
