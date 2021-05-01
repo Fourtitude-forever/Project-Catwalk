@@ -54,7 +54,7 @@ function ProductDetail({ productID, onStarChange, average }) {
       .catch((err) => {
         throw err;
       });
-  }, []);
+  }, [productID]);
 
   useEffect(() => {
     setSelectedStyle(styles.filter((style) => style.style_id === styleId));
