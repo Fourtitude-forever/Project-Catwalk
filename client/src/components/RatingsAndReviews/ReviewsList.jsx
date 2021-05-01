@@ -40,7 +40,7 @@ const ReviewsList = ({ productID }) => {
       .catch((err) => {
         throw err;
       });
-  }, []);
+  }, [productID]);
 
   // 'Add more' button click handler increments currentList
   const onAddMoreClick = () => {
