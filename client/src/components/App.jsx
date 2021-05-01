@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import axios from 'axios';
 
@@ -23,26 +23,21 @@ const RelatedProductsWithTracking = withTracking(RelatedProducts);
 const ProductDetailWithTracking = withTracking(ProductDetail);
 const RatingsAndReviewsWithTracking = withTracking(RatingsAndReviews);
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productID: 23145,
-      productAvgRating: 0,
-      starStyle: {},
-    };
+const App = () => {
+  const [productID, setProductID] = useState(23145);
+  const [productAvgRating, setProductAvgRating] = useState(0);
+  const [starStyle, setStarStyle] = useState({});
 
-    this.onStarChange = this.onStarChange.bind(this);
-    this.onClickHandler = this.onClickHandler.bind(this);
-  }
+  // this.onStarChange = this.onStarChange.bind(this);
+  // this.onClickHandler = this.onClickHandler.bind(this);
 
-  componentDidMount() {
+  useEffect(() => {
     const sendRequest = async () => {
       await axios({
         method: 'GET',
         url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/',
         headers: config,
-        params: { product_id: this.state.productID },
+        params: { product_id: productID },
       })
         .then((resp) => {
           const { count } = resp.data;
@@ -51,46 +46,111 @@ class App extends React.Component {
             tempRating += (review.rating);
           });
           tempRating /= count;
-          this.setState({ productAvgRating: tempRating });
+          setProductAvgRating(tempRating);
         });
     };
     sendRequest();
-  }
+  }, [productID]);
 
-  onStarChange(style) {
-    this.setState({ starStyle: style });
-  }
+  const onStarChange = (style) => {
+    setStarStyle(style);
+  };
 
-  onClickHandler(relatedProduct_id) {
-    this.setState({ productID: relatedProduct_id });
-  }
+  const onClickHandler = (relatedProductID) => {
+    setProductID(relatedProductID);
+  };
 
-  render() {
-    // const { productID } = this.state.productID;
-    console.log('this is state', this.state);
-    return (
-      <div>
-        <GlobalStyle />
-        <ProductDetail
-          productID={this.state.productID}
-          onStarChange={this.onStarChange}
-          average={this.state.productAvgRating}
-        />
-        <RelatedProducts
-          productID={this.state.productID}
-          clickHandler={this.onClickHandler}
-          average={this.state.productAvgRating}
-        />
-        <RatingsAndReviews
-          average={this.state.productAvgRating}
-          productID={this.state.productID}
-        />
-        <QuestionListWithTracking
-          productID={this.state.productID}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <GlobalStyle />
+      <ProductDetail
+        productID={productID}
+        onStarChange={onStarChange}
+        average={productAvgRating}
+      />
+      <RelatedProducts
+        productID={productID}
+        clickHandler={onClickHandler}
+        average={productAvgRating}
+      />
+      <RatingsAndReviews
+        average={productAvgRating}
+        productID={productID}
+      />
+      <QuestionListWithTracking
+        productID={productID}
+      />
+    </div>
+  );
+};
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       productID: 23145,
+//       productAvgRating: 0,
+//       starStyle: {},
+//     };
+
+//     this.onStarChange = this.onStarChange.bind(this);
+//     this.onClickHandler = this.onClickHandler.bind(this);
+//   }
+
+//   componentDidMount() {
+//     const sendRequest = async () => {
+//       await axios({
+//         method: 'GET',
+//         url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/',
+//         headers: config,
+//         params: { product_id: this.state.productID },
+//       })
+//         .then((resp) => {
+//           const { count } = resp.data;
+//           let tempRating = 0;
+//           resp.data.results.map((review) => {
+//             tempRating += (review.rating);
+//           });
+//           tempRating /= count;
+//           this.setState({ productAvgRating: tempRating });
+//         });
+//     };
+//     sendRequest();
+//   }
+
+//   onStarChange(style) {
+//     this.setState({ starStyle: style });
+//   }
+
+//   onClickHandler(relatedProductID) {
+//     this.setState({ productID: relatedProductID });
+//   }
+
+//   render() {
+//     // const { productID } = this.state.productID;
+//     console.log('this is state', this.state);
+//     return (
+//       <div>
+//         <GlobalStyle />
+//         <ProductDetail
+//           productID={this.state.productID}
+//           onStarChange={this.onStarChange}
+//           average={this.state.productAvgRating}
+//         />
+//         <RelatedProducts
+//           productID={this.state.productID}
+//           clickHandler={this.onClickHandler}
+//           average={this.state.productAvgRating}
+//         />
+//         <RatingsAndReviews
+//           average={this.state.productAvgRating}
+//           productID={this.state.productID}
+//         />
+//         <QuestionListWithTracking
+//           productID={this.state.productID}
+//         />
+//       </div>
+//     );
+//   }
+// }
 
 export default App;
