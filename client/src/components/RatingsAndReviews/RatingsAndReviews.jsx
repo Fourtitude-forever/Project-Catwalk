@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 
 import StarRating from './StarRating.jsx';
 import ReviewsList from './ReviewsList.jsx';
-import { SectionBG1, Headers2 } from '../../css/sharedcss.jsx';
+import { SectionBG2, Headers2 } from '../../css/sharedcss.jsx';
 
 const HelpfulDiv = styled.div`
 display: flex;
 padding-right: 20%;
 `;
 
-const Top = styled.h1`
+const Top = styled.h3`
 font-size: 25px;
 `;
 
 const RatingSpan = styled.span`
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 600;
   padding-right: 5px;
   line-height: 1.8rem;
@@ -25,15 +25,14 @@ const RatingSpan = styled.span`
 
 function RatingsAndReviews({ productID, average }) {
   return (
-    <SectionBG1>
+    <SectionBG2>
+      <Headers2>Ratings and Reviews</Headers2>
       <HelpfulDiv>
         <RatingSpan>{average}</RatingSpan>
         <StarRating stars={average} />
       </HelpfulDiv>
-      <Top>Average Rating</Top>
-      <Headers2>Ratings and Reviews</Headers2>
       <ReviewsList productID={productID} />
-    </SectionBG1>
+    </SectionBG2>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ProductCard from './ProductCard.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
+import MyOutfitCard from './MyOutfitCard.jsx';
 
 const CarouselDiv = styled.div`
 display: flex;
@@ -51,8 +51,8 @@ display: flex;
 padding-right:40px;
 `;
 
+const MyOutfit = ({ productData, productStyle,  cardClickHandler, average}) => {
 
-const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, average}) => {
   const [carouselStartIndex, setcarouselStartIndex] = useState(0);
 
   const prevButton = () => {
@@ -70,15 +70,16 @@ const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, 
   const productDataFromStart = productData.slice(carouselStartIndex)
   const productStyleFromStart = productStyle.slice(carouselStartIndex)
 
-
   return (
-    <CarouselDiv >
-      <div className="carousel_actions">
-        <PrevButton id="carousel_button--prev" onClick={prevButton}>˂</PrevButton>
-      </div>
-      <ProductCards>
-        { productDataFromStart.map((product, key) => (
-            <ProductCard
+    <div>
+      <h1>My Outfit</h1>
+      <CarouselDiv >
+        <div className="carousel_actions">
+          <PrevButton id="carousel_button--prev" onClick={prevButton}>˂</PrevButton>
+        </div>
+        <ProductCards>
+          { productDataFromStart.map((product, key) => (
+              <MyOutfitCard
                 clickHandler={cardClickHandler}
                 key={product.id}
                 id={product.id}
@@ -87,14 +88,15 @@ const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, 
                 price={product.default_price}
                 style={get(productStyleFromStart, key)}
                 average={average}
-            />
-        ))}
-      </ProductCards>
-      <NextButton_Div>
-        <NextButton id="carousel_button--next" onClick={nextButton}>˃</NextButton>
-      </NextButton_Div>
-    </CarouselDiv>
+              />
+          ))}
+        </ProductCards>
+        <NextButton_Div>
+          <NextButton id="carousel_button--next" onClick={nextButton}>˃</NextButton>
+        </NextButton_Div>
+      </CarouselDiv>
+    </div>
   )
 }
 
-export default RelatedProductCarousel;
+export default MyOutfit;

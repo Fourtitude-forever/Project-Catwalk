@@ -5,6 +5,7 @@ import ProductCard from './ProductCard.jsx';
 import RelatedProductCarousel from './RelatedProductCarousel.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
+import MyOutfit from './MyOutfit.jsx';
 
 const CarouselDiv = styled.div`
 display: flex;
@@ -17,7 +18,7 @@ height: 350px;
 width: 100%;
 `;
 
-const RelatedProducts = ({ productID, clickHandler }) => {
+const RelatedProducts = ({ productID, clickHandler, average }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -82,7 +83,8 @@ const RelatedProducts = ({ productID, clickHandler }) => {
   return (
     <div className="RelatedProducts">
       <h1>Related Products</h1>
-      <RelatedProductCarousel productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
+      <RelatedProductCarousel average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
+      <MyOutfit average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
     </div>
   )
 }
