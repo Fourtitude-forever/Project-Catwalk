@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const SlideDiv = styled.img`
-  border: 5px solid blue;
+  //border: 5px solid blue;
   position:relative;
   min-width: 100%;
   height: 100%;
@@ -11,6 +11,8 @@ const SlideDiv = styled.img`
   overflow: hidden;
   box-sizing: border-box;
   object-fit: contain;
+  visibility: visible;
+  background-color: white;
 `;
 
 function SliderContent({ photo, currentIndex }) {

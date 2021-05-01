@@ -10,29 +10,29 @@ import {
 import StarRating from '../../../RatingsAndReviews/StarRating.jsx';
 
 const ProductInfoDiv = styled.div`
-  border: 5px solid yellow;
+  //border: 5px solid yellow;
   position: relative;
   height:33%;
   display:flex;
   flex-direction: column;
   padding-left: 10px;
-  padding-top:20px
+  padding-top:20px;
 `;
 
 const Cat = styled.div`
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: x-large;
   padding-bottom:10px
 `;
 
 const Title = styled.div`
   font-weight: bold;
-  font-size: 30px;
+  font-size: xx-large;
   padding-bottom:10px;
 `;
 
 const Price = styled.div`
-  font-size: 20px;
+  font-size: large;
 `;
 
 
@@ -66,9 +66,7 @@ function ProductInformation({ productID, stars }) {
   return (
     <ProductInfoDiv>
       {loadingIcon}
-      <p>
-        <StarRating stars={stars} />
-      </p>
+      <StarRating stars={stars} />
       <Cat>{category}</Cat>
       <Title>{title}</Title>
       <Price>{price}</Price>

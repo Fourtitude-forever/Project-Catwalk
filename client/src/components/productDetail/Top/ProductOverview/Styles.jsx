@@ -1,8 +1,11 @@
 import React, { useState, useEffect} from 'react';
 import styled from 'styled-components';
+import {
+  Headers2, Button
+} from '../../../../css/sharedcss.jsx';
 
 const StylesDiv = styled.div`
-  border: 5px solid yellow;
+  //border: 5px solid yellow;
   position: relative;
   height:33%;
   display:flex;
@@ -19,10 +22,12 @@ const CirclesContainer = styled.div`
 `
 
 const Circles = styled.input`
+  clip-path: circle(50%);
    border-radius: 50%;
    border:1px solid grey;
    height:75%;
    width:15%;
+   box-sizing: border-box;
    margin:10px;
    overflow: hidden;
    object-fit: cover;
@@ -30,12 +35,13 @@ const Circles = styled.input`
 
 const StyleTitle = styled.div`
   font-weight: bold;
-  font-size: 20px;
+  font-size: x-large;
   text-transform: uppercase;
 `
 
 const SelectedStyleTitle = styled.span`
-  font-size: 18px;
+  tab-size: 4;
+  font-size: medium;
   text-transform: uppercase;
 `
 
@@ -44,9 +50,9 @@ function Styles({ styles, id, onStyleChange }) {
   return (
     <StylesDiv>
       <StyleTitle>
-        Style >
+          Style > &nbsp;
         <SelectedStyleTitle>
-          Selected Style
+           Selected Style
         </SelectedStyleTitle>
       </StyleTitle>
 

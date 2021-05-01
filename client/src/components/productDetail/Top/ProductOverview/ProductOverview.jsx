@@ -6,13 +6,16 @@ import Styles from './Styles.jsx';
 import Selectors from './Selectors.jsx';
 
 const ProducOverviewDiv = styled.div`
-  border: 5px solid purple;
+  //border: 20px solid red;
+  //border: 5px solid #1687a7;
   position: relative;
   width: 30%;
   height:100%;
   box-sizing: border-box;
   display:flex;
   flex-direction: column;
+  z-index: 1;
+  background-color: white;
 `;
 
 function ProductOverview({
