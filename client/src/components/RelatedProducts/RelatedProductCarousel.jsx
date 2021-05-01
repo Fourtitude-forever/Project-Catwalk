@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
+import {Button} from '../../css/sharedcss.jsx';
 
 const CarouselDiv = styled.div`
 display: flex;
@@ -12,7 +13,7 @@ margin: 20px;
 padding: 10px;
 height: 350px;
 width: 85%;
-overflow: hidden;
+
 position: relative;
 `;
 
@@ -22,35 +23,37 @@ width: 85%;
 height: 350px;
 margin: 200px auto;
 overflow-x: auto;
-
+//border: 3px solid blue ;
 `;
 
-const PrevButton = styled.button`
+const PrevButton = styled(Button)`
+height:60px;
+width: 60px;
 position: absolute;
-font-size: 60px;
+font-size: 30px;
 font-weight: bold;
 cursor: pointer;
 z-index: 1;
-background: none;
-border: none;
+border-radius:50%;
+top: 45%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
 `;
 
-const NextButton = styled.button`
+const NextButton = styled(Button)`
+height:60px;
+width: 60px;
 position: absolute;
-font-size: 60px;
+font-size: 30px;
 font-weight: bold;
 cursor: pointer;
 z-index: 1;
-background: none;
-border: none;
 justify-content: right;
+border-radius:50%;
+top: 45%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
 `;
-
-const NextButton_Div = styled.div`
-display: flex;
-padding-right:40px;
-`;
-
 
 const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, average}) => {
   const [carouselStartIndex, setcarouselStartIndex] = useState(0);
@@ -90,9 +93,9 @@ const RelatedProductCarousel = ({ productData, productStyle,  cardClickHandler, 
             />
         ))}
       </ProductCards>
-      <NextButton_Div>
+      <div>
         <NextButton id="carousel_button--next" onClick={nextButton}>˃</NextButton>
-      </NextButton_Div>
+      </div>
     </CarouselDiv>
   )
 }

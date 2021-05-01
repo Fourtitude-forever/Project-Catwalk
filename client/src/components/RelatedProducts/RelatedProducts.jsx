@@ -6,6 +6,8 @@ import RelatedProductCarousel from './RelatedProductCarousel.jsx';
 import styled from 'styled-components';
 import { get } from 'lodash';
 import MyOutfit from './MyOutfit.jsx';
+import {SectionBG1, Headers2} from '../../css/sharedcss.jsx';
+
 
 const CarouselDiv = styled.div`
 display: flex;
@@ -81,11 +83,11 @@ const RelatedProducts = ({ productID, clickHandler, average }) => {
   }
 
   return (
-    <div className="RelatedProducts">
-      <h1>Related Products</h1>
+    <SectionBG1 >
+      <Headers2>Related Products</Headers2>
       <RelatedProductCarousel average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
       <MyOutfit average={average} productData={productData} productStyle={productStyle} cardClickHandler={clickHandler}/>
-    </div>
+    </SectionBG1>
   )
 }
 

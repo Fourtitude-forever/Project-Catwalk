@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import StarRating from '../RatingsAndReviews/StarRating.jsx';
 
 const MyOutfitCard_Div = styled.div`
-  border: 3px solid black;
+  border: 3px solid grey;
   border-radius: 10px;
   width: 210px;
   height: 300px;
@@ -19,7 +19,13 @@ const MyOutfitCard_Div = styled.div`
   transition: 0.5s;
 `;
 
-const Thumbnail_Div = styled.div``;
+const Thumbnail_Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+`;
 
 const Thumbnail = styled.img`
 display: flex;
@@ -30,20 +36,37 @@ width: 200px;
 height: 200px;
 `;
 
-const Details_Div = styled.div``;
+const Details_Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  align-self: stretch;
+  padding-left: 3px;
+`;
 
 const ProductCategory_Div = styled.div``;
 
 const Category = styled.div``;
 
-const ProductName_Div = styled.div``;
+const ProductName_Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+`;
 
 const Name = styled.span`
 font-weight: bold;
 font-size: 16px;
 `;
 
-const ProductPrice_Div = styled.div``;
+const ProductPrice_Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+`;
 
 const Price = styled.span`
 font-size: 14px;
@@ -78,7 +101,6 @@ const MyOutfitCard = ({ id, category, name, price, style = {}, clickHandler, ave
           <ProductPrice_Div>
             <Price>{price}</Price>
           </ProductPrice_Div>
-          {/* <Rating_Div>☆☆☆☆☆</Rating_Div> */}
           <StarRating stars={average} />
         </Details_Div>
       </MyOutfitCard_Div>
