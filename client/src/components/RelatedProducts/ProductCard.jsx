@@ -82,12 +82,13 @@ const Name = styled.span`
 
 const StarButton = styled.button`
   border: 0px;
-  display: flex;
+  z-index: 1;
 `;
 
 const Rating_Div = styled.div`
   padding-top: 3px;
 `;
+
 
 const ProductCard = ({ id, category, name, price, style = {}, clickHandler, average}) => {
 
@@ -107,6 +108,7 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
     }}>
       <ThumbnailDiv>
         <ProductThumbnail src={getPicture(style.results)} />
+        {/* <StarButton>☆</StarButton> */}
       </ThumbnailDiv>
       <Details_Div>
         <ProductCategoryDiv>
@@ -118,7 +120,6 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
         <ProductPrice_Div>
           <Price>{price}</Price>
         </ProductPrice_Div>
-        {/* <Rating_Div>☆☆☆☆☆</Rating_Div> */}
         <StarRating stars={average} />
       </Details_Div>
     </ProductCardDiv>

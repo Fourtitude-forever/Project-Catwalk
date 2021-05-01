@@ -89,6 +89,8 @@ class App extends React.Component {
           clickHandler={this.onClickHandler}
           average={this.state.productAvgRating}
           starStyle={this.state.starStyle}
+          delete={this.deleteStarStyle}
+          addStarStyle={this.onStarChange}
         />
         <RatingsAndReviews
           average={this.state.productAvgRating}

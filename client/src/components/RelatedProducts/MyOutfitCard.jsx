@@ -30,7 +30,13 @@ width: 200px;
 height: 200px;
 `;
 
-const Details_Div = styled.div``;
+const Details_Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  align-self: stretch;
+  padding-left: 3px;
+`;
 
 const ProductCategory_Div = styled.div``;
 
@@ -49,7 +55,7 @@ const Price = styled.span`
 font-size: 14px;
 `;
 
-const MyOutfitCard = ({ id, category, name, price, style = {}, clickHandler, average}) => {
+const MyOutfitCard = ({ id, category, name, price, style, clickHandler, average}) => {
 
     const getPicture = (results = []) => {
       for (var result of results ) {
@@ -66,7 +72,7 @@ const MyOutfitCard = ({ id, category, name, price, style = {}, clickHandler, ave
         clickHandler(id);
       }}>
         <Thumbnail_Div>
-          <Thumbnail src={getPicture(style.results)} />
+          <Thumbnail src={style} />
         </Thumbnail_Div>
         <Details_Div>
           <ProductCategory_Div>

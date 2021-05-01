@@ -51,7 +51,7 @@ display: flex;
 padding-right:40px;
 `;
 
-const MyOutfit = ({ productData, productStyle,  cardClickHandler, average}) => {
+const MyOutfit = ({ productData, productStyle,  cardClickHandler, average, starStyle, deleteStyle }) => {
 
   const [carouselStartIndex, setcarouselStartIndex] = useState(0);
   const [outfitStyleData, setoutfitStyleData] = useState([])
@@ -68,8 +68,8 @@ const MyOutfit = ({ productData, productStyle,  cardClickHandler, average}) => {
 
   }
 
-  const productDataFromStart = productData.slice(carouselStartIndex)
-  const productStyleFromStart = productStyle.slice(carouselStartIndex)
+  const productDataFromStart = starStyle.slice(carouselStartIndex);
+  const productStyleFromStart = productStyle.slice(carouselStartIndex);
 
   return (
     <div>
@@ -83,11 +83,11 @@ const MyOutfit = ({ productData, productStyle,  cardClickHandler, average}) => {
               <MyOutfitCard
                 clickHandler={cardClickHandler}
                 key={product.id}
-                id={product.id}
+                id={product[0].id}
                 category={product.category}
-                name={product.name}
-                price={product.default_price}
-                style={get(productStyleFromStart, key)}
+                name={product[0].name}
+                price={product[0].original_price}
+                style={product[0].photos[0].url}
                 average={average}
               />
           ))}
