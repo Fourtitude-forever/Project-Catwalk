@@ -93,7 +93,6 @@ const ExpandButton = styled.button`
   width: 5%;
   height: 5%;
   cursor: pointer;
-  //box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
   transform: scale(0.98);
 `;
 

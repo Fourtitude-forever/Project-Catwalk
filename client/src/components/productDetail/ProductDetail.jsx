@@ -20,7 +20,7 @@ const ProductDetailDiv = styled.div`
 
 const Top = styled.div`
   //border: 5px solid green;
-  border: 1px solid #187690;
+  //border: 1px solid #187690;
   position: relative;
   width: 95%;
   height:100%;

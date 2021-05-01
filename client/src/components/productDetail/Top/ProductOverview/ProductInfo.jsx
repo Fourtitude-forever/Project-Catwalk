@@ -70,10 +70,14 @@ function ProductInformation({ productID, stars }) {
   return (
     <ProductInfoDiv>
       {loadingIcon}
-      <StarRating stars={stars} />
+      <span>
+        <StarRating stars={stars} />
+        <span>Read all reviews</span>
+      </span>
+
       <Cat>{category}</Cat>
       <Title>{title}</Title>
-      <Price>{price}</Price>
+      <Price>{`$${price}`}</Price>
       {/* <div>Share on social media place holder</div> */}
     </ProductInfoDiv>
   );
