@@ -5,11 +5,14 @@ import PropTypes from 'prop-types';
 const Img = styled.input`
   border: 1px solid grey;
   position: absolute;
-  left: 30px;
-  width: 60px;
+  left: 20px;
+  width: 70px;
   height: 60px;
-  overflow: hidden;
+  //overflow: hidden;
   object-fit: cover;
+  &:hover {
+    box-shadow: 0 0 4px 3px rgba(0, 140, 186, 0.5);
+  }
 `;
 
 function Thumbnails({ photo, id, onThumbClick }) {

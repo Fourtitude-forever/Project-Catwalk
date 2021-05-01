@@ -8,7 +8,8 @@ import Selectors from './Selectors.jsx';
 const ProducOverviewDiv = styled.div`
   //border: 20px solid red;
   //border: 5px solid #1687a7;
-  position: relative;
+  position: absolute;
+  right: 0px;
   width: 30%;
   height:100%;
   box-sizing: border-box;

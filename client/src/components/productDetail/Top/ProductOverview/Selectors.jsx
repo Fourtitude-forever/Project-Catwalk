@@ -30,7 +30,7 @@ const DropBtn = styled.select`
   height: 80%;
   display: inline-block;
   flex-basis: auto;
-  //text-align: center;
+  text-indent: 10%;
   &:hover {
     background-color: #94b5c0;
   }
@@ -47,6 +47,10 @@ const Form = styled.form`
   align-items: center;
   display: inline-block;
   padding:5px;
+`;
+
+const Option = styled.option`
+  //text-indent: 40%;
 `;
 
 function Selectors({ selectedStyle, onStarChange }) {
@@ -82,7 +86,7 @@ function SizeSelector({ selectedStyle, onSizeChange }) {
   return (
     <Form>
       <DropBtn onChange={(e) => onSizeChange(e.target.value)}>
-        <option>Select Size</option>
+        <Option>Select Size</Option>
         {
             selectedStyle[0]
               ? _.map(selectedStyle[0].skus,
@@ -118,6 +122,7 @@ function QuantitySelector({ selectedStyle, selectSku }) {
   return (
     <Form>
       <DropBtn>
+
         <option>Quantity</option>
         {
           selectedStyle[0]
@@ -145,6 +150,7 @@ const Wrapper = styled.div`
 const AddtoBagButton = styled.button`
 
     position: relative;
+    text-indent: 10%;
     //text-align: center;
     font-size: large;
     flex-basis: auto;
@@ -185,7 +191,6 @@ const StarWrapper = styled.div`
   display: inline-block;
   padding:5px;
 `;
-
 
 const StarButton = styled.button`
   position: relative;

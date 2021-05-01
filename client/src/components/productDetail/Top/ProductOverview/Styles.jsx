@@ -22,7 +22,7 @@ const CirclesContainer = styled.div`
 `
 
 const Circles = styled.input`
-  clip-path: circle(50%);
+   //clip-path: circle(50%);
    border-radius: 50%;
    border:1px solid grey;
    height:75%;
@@ -30,6 +30,9 @@ const Circles = styled.input`
    box-sizing: border-box;
    margin:10px;
    overflow: hidden;
+   &:hover {
+    box-shadow: 0 0 0 3px rgba(0, 140, 186, 0.5);
+  };
    object-fit: cover;
 `
 

@@ -6,21 +6,20 @@ import Thumbnails from './Thumbnails.jsx';
 
 const SliderDiv = styled.div`
   //border: 5px solid #1687a7;
+  position:absolute;
   ${(props) => {
     if (!props.isExpanded) {
       return `
-        position:relative;
         width:70%;
         transition: all 0.5s;
+        //transform: translateY(4px);
       `;
     } return `
-        position:absolute;
         width:100%;
         transition: all 0.5s;
+        //transform: translateY(4px);
     `;
   }}
-  //position: absolute;
-  //width:70%;
   height: 100%;
   box-sizing: border-box;
   display: flex;
@@ -60,11 +59,23 @@ const ExpandButton = styled.button`
   width: 5%;
   height: 5%;
   cursor: pointer;
+  //box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: scale(0.98);
 `;
 
 const IconStyle = styled.i`
   &:hover {
-    text-shadow: 2px 4px 6px orange;
+    text-shadow: 2px 4px 6px grey;
+    size: 2px;
+    ${(props) => {
+    if (!props.isExpanded) {
+      return `
+        transform: translateY(2px);
+      `;
+    } return `
+        transform: translateY(2px);
+    `;
+  }}
 }
 `;
 
@@ -84,7 +95,6 @@ function Slider({ selectedStyle }) {
   const onExpandClick = (e) => {
     e.preventDefault();
     handleExpandCollaps();
-    console.log(isExpanded);
   };
 
   const goLeft = () => {
