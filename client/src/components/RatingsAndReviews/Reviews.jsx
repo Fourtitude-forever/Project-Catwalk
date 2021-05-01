@@ -4,7 +4,9 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 import StarRating from './StarRating.jsx';
-import { ThreadSubHeading, ThreadHeading, ThreadSubItem, Divider } from '../../css/sharedcss.jsx';
+import {
+  ThreadSubHeading, ThreadHeading, ThreadSubItem, Divider,
+} from '../../css/sharedcss.jsx';
 
 const Helpfulness = styled.span`
   ${(props) => {
