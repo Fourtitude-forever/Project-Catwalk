@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
 import MyOutfitCard from './MyOutfitCard.jsx';
+import {Headers2, Button} from '../../css/sharedcss.jsx';
 
 const CarouselDiv = styled.div`
 display: flex;
@@ -12,7 +13,6 @@ margin: 20px;
 padding: 10px;
 height: 350px;
 width: 85%;
-overflow: hidden;
 position: relative;
 `;
 
@@ -22,28 +22,35 @@ width: 85%;
 height: 350px;
 margin: 200px auto;
 overflow-x: auto;
-
 `;
 
-const PrevButton = styled.button`
+const PrevButton = styled(Button)`
+height:60px;
+width: 60px;
 position: absolute;
-font-size: 60px;
+font-size: 30px;
 font-weight: bold;
 cursor: pointer;
 z-index: 1;
-background: none;
-border: none;
+border-radius:50%;
+top: 45%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
 `;
 
-const NextButton = styled.button`
+const NextButton = styled(Button)`
+height:60px;
+width: 60px;
 position: absolute;
-font-size: 60px;
+font-size: 30px;
 font-weight: bold;
 cursor: pointer;
 z-index: 1;
-background: none;
-border: none;
 justify-content: right;
+border-radius:50%;
+top: 45%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
 `;
 
 const NextButton_Div = styled.div`
@@ -73,7 +80,7 @@ const MyOutfit = ({ productID, productData, productStyle,  cardClickHandler, ave
 
   return (
     <div>
-      <h1>My Outfit</h1>
+      <Headers2>My Outfit</Headers2>
       <CarouselDiv >
         <div className="carousel_actions">
           <PrevButton id="carousel_button--prev" onClick={prevButton}>˂</PrevButton>

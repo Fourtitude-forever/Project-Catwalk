@@ -6,7 +6,7 @@ import config from '../../../../config';
 import axios from 'axios';
 
 const ProductCardDiv = styled.div`
-  border: 3px solid black;
+  border: 3px solid grey;
   border-radius: 10px;
   width: 210px;
   height: 300px;
@@ -34,6 +34,8 @@ const ThumbnailDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  position: relative;
 `;
 
 const Details_Div = styled.div`
@@ -58,6 +60,8 @@ const ProductPrice_Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 `;
 
 const Category = styled.span`
@@ -83,8 +87,15 @@ const Name = styled.span`
 `;
 
 const StarButton = styled.button`
-  border: 0px;
-  z-index: 1;
+  display: flex;
+  position:absolute;
+  background:transparent;
+  padding-left:150px;
+  font-size:25px;
+  font-weight:bold;
+  cursor: pointer;
+  overflow: hidden;
+  color: #ffbc0b;
 `;
 
 const Rating_Div = styled.div`
@@ -129,8 +140,8 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
     <ProductCardDiv >
       <ThumbnailDiv>
         <ProductThumbnail src={getPicture(style.results)} onClick={() => {
-      clickHandler(id);
-    }}/>
+          clickHandler(id);
+         }}/>
         <StarButton onClick={()=>{addStar([style.results[0]]);}}>☆</StarButton>
       </ThumbnailDiv>
       <Details_Div>
