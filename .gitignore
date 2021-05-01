@@ -4,4 +4,6 @@ client/dist/bundle.js
 
 config.js
 
+client/dist/home.js
 
+client/dist/product.js
