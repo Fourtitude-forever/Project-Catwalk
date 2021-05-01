@@ -11,9 +11,9 @@ const Img = styled.input`
   object-fit: cover;
   box-sizing: border-box;
   &:hover {
-    box-shadow: 0 0 4px 3px #1687a7;
+    box-shadow: 0px 0px 4px 2px #1687a7;
   };
-  transition: 1s;
+  transition: 0.5s;
 `;
 
 function Thumbnails({ photo, id, onThumbClick, currentYIndex }) {

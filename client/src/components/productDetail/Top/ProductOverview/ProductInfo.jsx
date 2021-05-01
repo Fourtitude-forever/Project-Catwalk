@@ -35,27 +35,19 @@ const Title = styled.div`
 `;
 
 const Price = styled.div`
-//border: 5px solid black;
   font-size: large;
   margin-bottom: 5%;
 `;
 
 const Ratings = styled.span`
-//border: 5px solid black;
 margin-bottom: 5%;
-//top: 0%;
 display: inline-block;
 text-align: left;
-//margin: 0 auto;
-
 `;
 
 const A = styled.a`
 font-size: 12px;
-
 `;
-
-
 
 function ProductInformation({ productID, stars }) {
   const [isloading, setLoading] = useState(false);

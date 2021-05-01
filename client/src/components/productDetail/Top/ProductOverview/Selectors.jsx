@@ -38,7 +38,6 @@ const DropBtn = styled.select`
 `;
 
 const Form = styled.form`
-  //border: 5px solid black;
   align-content: stretch;
   width:50%;
   height: 50%;
@@ -182,13 +181,11 @@ function AddToBag() {
 }
 
 const StarWrapper = styled.div`
-  //border: 5px solid black;
   width :30%;
   height: 50%;
   box-sizing: border-box;
   display:flex;
   flex-flow: row wrap;
-  align-items: right;
   display: inline-block;
   padding:5px;
 `;
@@ -215,7 +212,7 @@ const StarButton = styled.button`
 function Star({ selectedStyle, onStarChange }) {
   return (
     <StarWrapper>
-      <StarButton onClick={() => onStarChange(selectedStyle)}>⭐</StarButton>
+      <StarButton onClick={() => onStarChange(selectedStyle)}><i class="far fa-heart"></i></StarButton>
     </StarWrapper>
   );
 }
