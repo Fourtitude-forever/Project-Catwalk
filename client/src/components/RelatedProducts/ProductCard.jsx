@@ -131,7 +131,7 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
         <ProductThumbnail src={getPicture(style.results)} onClick={() => {
       clickHandler(id);
     }}/>
-        <StarButton onClick={()=>{addStar(style)}}>☆</StarButton>
+        <StarButton onClick={()=>{addStar([style.results[0]]);}}>☆</StarButton>
       </ThumbnailDiv>
       <Details_Div>
         <ProductCategoryDiv>
