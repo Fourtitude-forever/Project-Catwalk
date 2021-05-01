@@ -6,12 +6,16 @@ import PropTypes from 'prop-types';
 import Reviews from './Reviews.jsx';
 import config from '../../../../config';
 import AddReview from './AddReview.jsx';
-import { SectionBG1, Button } from '../../css/sharedcss.jsx';
+import { SectionBG2, Button } from '../../css/sharedcss.jsx';
 
 const HelpfulDiv = styled.div`
 float: left;
 display: flex;
 padding-right: 20%;
+`;
+
+const StyledSectionBG2 = styled(SectionBG2)`
+  padding-top: 0;
 `;
 
 const ReviewsList = ({ productID }) => {
@@ -56,14 +60,14 @@ const ReviewsList = ({ productID }) => {
   const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
 
   return (
-    <SectionBG1>
+    <StyledSectionBG2>
       <Reviews reviews={currentReviews} loading={loading} />
       <HelpfulDiv>
         <Button onClick={onSortClick}>Sort Reviews</Button>
         <Button onClick={onAddMoreClick}>More Reviews </Button>
         <AddReview />
       </HelpfulDiv>
-    </SectionBG1>
+    </StyledSectionBG2>
   );
 };
 
