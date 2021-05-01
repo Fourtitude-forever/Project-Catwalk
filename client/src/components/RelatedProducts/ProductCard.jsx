@@ -92,7 +92,7 @@ const Rating_Div = styled.div`
 `;
 
 
-const ProductCard = ({ id, category, name, price, style = {}, clickHandler, average}) => {
+const ProductCard = ({ id, category, name, price, style = {}, clickHandler, average, addStar, styleData}) => {
 
   const [starRating, setstarRating] = useState(0);
 
@@ -126,12 +126,12 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
   };
 
   return(
-    <ProductCardDiv onClick={() => {
-      clickHandler(id);
-    }}>
+    <ProductCardDiv >
       <ThumbnailDiv>
-        <ProductThumbnail src={getPicture(style.results)} />
-        {/* <StarButton>☆</StarButton> */}
+        <ProductThumbnail src={getPicture(style.results)} onClick={() => {
+      clickHandler(id);
+    }}/>
+        <StarButton onClick={()=>{addStar(style)}}>☆</StarButton>
       </ThumbnailDiv>
       <Details_Div>
         <ProductCategoryDiv>
