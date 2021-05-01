@@ -5,7 +5,7 @@ import axios from 'axios';
 import config from '../../../../../config.js';
 
 const DescriptionDiv = styled.div`
-  font-size: 20px;
+  font-size: medium;
   padding-left:10px;
   padding-top:20px;
 `;

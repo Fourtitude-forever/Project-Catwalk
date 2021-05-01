@@ -10,32 +10,40 @@ import {
 import StarRating from '../../../RatingsAndReviews/StarRating.jsx';
 
 const ProductInfoDiv = styled.div`
-  border: 5px solid yellow;
   position: relative;
   height:33%;
   display:flex;
   flex-direction: column;
   padding-left: 10px;
-  padding-top:20px
+  padding-top:20px;
 `;
 
 const Cat = styled.div`
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: x-large;
   padding-bottom:10px
 `;
 
 const Title = styled.div`
   font-weight: bold;
-  font-size: 30px;
+  font-size: xx-large;
   padding-bottom:10px;
 `;
 
 const Price = styled.div`
-  font-size: 20px;
+  font-size: large;
+  margin-bottom: 5%;
 `;
 
+const Ratings = styled.span`
+margin-bottom: 5%;
+display: inline-block;
+text-align: left;
+`;
 
+const A = styled.a`
+font-size: 12px;
+`;
 
 function ProductInformation({ productID, stars }) {
   const [isloading, setLoading] = useState(false);
@@ -62,17 +70,17 @@ function ProductInformation({ productID, stars }) {
     loadingIcon = <p>Please wait...loading</p>;
   }
 
-
   return (
     <ProductInfoDiv>
       {loadingIcon}
-      <p>
+      <Ratings>
         <StarRating stars={stars} />
-      </p>
+        <A href="#readReviews">Read all reviews</A>
+      </Ratings>
+
       <Cat>{category}</Cat>
       <Title>{title}</Title>
-      <Price>{price}</Price>
-      {/* <div>Share on social media place holder</div> */}
+      <Price>{`$${price}`}</Price>
     </ProductInfoDiv>
   );
 }
@@ -82,4 +90,3 @@ ProductInformation.propTypes = {
 };
 
 export default ProductInformation;
-

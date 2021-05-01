@@ -8,7 +8,6 @@ import ProductOverview from './Top/ProductOverview/ProductOverview.jsx';
 import ProductDescription from './Down/ProductDescription.jsx';
 
 const ProductDetailDiv = styled.div`
-  border: 2px solid blue;
   position: relative;
   width:100%;
   height:90vh;
@@ -19,18 +18,16 @@ const ProductDetailDiv = styled.div`
 `;
 
 const Top = styled.div`
-  border: 5px solid green;
   position: relative;
-  width: 90%;
-  height:80%;
+  width: 80%;
+  height:100%;
   display:flex;
-  margin:0.5%;
+  margin:1%;
 `;
 
 const Down = styled.div`
-  border: 5px solid green;
   position: relative;
-  min-width: 90%;
+  width: 50%;
   height:20%;
   display:flex;
   margin:0.5%;
@@ -53,7 +50,7 @@ function ProductDetail({ productID, onStarChange, average }) {
       .catch((err) => {
         throw err;
       });
-  }, []);
+  }, [productID]);
 
   useEffect(() => {
     setSelectedStyle(styles.filter((style) => style.style_id === styleId));
