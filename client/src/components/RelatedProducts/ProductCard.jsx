@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import StarRating from '../RatingsAndReviews/StarRating.jsx';
 
 const ProductCardDiv = styled.div`
-  border: 3px solid black;
+  border: 3px solid grey;
   border-radius: 10px;
   width: 210px;
   height: 300px;
@@ -32,6 +32,8 @@ const ThumbnailDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  position: relative;
 `;
 
 const Details_Div = styled.div`
@@ -56,6 +58,8 @@ const ProductPrice_Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 `;
 
 const Category = styled.span`
@@ -83,6 +87,14 @@ const Name = styled.span`
 const StarButton = styled.button`
   border: 0px;
   display: flex;
+  position:absolute;
+  background:transparent;
+  padding-left:150px;
+  font-size:25px;
+  font-weight:bold;
+  cursor: pointer;
+  overflow: hidden;
+  color: #ffbc0b;
 `;
 
 const Rating_Div = styled.div`
@@ -106,6 +118,7 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
       clickHandler(id);
     }}>
       <ThumbnailDiv>
+        <StarButton>☆</StarButton>
         <ProductThumbnail src={getPicture(style.results)} />
       </ThumbnailDiv>
       <Details_Div>
@@ -118,7 +131,6 @@ const ProductCard = ({ id, category, name, price, style = {}, clickHandler, aver
         <ProductPrice_Div>
           <Price>{price}</Price>
         </ProductPrice_Div>
-        {/* <Rating_Div>☆☆☆☆☆</Rating_Div> */}
         <StarRating stars={average} />
       </Details_Div>
     </ProductCardDiv>
